@@ -170,3 +170,10 @@ Dans `data/medicaments.js` (lignes du tableau) et dans les produits d'une fiche 
 
 - Les fiches mises en avant selon la saison sont définies dans `js/app.js` (tableau `SAISONS`).
 - Les favoris sont enregistrés dans le navigateur de chaque appareil, comme les scores des quiz.
+
+## Mode relecture (pour la pharmacienne)
+
+Bouton « Mode relecture (pharmacienne) » en bas de chaque page.
+- En temps normal, les informations manquantes (« À COMPLÉTER ») sont discrètes (« information à venir ») et les lignes vides sont masquées. Chaque page affiche une seule étiquette « Version de travail » tant que son champ `"validation"` n'est pas rempli.
+- En mode relecture, tout ce qui manque est affiché en orange, et les sections marquées `"relecture": true` (dans `data/pages.js`) apparaissent.
+- Dès que `"validation": { "par": "...", "le": "..." }` est rempli, l'étiquette devient verte : « Validé par … le … ».

@@ -1,6 +1,7 @@
 /*
  * Tableau « Types de médicaments ».
  * Une ligne du tableau = un bloc { ... }. "exemples" et "vigilance" sont des listes.
+ * "famille" : sert au filtre en haut du tableau ; les familles sont listées dans "familles".
  * "pictos" (facultatif) : pictogrammes. Choix : grossesse, conduite, alcool, age, sucre, ordonnance,
  *   anticoag, espacer, duree, fausseroute, ruche, soleil. Texte personnalisé : "age:Dès 6 ans".
  */
@@ -22,7 +23,8 @@ GUIDE.medicaments = {
         "Adulte de plus de 50 kg : 1 g par prise, 4 h minimum entre deux prises, 3 g par jour maximum sans avis médical. Enfant et insuffisance rénale : 6 h minimum (8 h si insuffisance rénale sévère).",
         "Toxique pour le foie en cas de surdosage : chercher le paracétamol caché dans les autres médicaments.",
         "Hors libre accès depuis 2020."
-      ]
+      ],
+      "famille": "douleur"
     },
     {
       "classe": "Anti-inflammatoires non stéroïdiens (AINS)",
@@ -40,7 +42,8 @@ GUIDE.medicaments = {
       "pictos": [
         "grossesse:Contre-indiqué dès le 6e mois de grossesse",
         "anticoag"
-      ]
+      ],
+      "famille": "douleur"
     },
     {
       "classe": "Produits locaux pour la gorge",
@@ -63,7 +66,8 @@ GUIDE.medicaments = {
         "age:Souvent dès 6 ans",
         "sucre:Sucre (sauf formes sans sucre)",
         "fausseroute"
-      ]
+      ],
+      "famille": "orl"
     },
     {
       "classe": "Antitussifs (toux sèche)",
@@ -81,7 +85,8 @@ GUIDE.medicaments = {
       "pictos": [
         "conduite",
         "alcool"
-      ]
+      ],
+      "famille": "orl"
     },
     {
       "classe": "Mucolytiques (toux grasse)",
@@ -97,7 +102,8 @@ GUIDE.medicaments = {
       ],
       "pictos": [
         "age:Dès 2 ans"
-      ]
+      ],
+      "famille": "orl"
     },
     {
       "classe": "Antihistaminiques H1 (allergie)",
@@ -113,7 +119,8 @@ GUIDE.medicaments = {
       "pictos": [
         "conduite",
         "alcool"
-      ]
+      ],
+      "famille": "orl"
     },
     {
       "classe": "Antidiarrhéiques",
@@ -130,7 +137,8 @@ GUIDE.medicaments = {
       ],
       "pictos": [
         "grossesse:Diosmectite : pas pendant la grossesse"
-      ]
+      ],
+      "famille": "digestif"
     },
     {
       "classe": "Solutés de réhydratation orale (SRO)",
@@ -141,7 +149,8 @@ GUIDE.medicaments = {
       "vigilance": [
         "Respecter exactement le volume d'eau indiqué pour la préparation.",
         "Prioritaires chez le nourrisson et la personne âgée (qui doivent être vus par le pharmacien)."
-      ]
+      ],
+      "famille": "digestif"
     },
     {
       "classe": "Antiacides et alginates",
@@ -156,7 +165,8 @@ GUIDE.medicaments = {
       ],
       "pictos": [
         "espacer"
-      ]
+      ],
+      "famille": "digestif"
     },
     {
       "classe": "Inhibiteurs de la pompe à protons (IPP)",
@@ -173,7 +183,8 @@ GUIDE.medicaments = {
       ],
       "pictos": [
         "duree:14 jours maximum sans ordonnance"
-      ]
+      ],
+      "famille": "digestif"
     },
     {
       "classe": "Anticoagulants (à repérer, jamais en conseil)",
@@ -189,7 +200,8 @@ GUIDE.medicaments = {
       ],
       "pictos": [
         "ordonnance"
-      ]
+      ],
+      "famille": "reperer"
     },
     {
       "classe": "Traitements de la tension : IEC (à repérer)",
@@ -205,7 +217,8 @@ GUIDE.medicaments = {
       ],
       "pictos": [
         "ordonnance"
-      ]
+      ],
+      "famille": "reperer"
     }
   ],
   "comparaisons": [
@@ -266,6 +279,24 @@ GUIDE.medicaments = {
         ]
       ],
       "note": "Les deux sont souvent associés sur une ordonnance : le médecin prescrit un IPP pour protéger l'estomac d'un patient qui doit prendre un AINS. Un patient qui prend déjà un IPP ne doit pas pour autant recevoir un AINS en conseil : passer la main au pharmacien."
+    }
+  ],
+  "familles": [
+    {
+      "id": "douleur",
+      "nom": "Douleur et fièvre"
+    },
+    {
+      "id": "orl",
+      "nom": "ORL et allergie"
+    },
+    {
+      "id": "digestif",
+      "nom": "Digestif"
+    },
+    {
+      "id": "reperer",
+      "nom": "À repérer (ordonnance)"
     }
   ]
 };

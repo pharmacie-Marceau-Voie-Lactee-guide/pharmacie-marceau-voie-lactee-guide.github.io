@@ -136,7 +136,8 @@ GUIDE.pages = [
           "Quand et par qui les produits sortent de la quarantaine du réfrigérateur.",
           "La marche à suivre en cas d'écart de quantité ou de prix.",
           "La confirmation du raccourci Ctrl + Entrée pour ouvrir le détail de l'achat."
-        ]
+        ],
+        "relecture": true
       }
     ],
     "menuTitre": "Commandes"

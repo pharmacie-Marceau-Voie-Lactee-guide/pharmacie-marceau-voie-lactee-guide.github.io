@@ -37,11 +37,15 @@
     if (Array.isArray(c)) { c.forEach(function (x) { add(node, x); }); return; }
     if (typeof c === "string" || typeof c === "number") {
       var s = String(c);
-      if (s.indexOf(TODO) !== -1) {
-        // Les zones à compléter sont surlignées pour être repérées facilement.
+      var t = s.indexOf(TODO);
+      if (t !== -1) {
+        // Partie à compléter : discrète en temps normal, bien visible en « mode relecture ».
+        if (t > 0) node.appendChild(document.createTextNode(s.slice(0, t)));
         var m = document.createElement("mark");
-        m.className = "todo";
-        m.textContent = s;
+        m.className = "todo" + (t === 0 ? " todo-whole" : "");
+        var full = document.createElement("span"); full.className = "todo-full"; full.textContent = s.slice(t);
+        var short = document.createElement("span"); short.className = "todo-short"; short.textContent = "information à venir";
+        m.appendChild(full); m.appendChild(short);
         node.appendChild(m);
       } else {
         node.appendChild(document.createTextNode(s));
@@ -75,6 +79,17 @@
 
   function hasTodo(obj) {
     return JSON.stringify(obj || "").indexOf(TODO) !== -1;
+  }
+
+  function isValidated(v) {
+    return !!(v && v.par && v.le && String(v.par + v.le).indexOf(TODO) === -1);
+  }
+
+  function statusPill(v, what) {
+    if (isValidated(v)) {
+      return el("p", { class: "status status-ok" }, [uiIcon("quiz"), el("span", null, "Validé par " + v.par + " le " + v.le)]);
+    }
+    return el("p", { class: "status status-draft" }, [uiIcon("horloge"), el("span", null, [el("strong", null, "Version de travail"), " · " + (what || "contenu") + " en attente de validation par la pharmacienne"])]);
   }
 
   function validationLine(v) {
@@ -279,6 +294,7 @@
   }
 
   function avertissement() {
+    if (!site.nomPharmacienne || site.nomPharmacienne.indexOf(TODO) !== -1) return "Contenu à usage interne. Ne pas diffuser aux patients.";
     return (site.avertissement || "Contenu à usage interne, validé par {pharmacienne}. Ne pas diffuser aux patients.")
       .replace("{pharmacienne}", site.nomPharmacienne || TODO);
   }
@@ -300,9 +316,10 @@
         searchForm("").form,
         favBlock(),
         seasonBlock(),
-        el("div", { class: "callout callout-warning home-note", role: "note" }, [
-          el("p", null, [el("strong", null, "Usage interne. "), avertissement()]),
-          site.brouillon ? el("p", { class: "draft" }, site.brouillon) : null
+        el("div", { class: "home-note", role: "note" }, [
+          el("span", { class: "hn-icon" }, uiIcon("alert")),
+          el("p", null, [el("strong", null, "Usage interne. "), avertissement(),
+            site.brouillon ? el("span", { class: "hn-draft" }, " Version de travail : le contenu est en cours de validation par la pharmacienne.") : null])
         ]),
         el("h2", null, "Mode d'emploi"),
         el("ol", { class: "how-to" }, (site.modeEmploi || [TODO]).map(function (t, i) {
@@ -353,8 +370,7 @@
           (G.arbres || {})[f.id] ? el("a", { class: "btn btn-primary btn-tree", href: "#/arbre/" + encodeURIComponent(f.id) }, [uiIcon("tree"), el("span", null, "Suivre l'arbre de décision")]) : null,
           favButton(f)
         ]),
-        validationLine(f.validation),
-        hasTodo(f) ? todoBanner("Cette fiche contient des éléments à compléter. Ne l'utilisez pas au comptoir avant validation par la pharmacienne.") : null,
+        statusPill(f.validation, "fiche"),
         f.resume ? el("section", { class: "essentiel", "aria-labelledby": "h-essentiel" }, [
           el("h2", { id: "h-essentiel" }, "L'essentiel en 10 secondes"),
           el("ul", null, [
@@ -392,6 +408,29 @@
     };
   }
 
+  // Filtre du tableau par famille (boutons « Tout », « Douleur et fièvre »…).
+  function familyFilter(m) {
+    var fams = m.familles || [];
+    if (!fams.length) return null;
+    var status = el("p", { class: "visually-hidden", "aria-live": "polite" });
+    var bar = el("div", { class: "filter-bar", role: "group", "aria-label": "Filtrer par famille" });
+    function choose(id, btn) {
+      bar.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", String(b === btn)); });
+      var n = 0;
+      document.querySelectorAll(".meds-table tbody tr").forEach(function (tr) {
+        var show = id === "tout" || tr.getAttribute("data-famille") === id;
+        tr.hidden = !show; if (show) n++;
+      });
+      status.textContent = n + " famille" + (n > 1 ? "s" : "") + " de médicaments affichée" + (n > 1 ? "s" : "");
+    }
+    [{ id: "tout", nom: "Tout" }].concat(fams).forEach(function (f, i) {
+      var b = el("button", { type: "button", class: "filter-chip", "aria-pressed": String(i === 0) }, f.nom);
+      b.addEventListener("click", function () { choose(f.id, b); });
+      bar.appendChild(b);
+    });
+    return el("div", null, [bar, status]);
+  }
+
   function viewMedicaments() {
     var m = G.medicaments || {};
     var rows = m.lignes || [];
@@ -399,9 +438,9 @@
       title: "Types de médicaments",
       node: el("div", null, [
         el("h1", null, "Types de médicaments"),
-        validationLine(m.validation),
-        hasTodo(m) ? todoBanner("Ce tableau contient des éléments à compléter.") : null,
+        statusPill(m.validation, "tableau"),
         m.introduction ? el("p", null, m.introduction) : null,
+        familyFilter(m),
         pictoLegend(),
         el("div", { class: "table-wrap meds-table", role: "region", "aria-labelledby": "tab-caption", tabindex: "0" },
           el("table", null, [
@@ -410,7 +449,7 @@
               return el("th", { scope: "col" }, h);
             }))),
             el("tbody", null, rows.map(function (r) {
-              return el("tr", null, [
+              return el("tr", { "data-famille": r.famille || "autre" }, [
                 el("th", { scope: "row" }, [el("span", { class: "no-gloss" }, r.classe || TODO), pictoBadges(r.pictos)]),
                 el("td", { "data-label": "Rôle" }, r.role || TODO),
                 el("td", { "data-label": "Exemples" }, list(r.exemples, false, "compact")),
@@ -875,8 +914,7 @@
       node: el("div", null, [
         el("p", { class: "breadcrumb" }, el("a", { href: "#/animations" }, "← Toutes les animations")),
         el("h1", null, a.titre || TODO),
-        validationLine(a.validation),
-        hasTodo(a) ? todoBanner("Cette animation contient des éléments à compléter.") : null,
+        statusPill(a.validation, "animation"),
         el("p", null, a.introduction || TODO),
         region,
         el("details", { class: "text-version" }, [
@@ -1075,8 +1113,8 @@
     var node = el("div", null, [
       el("h1", null, "Sources"),
       el("p", null, "Notices, bases officielles et documents de référence utilisés pour rédiger chaque contenu du guide."),
-      el("p", { class: "meta" }, ["Sources relues par : ", (s.verification || {}).par || TODO, " — le : ", (s.verification || {}).le || TODO]),
-      hasTodo(s) ? todoBanner("Des sources restent à compléter.") : null,
+      statusPill(s.verification, "liste des sources"),
+
       el("h2", null, "Sources générales"),
       refList(s.generales),
       el("h2", null, "Sources par contenu"),
@@ -1093,10 +1131,10 @@
       section: "page/" + p.id,
       node: el("div", null, [
         el("h1", null, p.titre || TODO),
-        p.validation ? validationLine(p.validation) : null,
+        p.validation ? statusPill(p.validation, "procédure") : null,
         p.introduction ? el("p", { class: "lead" }, p.introduction) : null,
         (p.sections || []).map(function (sec) {
-          return el("section", null, [
+          return el("section", { class: sec.relecture ? "review-only" : null }, [
             sec.titre ? el("h2", null, sec.titre) : null,
             (sec.paragraphes || []).map(function (t) { return el("p", null, t); }),
             sec.etapes && sec.etapes.length ? list(sec.etapes, true, "steps-list") : null,
@@ -1183,7 +1221,7 @@
         el("p", { class: "breadcrumb" }, el("a", { href: "#/fiche/" + encodeURIComponent(f.id) }, "← Fiche « " + f.titre + " »")),
         el("div", { class: "fiche-head" }, [el("span", { class: "fiche-icon" }, uiIcon(f.icone || "fiches")), el("h1", null, f.titre)]),
         el("p", { class: "lead" }, "Répondez aux questions dans l'ordre, en les posant au patient. Le guide vous indique s'il faut passer la main ou si un conseil est possible."),
-        hasTodo(f) ? todoBanner("Arbre en brouillon : à faire valider par la pharmacienne avant utilisation au comptoir.") : null,
+        statusPill(f.validation, "arbre de décision"),
         box
       ])
     };
@@ -1552,6 +1590,7 @@
     app.textContent = "";
     app.appendChild(v.node);
     if (section !== "glossaire" && section !== "recherche" && section !== "quiz") { try { linkGlossary(app); } catch (e) { /* sans glossaire */ } }
+    tidyDrafts(app);
     document.title = v.title + " – " + SITE_TITLE;
     setCurrentNav(v.section || SECTION_OF[section] || section);
 
@@ -1572,8 +1611,42 @@
     window.addEventListener("load", function () { navigator.serviceWorker.register("sw.js").catch(function () {}); });
   }
 
+  var REVIEW_KEY = "guide-integration:relecture";
+  function reviewOn() { try { return localStorage.getItem(REVIEW_KEY) === "1"; } catch (e) { return false; } }
+  function applyReview() { document.body.classList.toggle("review", reviewOn()); }
+
+  // En temps normal, on masque les lignes qui ne contiennent qu'une information à venir.
+  function tidyDrafts(root) {
+    if (reviewOn()) return;
+    root.querySelectorAll("li, p").forEach(function (n) {
+      var kids = Array.prototype.filter.call(n.childNodes, function (c) { return c.nodeType === 1 || c.textContent.trim(); });
+      if (kids.length === 1 && kids[0].classList && kids[0].classList.contains("todo-whole")) n.classList.add("draft-hidden");
+    });
+    root.querySelectorAll("ul, ol").forEach(function (l) {
+      if (l.children.length && Array.prototype.every.call(l.children, function (li) { return li.classList.contains("draft-hidden"); })) l.classList.add("draft-hidden");
+    });
+    root.querySelectorAll(".callout").forEach(function (c) {
+      var visible = c.querySelectorAll("li:not(.draft-hidden), p:not(.draft-hidden)");
+      var onlyLabel = Array.prototype.every.call(visible, function (n) { return n.textContent.trim() === "Attention"; });
+      if (!visible.length || onlyLabel) c.classList.add("draft-hidden");
+    });
+  }
+
+  function reviewToggle() {
+    var btn = el("button", { type: "button", class: "review-btn" });
+    function paint() { btn.textContent = reviewOn() ? "Quitter le mode relecture" : "Mode relecture (pharmacienne)"; btn.setAttribute("aria-pressed", String(reviewOn())); }
+    btn.addEventListener("click", function () {
+      try { localStorage.setItem(REVIEW_KEY, reviewOn() ? "0" : "1"); } catch (e) {}
+      applyReview(); paint(); route();
+    });
+    paint();
+    return btn;
+  }
+
   buildNav();
   buildBottomNav();
+  applyReview();
+  document.querySelector(".site-footer").appendChild(el("p", null, reviewToggle()));
   // Impression : tout déplier pour que la fiche papier soit complète.
   window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });
   document.querySelector(".skip-link").addEventListener("click", jumpTo("main"));
