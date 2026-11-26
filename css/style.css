@@ -734,3 +734,102 @@ details.fold.products .comparison h2 { font-size: 1.05rem; }
   .site-footer { padding-bottom: 24px; }
 }
 @media print { .bottom-nav, .fold-tools { display: none !important; } details.fold { box-shadow: none; } }
+
+/* =========================================================
+   v6 : arbres de décision, pictogrammes, glossaire, favoris, saison
+   ========================================================= */
+
+/* Actions de fiche */
+.fiche-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 10px; }
+.btn-tree { gap: 8px; }
+.btn-tree .ui-icon { width: 20px; height: 20px; }
+.fav-btn {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 6px 14px; border-radius: 999px;
+  font: inherit; font-weight: 600; cursor: pointer; background: var(--surface); color: var(--muted); border: 2px solid var(--border);
+}
+.fav-btn .ui-icon { width: 20px; height: 20px; }
+.fav-btn[aria-pressed="true"] { color: #8a5a00; border-color: #e0a81a; background: #fff8e1; }
+.fav-btn[aria-pressed="true"] .ui-icon { fill: #f2b705; stroke: #a87400; }
+
+/* Arbre de décision */
+.tree { background: var(--surface); border-radius: 16px; padding: 18px 16px; box-shadow: var(--shadow); margin: 12px 0; }
+.tree-q { font-size: 1.3rem; line-height: 1.35; margin: 6px 0 16px; }
+.tree-q:focus { outline: none; }
+.tree-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+.tree-buttons .btn { min-height: 64px; font-size: 1.2rem; border-radius: 14px; }
+.tree-yes { background: #fdecec; border-color: #b42318; color: #7a1410; }
+.tree-yes:hover { background: #f9d6d4; color: #7a1410; }
+.tree-no { background: var(--c-green-soft); border-color: var(--c-green); color: var(--primary-dark); }
+.tree-result { display: flex; gap: 14px; align-items: flex-start; border-radius: 14px; padding: 16px; border-left: 8px solid; }
+.tree-result:focus { outline: none; }
+.tree-result h2 { margin: 0 0 6px; font-size: 1.25rem; }
+.tree-result p { margin: .3em 0; }
+.tr-icon { display: inline-flex; width: 48px; height: 48px; border-radius: 14px; align-items: center; justify-content: center; flex: none; background: #fff; }
+.tr-icon .ui-icon { width: 28px; height: 28px; }
+.lvl-urgence { background: #fdecec; border-color: #9b1c13; color: #5e0d08; }
+.lvl-urgence .tr-icon { color: #9b1c13; }
+.lvl-pharmacien { background: #fff1e6; border-color: #c2620f; color: #5c2e00; }
+.lvl-pharmacien .tr-icon { color: #c2620f; }
+.lvl-conseil { background: var(--c-green-soft); border-color: var(--c-green); color: #0f3d2c; }
+.lvl-conseil .tr-icon { color: var(--c-green); }
+.tree-recap { margin: 12px 0; }
+.tree-recap summary { cursor: pointer; font-weight: 600; min-height: 32px; }
+.tree-recap li { margin: .3em 0; }
+
+/* Pictogrammes */
+.pictos { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; flex-basis: 100%; }
+.picto { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px 2px 5px; border-radius: 999px; font-size: .75rem; font-weight: 700; line-height: 1.5; border: 1px solid; background: #fff; }
+.picto .ui-icon { width: 15px; height: 15px; stroke-width: 2.2; }
+.p-red { color: #9b1c13; border-color: #e7a7a1; background: #fdf1f0; }
+.p-orange { color: #8a4300; border-color: #efc08f; background: #fff6ec; }
+.p-blue { color: #1d4f8a; border-color: #a9c4e6; background: #f0f5fc; }
+.p-purple { color: #5b3392; border-color: #c8b4e6; background: #f6f1fc; }
+.p-teal { color: #0c5d66; border-color: #a6d6da; background: #eef8f9; }
+tbody th .pictos { font-weight: 400; }
+.picto-legend { margin: 10px 0 14px; background: var(--surface); border-radius: var(--radius); padding: 8px 14px; box-shadow: var(--shadow); }
+.picto-legend summary { cursor: pointer; font-weight: 600; min-height: 36px; display: flex; align-items: center; }
+.picto-legend ul { list-style: none; padding: 0; margin: 8px 0 4px; display: flex; flex-wrap: wrap; gap: 6px; }
+.picto-legend li .pictos { margin: 0; }
+
+/* Glossaire : mots cliquables */
+.gloss {
+  font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: help;
+  text-decoration: underline dotted #0e9aa7 2px; text-underline-offset: 3px;
+}
+.gloss:hover, .gloss[aria-expanded="true"] { color: #0c5d66; background: #e0f2f3; border-radius: 3px; }
+.gloss-pop {
+  display: block; margin: 6px 0; padding: 10px 12px; border-radius: 10px; font-size: .92rem; line-height: 1.45;
+  background: #0c3b35; color: #f0fbf8; box-shadow: 0 6px 18px rgba(0,0,0,.18); font-weight: 400;
+}
+.gloss-pop[hidden] { display: none; }
+.gloss-pop strong { color: #fff; }
+.gloss-pop a { color: #9fe3c9; }
+.callout .gloss-pop, .essentiel .gloss-pop { color: #f0fbf8; }
+
+/* Page Glossaire */
+.alpha { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 16px; position: sticky; top: 0; background: var(--bg); padding: 8px 0; z-index: 5; }
+.alpha a { display: inline-flex; width: 36px; height: 36px; align-items: center; justify-content: center; border-radius: 10px; background: var(--surface); box-shadow: var(--shadow); text-decoration: none; font-weight: 800; color: var(--primary); }
+.alpha-h { font-size: 1.4rem; color: var(--c-teal); border-bottom: 2px solid var(--c-teal-soft); padding-bottom: 4px; }
+.gloss-list { margin: 0; }
+.gloss-item { background: var(--surface); border-radius: var(--radius); padding: 10px 14px; margin: 8px 0; box-shadow: var(--shadow); scroll-margin-top: 60px; }
+.gloss-item:focus { outline: 3px solid var(--c-teal); }
+.gloss-item dt { font-weight: 800; color: var(--primary-dark); }
+.gloss-item dd { margin: 4px 0 0; }
+
+/* Favoris et saison sur l'accueil */
+.season, .favs { background: var(--surface); border-radius: 16px; padding: 12px 14px; margin: 0 0 14px; box-shadow: var(--shadow); }
+.season { border-top: 4px solid #e07b1a; }
+.favs { border-top: 4px solid #f2b705; }
+.season h2, .favs h2 { margin: 2px 0 4px; font-size: 1.1rem; }
+.chips { list-style: none; padding: 0; margin: 8px 0 2px; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li { max-width: none; }
+.chip-link {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 6px 14px 6px 10px; border-radius: 999px;
+  background: var(--c-teal-soft); color: var(--primary-dark); text-decoration: none; font-weight: 600;
+}
+.chip-link:hover { background: #cdeceb; color: var(--primary-dark); }
+.chip-link .ui-icon { width: 22px; height: 22px; color: var(--c-teal); }
+.chip-link.fav { background: #fff8e1; }
+.chip-link.fav .ui-icon { color: #a87400; }
+.gloss-pop strong, .essentiel li .gloss-pop strong, .callout .gloss-pop strong { color: #fff; }
+.essentiel li .gloss, .callout .gloss { color: inherit; }

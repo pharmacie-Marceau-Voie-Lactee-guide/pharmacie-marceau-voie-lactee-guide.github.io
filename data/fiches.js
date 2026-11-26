@@ -59,7 +59,10 @@ GUIDE.fiches = [
             {
               "nom": "Spray gorge à la propolis",
               "forme": "spray",
-              "detail": "Produit de la ruche"
+              "detail": "Produit de la ruche",
+              "pictos": [
+                "ruche"
+              ]
             }
           ],
           "quand": "Gorge qui gratte, irritation légère, voix enrouée, air sec ou tabac, sans vraie douleur.",
@@ -77,17 +80,27 @@ GUIDE.fiches = [
             {
               "nom": "Strepsils",
               "forme": "pastille",
-              "detail": "Amylmétacrésol + alcool dichlorobenzylique (miel-citron, fraise sans sucre…)"
+              "detail": "Amylmétacrésol + alcool dichlorobenzylique (miel-citron, fraise sans sucre…)",
+              "pictos": [
+                "age:Dès 6 ans",
+                "sucre:Sucre (existe sans sucre)"
+              ]
             },
             {
               "nom": "Hexaspray",
               "forme": "spray",
-              "detail": "Biclotymol"
+              "detail": "Biclotymol",
+              "pictos": [
+                "age:Âge minimum : voir la notice"
+              ]
             },
             {
               "nom": "Eludril",
               "forme": "bain-de-bouche",
-              "detail": "Chlorhexidine (bain de bouche ou collutoire selon la présentation)"
+              "detail": "Chlorhexidine (bain de bouche ou collutoire selon la présentation)",
+              "pictos": [
+                "age:Âge minimum : voir la notice"
+              ]
             }
           ],
           "quand": "Mal de gorge débutant, gêne modérée, sans grosse douleur pour avaler.",
@@ -105,17 +118,29 @@ GUIDE.fiches = [
             {
               "nom": "Strepsils Lidocaïne",
               "forme": "pastille",
-              "detail": "Antiseptique + lidocaïne"
+              "detail": "Antiseptique + lidocaïne",
+              "pictos": [
+                "fausseroute",
+                "age:Âge minimum : voir la notice"
+              ]
             },
             {
               "nom": "Lysopaïne Maux de gorge",
               "forme": "pastille",
-              "detail": "Ambroxol"
+              "detail": "Ambroxol",
+              "pictos": [
+                "fausseroute",
+                "age:Âge minimum : voir la notice"
+              ]
             },
             {
               "nom": "Colludol",
               "forme": "spray",
-              "detail": "À COMPLÉTER : recopier la composition depuis la boîte"
+              "detail": "À COMPLÉTER : recopier la composition depuis la boîte",
+              "pictos": [
+                "fausseroute",
+                "age:Âge minimum : voir la notice"
+              ]
             }
           ],
           "quand": "Douleur quand le patient avale.",
@@ -134,7 +159,11 @@ GUIDE.fiches = [
               "nom": "Strefen",
               "forme": "pastille",
               "detail": "Flurbiprofène. Pas en stock à l'officine : si un patient le demande, voir le pharmacien.",
-              "indisponible": true
+              "indisponible": true,
+              "pictos": [
+                "grossesse:Contre-indiqué dès le 6e mois de grossesse",
+                "anticoag"
+              ]
             }
           ],
           "quand": "Douleur forte, gorge rouge et gonflée, chez un adulte sans contre-indication aux AINS.",

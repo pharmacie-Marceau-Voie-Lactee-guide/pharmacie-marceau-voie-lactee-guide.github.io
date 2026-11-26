@@ -123,6 +123,15 @@
     urine: "M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11zM12 11v6M9 14h6",
     horloge: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3 2",
     chevron: "M6 9l6 6 6-6",
+    baby: "M12 6a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM10 22v-5l-1.5-1c-1-.7-1.5-1.8-1.3-3l.6-3.4A3 3 0 0 1 10.8 7h1.6a3 3 0 0 1 2.7 1.7c2.2.6 3.4 2.7 2.9 4.9-.4 1.6-1.8 2.7-3.5 2.8L14 22",
+    car: "M5 16h14M5 16l1.5-5a2 2 0 0 1 1.9-1.4h7.2a2 2 0 0 1 1.9 1.4L19 16M5 16v3h2.5v-3M16.5 16v3H19v-3M7.5 13h.01M16.5 13h.01",
+    glass: "M7 3h10l-1.5 9a3.5 3.5 0 0 1-7 0zM12 15.5V21M8.5 21h7M4 4l16 16",
+    child: "M12 7a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM8 22l1.5-8L7 10.5M16 22l-1.5-8 2.5-3.5M9.5 9h5",
+    cube: "M12 3l8 4.5v9L12 21l-8-4.5v-9zM12 12l8-4.5M12 12L4 7.5M12 12v9",
+    rx: "M6 4h5a3.5 3.5 0 0 1 0 7H6zM6 11v9M10 11l8 9M18 13l-6 7",
+    drop2: "M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11zM5 5l14 14",
+    tree: "M12 3v5M12 8l-6 5M12 8l6 5M6 13v3M18 13v3M3 19h6M15 19h6M9 16H3v6h6zM21 16h-6v6h6z",
+    book2: "M4 4h6a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H4zM20 4h-6a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h6z",
     star: "M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z",
     clock: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3 2"
   };
@@ -213,6 +222,7 @@
     { href: "#/medicaments", label: "Médicaments", key: "medicaments" },
     { href: "#/animations", label: "Animations", key: "animations" },
     { href: "#/quiz", label: "Quiz", key: "quiz" },
+    { href: "#/glossaire", label: "Glossaire", key: "glossaire" },
     { href: "#/sources", label: "Sources", key: "sources" }
   ];
   (G.pages || []).forEach(function (p) {
@@ -288,6 +298,8 @@
           ])
         ]),
         searchForm("").form,
+        favBlock(),
+        seasonBlock(),
         el("div", { class: "callout callout-warning home-note", role: "note" }, [
           el("p", null, [el("strong", null, "Usage interne. "), avertissement()]),
           site.brouillon ? el("p", { class: "draft" }, site.brouillon) : null
@@ -337,6 +349,10 @@
       node: el("article", { class: "fiche" }, [
         el("p", { class: "breadcrumb" }, el("a", { href: "#/fiches" }, "← Toutes les fiches")),
         el("div", { class: "fiche-head" }, [el("span", { class: "fiche-icon" }, uiIcon(f.icone || "fiches")), el("h1", null, f.titre || TODO)]),
+        el("div", { class: "fiche-actions" }, [
+          (G.arbres || {})[f.id] ? el("a", { class: "btn btn-primary btn-tree", href: "#/arbre/" + encodeURIComponent(f.id) }, [uiIcon("tree"), el("span", null, "Suivre l'arbre de décision")]) : null,
+          favButton(f)
+        ]),
         validationLine(f.validation),
         hasTodo(f) ? todoBanner("Cette fiche contient des éléments à compléter. Ne l'utilisez pas au comptoir avant validation par la pharmacienne.") : null,
         f.resume ? el("section", { class: "essentiel", "aria-labelledby": "h-essentiel" }, [
@@ -386,6 +402,7 @@
         validationLine(m.validation),
         hasTodo(m) ? todoBanner("Ce tableau contient des éléments à compléter.") : null,
         m.introduction ? el("p", null, m.introduction) : null,
+        pictoLegend(),
         el("div", { class: "table-wrap meds-table", role: "region", "aria-labelledby": "tab-caption", tabindex: "0" },
           el("table", null, [
             el("caption", { id: "tab-caption" }, "Classes de médicaments : rôle, exemples et points de vigilance"),
@@ -394,7 +411,7 @@
             }))),
             el("tbody", null, rows.map(function (r) {
               return el("tr", null, [
-                el("th", { scope: "row" }, r.classe || TODO),
+                el("th", { scope: "row" }, [el("span", { class: "no-gloss" }, r.classe || TODO), pictoBadges(r.pictos)]),
                 el("td", { "data-label": "Rôle" }, r.role || TODO),
                 el("td", { "data-label": "Exemples" }, list(r.exemples, false, "compact")),
                 el("td", { "data-label": "Vigilance" }, list(r.vigilance, false, "compact"))
@@ -457,7 +474,8 @@
       el("span", { class: "prod-text" }, [
         el("strong", null, x.nom || TODO),
         x.forme && FORM_LABEL[x.forme] ? el("span", { class: "prod-form" }, " · " + FORM_LABEL[x.forme]) : null,
-        x.detail ? el("span", { class: "prod-detail" }, x.detail) : null
+        x.detail ? el("span", { class: "prod-detail" }, x.detail) : null,
+        pictoBadges(x.pictos)
       ])
     ]);
   }
@@ -1092,6 +1110,283 @@
     };
   }
 
+  /* ---------- Arbres de décision ---------- */
+
+  var NIVEAUX = {
+    urgence:    { titre: "Prévenir le pharmacien immédiatement", icon: "alert", cls: "lvl-urgence" },
+    pharmacien: { titre: "Passer la main au pharmacien", icon: "hand", cls: "lvl-pharmacien" },
+    conseil:    { titre: "Conseil possible au comptoir", icon: "quiz", cls: "lvl-conseil" }
+  };
+
+  function viewArbre(id) {
+    var f = findById(G.fiches, id);
+    var tree = (G.arbres || {})[id];
+    if (!f || !tree) return viewNotFound();
+    var etapes = tree.etapes || [];
+    var box = el("div", { class: "tree", "aria-live": "polite" });
+    var answers = [];
+
+    function finQ() { return tree.fin && tree.fin.q ? tree.fin : null; }
+    var total = etapes.length + (finQ() ? 1 : 0);
+
+    function ask(i) {
+      box.textContent = "";
+      var isFin = i >= etapes.length;
+      var step = isFin ? finQ() : etapes[i];
+      if (!step) return result(tree.fin || { niveau: "pharmacien", texte: TODO });
+      var bar = el("div", { class: "quiz-progress", "aria-hidden": "true" }, el("span", { style: "width:" + Math.round(100 * (i + 1) / total) + "%" }));
+      var yes = el("button", { type: "button", class: "btn tree-yes", onclick: function () { answer(i, step, true); } }, "Oui");
+      var no = el("button", { type: "button", class: "btn tree-no", onclick: function () { answer(i, step, false); } }, "Non");
+      add(box, [bar,
+        el("p", { class: "step-counter" }, "Question " + (i + 1) + " sur " + total),
+        el("h2", { class: "tree-q", tabindex: "-1" }, step.q),
+        el("div", { class: "tree-buttons" }, [yes, no]),
+        i > 0 ? el("button", { type: "button", class: "btn btn-ghost btn-small", onclick: function () { answers.pop(); ask(i - 1); } }, "← Question précédente") : null
+      ]);
+      var h = box.querySelector(".tree-q"); if (h && answers.length) h.focus();
+    }
+
+    function answer(i, step, oui) {
+      answers = answers.slice(0, i);
+      answers.push({ q: step.q, r: oui ? "Oui" : "Non" });
+      var res = oui ? step.oui : step.non;
+      if (res) return result(res);
+      if (i + 1 < etapes.length || (i + 1 === etapes.length && finQ())) return ask(i + 1);
+      result(i >= etapes.length ? { niveau: "pharmacien", texte: TODO } : tree.fin);
+    }
+
+    function result(res) {
+      box.textContent = "";
+      var n = NIVEAUX[res.niveau] || NIVEAUX.pharmacien;
+      var lien = res.lien && findById(G.fiches, res.lien);
+      add(box, [
+        el("div", { class: "tree-result " + n.cls, tabindex: "-1" }, [
+          el("span", { class: "tr-icon" }, uiIcon(n.icon)),
+          el("div", null, [el("h2", null, n.titre), el("p", null, res.texte || TODO),
+            lien ? el("p", null, el("a", { href: "#/fiche/" + encodeURIComponent(lien.id) }, "Ouvrir la fiche « " + lien.titre + " »")) : null])
+        ]),
+        res.niveau === "conseil" ? el("p", { class: "meta" }, "Au moindre doute, ou si le patient pose une question à laquelle vous ne savez pas répondre : demandez au pharmacien.") : null,
+        answers.length ? el("details", { class: "tree-recap" }, [el("summary", null, "Revoir les réponses données"),
+          el("ol", null, answers.map(function (a) { return el("li", null, [a.q, " ", el("strong", null, a.r)]); }))]) : null,
+        el("div", { class: "controls" }, [
+          el("button", { type: "button", class: "btn btn-primary", onclick: function () { answers = []; ask(0); } }, "Recommencer"),
+          el("a", { class: "btn btn-ghost", href: "#/fiche/" + encodeURIComponent(f.id) }, "Voir la fiche complète")
+        ])
+      ]);
+      box.querySelector(".tree-result").focus();
+    }
+
+    ask(0);
+    return {
+      title: "Arbre de décision : " + f.titre, section: "fiches",
+      node: el("div", null, [
+        el("p", { class: "breadcrumb" }, el("a", { href: "#/fiche/" + encodeURIComponent(f.id) }, "← Fiche « " + f.titre + " »")),
+        el("div", { class: "fiche-head" }, [el("span", { class: "fiche-icon" }, uiIcon(f.icone || "fiches")), el("h1", null, f.titre)]),
+        el("p", { class: "lead" }, "Répondez aux questions dans l'ordre, en les posant au patient. Le guide vous indique s'il faut passer la main ou si un conseil est possible."),
+        hasTodo(f) ? todoBanner("Arbre en brouillon : à faire valider par la pharmacienne avant utilisation au comptoir.") : null,
+        box
+      ])
+    };
+  }
+
+  /* ---------- Pictogrammes ---------- */
+
+  var PICTOS = {
+    grossesse:   ["baby", "Grossesse : avis du pharmacien", "p-red"],
+    conduite:    ["car", "Somnolence : conduite", "p-orange"],
+    alcool:      ["glass", "Pas d'alcool", "p-orange"],
+    age:         ["child", "Âge minimum", "p-blue"],
+    sucre:       ["cube", "Contient du sucre", "p-blue"],
+    ordonnance:  ["rx", "Sur ordonnance", "p-purple"],
+    anticoag:    ["drop2", "Pas avec un anticoagulant", "p-red"],
+    espacer:     ["horloge", "2 h d'écart", "p-teal"],
+    duree:       ["horloge", "Durée limitée", "p-teal"],
+    fausseroute: ["alert", "Risque de fausse route", "p-orange"],
+    ruche:       ["insecte", "Allergie aux produits de la ruche", "p-red"],
+    soleil:      ["soleil", "Pas de soleil", "p-orange"]
+  };
+
+  function pictoBadges(list) {
+    if (!list || !list.length) return null;
+    return el("span", { class: "pictos" }, list.map(function (p) {
+      var k = p.split(":")[0], label = p.indexOf(":") > -1 ? p.slice(p.indexOf(":") + 1) : null;
+      var d = PICTOS[k];
+      if (!d) return null;
+      return el("span", { class: "picto " + d[2], title: label || d[1] }, [uiIcon(d[0]), el("span", null, label || d[1])]);
+    }));
+  }
+
+  function pictoLegend() {
+    return el("details", { class: "picto-legend" }, [
+      el("summary", null, "Que veulent dire les pictogrammes ?"),
+      el("ul", null, Object.keys(PICTOS).map(function (k) { return el("li", null, pictoBadges([k])); }))
+    ]);
+  }
+
+  /* ---------- Glossaire ---------- */
+
+  function glossSlug(t) { return norm(t).replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
+
+  function viewGlossaire(slug) {
+    var items = (G.glossaire || []).slice().sort(function (a, b) { return a.terme.localeCompare(b.terme, "fr"); });
+    var letters = {};
+    items.forEach(function (g) { var l = norm(g.terme).charAt(0).toUpperCase(); (letters[/[A-Z]/.test(l) ? l : "#"] = letters[/[A-Z]/.test(l) ? l : "#"] || []).push(g); });
+    return {
+      title: "Glossaire", section: "glossaire", focusId: slug ? "g-" + slug : null,
+      node: el("div", null, [
+        el("h1", null, "Glossaire"),
+        el("p", { class: "lead" }, "Les mots et sigles du comptoir, expliqués simplement. Dans tout le guide, les mots soulignés en pointillés renvoient ici : touchez-les pour voir leur définition."),
+        el("nav", { class: "alpha", "aria-label": "Lettres" }, Object.keys(letters).sort().map(function (l) {
+          return el("a", { href: "#/glossaire/lettre-" + l.toLowerCase(), onclick: jumpTo("lettre-" + l.toLowerCase()) }, l);
+        })),
+        Object.keys(letters).sort().map(function (l) {
+          return el("section", { id: "lettre-" + l.toLowerCase(), tabindex: "-1" }, [
+            el("h2", { class: "alpha-h" }, l),
+            el("dl", { class: "gloss-list" }, letters[l].map(function (g) {
+              return el("div", { id: "g-" + glossSlug(g.terme), tabindex: "-1", class: "gloss-item" }, [el("dt", null, g.terme), el("dd", null, g.definition)]);
+            }))
+          ]);
+        })
+      ])
+    };
+  }
+
+  var GLOSS_RE = null, GLOSS_MAP = {};
+  function glossRegex() {
+    if (GLOSS_RE !== null) return GLOSS_RE;
+    var forms = [];
+    (G.glossaire || []).forEach(function (g) {
+      [g.terme].concat(g.variantes || []).forEach(function (f) { GLOSS_MAP[f.toLowerCase()] = { g: g, form: f }; forms.push(f); });
+    });
+    if (!forms.length) return (GLOSS_RE = false);
+    forms.sort(function (a, b) { return b.length - a.length; });
+    var esc = forms.map(function (f) { return f.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); });
+    GLOSS_RE = new RegExp("(^|[^A-Za-zÀ-ÖØ-öø-ÿ0-9-])(" + esc.join("|") + ")(?![A-Za-zÀ-ÖØ-öø-ÿ0-9-])", "i");
+    return GLOSS_RE;
+  }
+
+  // Rend cliquable la première apparition de chaque terme du glossaire dans la page.
+  function linkGlossary(root) {
+    var re = glossRegex();
+    if (!re) return;
+    var seen = {};
+    var skip = "H1,H2,H3,BUTTON,A,SUMMARY,MARK,LABEL,LEGEND,TEXTAREA,INPUT,SVG,DT";
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        for (var p = n.parentNode; p && p !== root; p = p.parentNode) {
+          if (skip.indexOf(p.nodeName.toUpperCase()) > -1 || (p.classList && (p.classList.contains("gloss") || p.classList.contains("no-gloss") || p.classList.contains("gloss-pop") || p.classList.contains("pictos") || p.classList.contains("step-counter")))) return NodeFilter.FILTER_REJECT;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(function (node) {
+      var text = node.nodeValue, m, out = [], last = 0, guard = 0;
+      var local = new RegExp(re.source, "gi");
+      while ((m = local.exec(text)) && guard++ < 20) {
+        var word = m[2], hit = GLOSS_MAP[word.toLowerCase()];
+        if (!hit) continue;
+        var g = hit.g;
+        if (seen[g.terme]) continue;
+        // Sigles en majuscules (IPP, AINS…) : seulement la forme exacte, pas « ipp » dans un autre mot.
+        if (hit.form === hit.form.toUpperCase() && /[A-Z]/.test(hit.form) && word !== hit.form) continue;
+        seen[g.terme] = true;
+        var start = m.index + m[1].length;
+        out.push(document.createTextNode(text.slice(last, start)));
+        out.push(glossButton(word, g));
+        last = start + word.length;
+      }
+      if (!out.length) return;
+      out.push(document.createTextNode(text.slice(last)));
+      var frag = document.createDocumentFragment();
+      out.forEach(function (n) { frag.appendChild(n); });
+      node.parentNode.replaceChild(frag, node);
+    });
+  }
+
+  function glossButton(word, g) {
+    var pop = el("span", { class: "gloss-pop", role: "note", hidden: true }, [
+      el("strong", null, g.terme + " : "), g.definition, " ",
+      el("a", { href: "#/glossaire/" + glossSlug(g.terme) }, "Glossaire")
+    ]);
+    var btn = el("button", { type: "button", class: "gloss", "aria-expanded": "false", onclick: function (e) {
+      e.stopPropagation();
+      var open = btn.getAttribute("aria-expanded") === "true";
+      document.querySelectorAll(".gloss[aria-expanded='true']").forEach(function (b) { b.setAttribute("aria-expanded", "false"); b.nextSibling.hidden = true; });
+      if (!open) { btn.setAttribute("aria-expanded", "true"); pop.hidden = false; }
+    } }, word);
+    var wrap = document.createDocumentFragment();
+    wrap.appendChild(btn); wrap.appendChild(pop);
+    return wrap;
+  }
+  document.addEventListener("click", function () {
+    document.querySelectorAll(".gloss[aria-expanded='true']").forEach(function (b) { b.setAttribute("aria-expanded", "false"); b.nextSibling.hidden = true; });
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") document.querySelectorAll(".gloss[aria-expanded='true']").forEach(function (b) { b.setAttribute("aria-expanded", "false"); b.nextSibling.hidden = true; b.focus(); });
+  });
+
+  /* ---------- Favoris ---------- */
+
+  var FAV_KEY = "guide-integration:favoris:v1";
+  function getFavs() { try { var v = JSON.parse(localStorage.getItem(FAV_KEY) || "[]"); return Array.isArray(v) ? v : []; } catch (e) { return []; } }
+  function setFavs(v) { try { localStorage.setItem(FAV_KEY, JSON.stringify(v)); return true; } catch (e) { return false; } }
+  function isFav(id) { return getFavs().indexOf(id) !== -1; }
+
+  function favButton(f) {
+    var btn = el("button", { type: "button", class: "fav-btn", "aria-pressed": String(isFav(f.id)) });
+    function paint() {
+      var on = isFav(f.id);
+      btn.setAttribute("aria-pressed", String(on));
+      btn.setAttribute("aria-label", on ? "Retirer « " + f.titre + " » des favoris" : "Ajouter « " + f.titre + " » aux favoris");
+      btn.textContent = "";
+      add(btn, [uiIcon("star"), el("span", null, on ? "Dans mes favoris" : "Ajouter aux favoris")]);
+    }
+    btn.addEventListener("click", function () {
+      var v = getFavs(), i = v.indexOf(f.id);
+      if (i === -1) v.push(f.id); else v.splice(i, 1);
+      setFavs(v); paint();
+    });
+    paint();
+    return btn;
+  }
+
+  /* ---------- Conseils du moment ---------- */
+
+  var SAISONS = [
+    { mois: [2, 3, 4], nom: "Printemps", texte: "Saison des pollens.", ids: ["allergie-saisonniere", "piqures-insectes", "rhume"] },
+    { mois: [5, 6, 7], nom: "Été", texte: "Soleil, insectes et voyages.", ids: ["brulures-peau", "piqures-insectes", "diarrhee"] },
+    { mois: [8, 9], nom: "Rentrée", texte: "Retour à l'école et premiers rhumes.", ids: ["poux", "rhume", "mal-de-gorge"] },
+    { mois: [10, 11, 0, 1], nom: "Hiver", texte: "Virus de l'hiver.", ids: ["rhume", "toux", "mal-de-gorge", "douleur-fievre", "diarrhee"] }
+  ];
+
+  function seasonBlock() {
+    var m = new Date().getMonth();
+    var s = SAISONS.filter(function (x) { return x.mois.indexOf(m) !== -1; })[0];
+    if (!s) return null;
+    var fiches = s.ids.map(function (id) { return findById(G.fiches, id); }).filter(Boolean);
+    if (!fiches.length) return null;
+    return el("section", { class: "season", "aria-labelledby": "h-season" }, [
+      el("h2", { id: "h-season" }, ["En ce moment · ", s.nom]),
+      el("p", { class: "meta" }, s.texte + " Les demandes les plus fréquentes au comptoir :"),
+      el("ul", { class: "chips" }, fiches.map(function (f) {
+        return el("li", null, el("a", { href: "#/fiche/" + encodeURIComponent(f.id), class: "chip-link" }, [uiIcon(f.icone || "fiches"), el("span", null, f.titre)]));
+      }))
+    ]);
+  }
+
+  function favBlock() {
+    var favs = getFavs().map(function (id) { return findById(G.fiches, id); }).filter(Boolean);
+    if (!favs.length) return null;
+    return el("section", { class: "favs", "aria-labelledby": "h-favs" }, [
+      el("h2", { id: "h-favs" }, "Mes fiches favorites"),
+      el("ul", { class: "chips" }, favs.map(function (f) {
+        return el("li", null, el("a", { href: "#/fiche/" + encodeURIComponent(f.id), class: "chip-link fav" }, [uiIcon(f.icone || "fiches"), el("span", null, f.titre)]));
+      }))
+    ]);
+  }
+
   /* ---------- Recherche ---------- */
 
   function norm(t) {
@@ -1123,6 +1418,9 @@
     });
     (G.animations || []).forEach(function (a) {
       idx.push({ kind: "Animation", title: a.titre, href: "#/animation/" + encodeURIComponent(a.id), parts: [a.titre, a.classe, a.introduction].concat(flat(a.etapes)) });
+    });
+    (G.glossaire || []).forEach(function (g) {
+      idx.push({ kind: "Glossaire", title: g.terme, href: "#/glossaire/" + glossSlug(g.terme), parts: [g.terme, g.definition].concat(g.variantes || []) });
     });
     (G.pages || []).forEach(function (p) {
       idx.push({ kind: "Page", title: p.titre, href: "#/page/" + encodeURIComponent(p.id), parts: [p.titre, p.introduction].concat(flat(p.sections)) });
@@ -1246,11 +1544,14 @@
       case "sources": v = viewSources(id); break;
       case "page": v = viewPage(id); break;
       case "recherche": v = viewSearch(id || ""); break;
+      case "arbre": v = viewArbre(id); break;
+      case "glossaire": v = viewGlossaire(id && id.indexOf("lettre-") === 0 ? null : id); if (id && id.indexOf("lettre-") === 0) v.focusId = id; break;
       default: v = viewNotFound();
     }
 
     app.textContent = "";
     app.appendChild(v.node);
+    if (section !== "glossaire" && section !== "recherche" && section !== "quiz") { try { linkGlossary(app); } catch (e) { /* sans glossaire */ } }
     document.title = v.title + " – " + SITE_TITLE;
     setCurrentNav(v.section || SECTION_OF[section] || section);
 

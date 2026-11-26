@@ -144,3 +144,29 @@ La recherche (loupe en haut à droite, ou barre sur l'accueil) parcourt automati
 ## Police de caractères
 
 Le site utilise la police Inter, intégrée dans `assets/fonts/` (licence libre SIL Open Font License, voir `LICENSE-Inter.txt`). Elle est chargée depuis le site lui-même : aucune requête vers Internet.
+
+## Arbres de décision
+
+Fichier `data/arbres.js`, un arbre par fiche (même `id`). Chaque étape est une question oui/non :
+
+```js
+{ "q": "La question à poser ?", "oui": { "niveau": "pharmacien", "texte": "Pourquoi." } }
+```
+
+- `"oui"` ou `"non"` : le résultat qui arrête l'arbre pour cette réponse. Sans résultat, on passe à la question suivante.
+- `"niveau"` : `"urgence"` (rouge foncé), `"pharmacien"` (orange) ou `"conseil"` (vert).
+- `"fin"` : le résultat final, ou une dernière question `{ "q", "oui", "non" }` qui choisit entre deux conseils.
+- `"lien"` (facultatif) : l'`id` d'une fiche à proposer.
+
+## Glossaire
+
+Fichier `data/glossaire.js`. Chaque terme est repéré automatiquement dans les pages (première apparition) et devient cliquable. Ajouter les pluriels ou autres formes dans `"variantes"`.
+
+## Pictogrammes
+
+Dans `data/medicaments.js` (lignes du tableau) et dans les produits d'une fiche (`"pictos": [...]`). Valeurs possibles : `grossesse`, `conduite`, `alcool`, `age`, `sucre`, `ordonnance`, `anticoag`, `espacer`, `duree`, `fausseroute`, `ruche`, `soleil`. Pour un texte personnalisé : `"age:Dès 6 ans"`.
+
+## Conseils du moment et favoris
+
+- Les fiches mises en avant selon la saison sont définies dans `js/app.js` (tableau `SAISONS`).
+- Les favoris sont enregistrés dans le navigateur de chaque appareil, comme les scores des quiz.

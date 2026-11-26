@@ -1,6 +1,8 @@
 /*
  * Tableau « Types de médicaments ».
  * Une ligne du tableau = un bloc { ... }. "exemples" et "vigilance" sont des listes.
+ * "pictos" (facultatif) : pictogrammes. Choix : grossesse, conduite, alcool, age, sucre, ordonnance,
+ *   anticoag, espacer, duree, fausseroute, ruche, soleil. Texte personnalisé : "age:Dès 6 ans".
  */
 window.GUIDE = window.GUIDE || {};
 GUIDE.medicaments = {
@@ -34,6 +36,10 @@ GUIDE.medicaments = {
         "Ulcère, saignement digestif, atteinte des reins, aggravation des infections et de la varicelle.",
         "Pas avec un anticoagulant ni un autre AINS.",
         "Ibuprofène : 1 200 mg par jour maximum en automédication."
+      ],
+      "pictos": [
+        "grossesse:Contre-indiqué dès le 6e mois de grossesse",
+        "anticoag"
       ]
     },
     {
@@ -52,6 +58,11 @@ GUIDE.medicaments = {
         "AINS local : mêmes contre-indications que l'ibuprofène.",
         "Sucre : forme sans sucre pour les diabétiques.",
         "Propolis : jamais en cas d'allergie aux produits de la ruche."
+      ],
+      "pictos": [
+        "age:Souvent dès 6 ans",
+        "sucre:Sucre (sauf formes sans sucre)",
+        "fausseroute"
       ]
     },
     {
@@ -66,6 +77,10 @@ GUIDE.medicaments = {
         "Jamais en cas de toux grasse ni avec un mucolytique.",
         "Oxomémazine : somnolence, conduite, alcool, glaucome, prostate.",
         "Vérifier l'âge minimum sur la notice."
+      ],
+      "pictos": [
+        "conduite",
+        "alcool"
       ]
     },
     {
@@ -79,6 +94,9 @@ GUIDE.medicaments = {
         "Contre-indiqués avant 2 ans.",
         "Jamais avec un antitussif.",
         "Prudence en cas d'ulcère de l'estomac."
+      ],
+      "pictos": [
+        "age:Dès 2 ans"
       ]
     },
     {
@@ -91,6 +109,10 @@ GUIDE.medicaments = {
       "vigilance": [
         "Somnolence possible : conduite, alcool.",
         "Distinguer une allergie (saisonnière, sans fièvre) d'un rhume."
+      ],
+      "pictos": [
+        "conduite",
+        "alcool"
       ]
     },
     {
@@ -105,6 +127,9 @@ GUIDE.medicaments = {
         "Lopéramide : jamais en cas de fièvre ou de sang dans les selles.",
         "Diosmectite : plus recommandée avant 2 ans ni pendant la grossesse ou l'allaitement ; 2 h d'écart avec les autres médicaments.",
         "Ne remplacent pas la réhydratation."
+      ],
+      "pictos": [
+        "grossesse:Diosmectite : pas pendant la grossesse"
       ]
     },
     {
@@ -128,6 +153,9 @@ GUIDE.medicaments = {
       "vigilance": [
         "2 h d'écart avec les autres médicaments.",
         "Certains contiennent beaucoup de sodium (régime sans sel)."
+      ],
+      "pictos": [
+        "espacer"
       ]
     },
     {
@@ -142,6 +170,9 @@ GUIDE.medicaments = {
         "Sans ordonnance : adulte, 14 jours maximum.",
         "Effet complet en quelques jours, pas de soulagement immédiat.",
         "Oméprazole et ésoméprazole : interaction avec le clopidogrel."
+      ],
+      "pictos": [
+        "duree:14 jours maximum sans ordonnance"
       ]
     },
     {
@@ -155,6 +186,9 @@ GUIDE.medicaments = {
         "Aucun AINS ni aspirine en conseil chez ces patients.",
         "Saignement inhabituel (gencives, urines, selles noires, bleus) : pharmacien immédiatement.",
         "Toujours demander au patient s'il en prend avant tout conseil."
+      ],
+      "pictos": [
+        "ordonnance"
       ]
     },
     {
@@ -168,6 +202,9 @@ GUIDE.medicaments = {
       "vigilance": [
         "Peuvent provoquer une toux sèche persistante.",
         "Avec un AINS (et surtout avec un diurétique en plus) : risque pour les reins."
+      ],
+      "pictos": [
+        "ordonnance"
       ]
     }
   ],
