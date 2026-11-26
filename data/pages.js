@@ -2,6 +2,7 @@
  * Pages libres (non médicales ou validées) : organisation, contacts, procédures...
  * Une page = un bloc { ... }. Elle est accessible à l'adresse index.html#/page/<id>.
  * "menu": true l'ajoute au menu principal ; false la laisse accessible par lien seulement.
+ * "menuTitre" (facultatif) : nom court affiché dans le menu.
  * Chaque section peut avoir : "paragraphes" (textes), "etapes" (liste numérotée),
  *   "liste" (liste à puces), "attention" (encadré orange). Tous sont facultatifs.
  * Champs facultatifs de la page : "resume" (texte de la carte sur l'accueil), "introduction",
@@ -38,7 +39,8 @@ GUIDE.pages = [
         ]
       }
     ],
-    "resume": "Numéros d'urgence et contacts de l'officine."
+    "resume": "Numéros d'urgence et contacts de l'officine.",
+    "menuTitre": "Urgences"
   },
   {
     "id": "reception-commandes",
@@ -134,6 +136,47 @@ GUIDE.pages = [
           "Quand et par qui les produits sortent de la quarantaine du réfrigérateur.",
           "La marche à suivre en cas d'écart de quantité ou de prix.",
           "La confirmation du raccourci Ctrl + Entrée pour ouvrir le détail de l'achat."
+        ]
+      }
+    ],
+    "menuTitre": "Commandes"
+  },
+  {
+    "id": "installer",
+    "titre": "Installer le guide comme une application",
+    "menu": false,
+    "introduction": "Une fois installé, le guide s'ouvre depuis une icône sur l'écran d'accueil, en plein écran, et fonctionne même sans connexion Internet.",
+    "sections": [
+      {
+        "titre": "Sur iPhone ou iPad (Safari)",
+        "etapes": [
+          "Ouvrir le guide dans Safari, sans navigation privée.",
+          "Toucher le bouton Partager (le carré avec une flèche vers le haut).",
+          "Choisir « Sur l'écran d'accueil ».",
+          "Toucher « Ajouter » : l'icône verte « Guide Marceau » apparaît sur l'écran d'accueil."
+        ]
+      },
+      {
+        "titre": "Sur Android (Chrome)",
+        "etapes": [
+          "Ouvrir le guide dans Chrome.",
+          "Toucher le menu ⋮ en haut à droite.",
+          "Choisir « Installer l'application » ou « Ajouter à l'écran d'accueil »."
+        ]
+      },
+      {
+        "titre": "Sur ordinateur (Chrome ou Edge)",
+        "etapes": [
+          "Ouvrir le guide.",
+          "Cliquer sur l'icône d'installation à droite de la barre d'adresse, puis sur « Installer »."
+        ]
+      },
+      {
+        "titre": "Bon à savoir",
+        "liste": [
+          "Il faut ouvrir le guide une première fois avec Internet pour qu'il soit enregistré sur l'appareil.",
+          "Les mises à jour arrivent automatiquement à l'ouverture suivante quand l'appareil est connecté.",
+          "Les scores des quiz restent sur l'appareil et ne sont jamais envoyés."
         ]
       }
     ]

@@ -116,3 +116,27 @@ Pour une page d'un type nouveau (autre chose que du texte, des listes ou les mod
 ## Après une modification en ligne (GitHub Pages)
 
 Dans `index.html`, chaque fichier est appelé avec `?v=AAAAMMJJ-N`. Après une modification, changer ce numéro partout (par exemple `20261126-1` → `20261126-2`) : les téléphones téléchargeront la nouvelle version au lieu de garder l'ancienne en mémoire.
+
+## Résumé express d'une fiche
+
+Chaque fiche peut avoir un bloc `"resume"` affiché en haut, dans l'encadré « L'essentiel en 10 secondes » :
+
+```js
+"resume": {
+  "souvent": "Le conseil le plus courant.",
+  "regle": "La règle à ne jamais oublier.",
+  "alerte": "Les situations où il faut appeler le pharmacien."
+}
+```
+
+## Recherche
+
+La recherche (loupe en haut à droite, ou barre sur l'accueil) parcourt automatiquement les fiches, le tableau des médicaments, les animations et les pages. Il n'y a rien à mettre à jour : tout nouveau contenu ajouté dans `data/` est trouvé tout seul.
+
+## Application installable et hors connexion
+
+- `manifest.webmanifest` et `assets/icons/` : nom et icône de l'application.
+- `sw.js` : enregistre le guide sur l'appareil pour qu'il fonctionne sans Internet.
+- Après une modification, changer aussi la ligne `var VERSION = "..."` en haut de `sw.js`, en plus du numéro `?v=` dans `index.html`.
+- Si vous ajoutez un nouveau fichier (image, page de données), ajoutez-le à la liste `FILES` de `sw.js`.
+- Mode d'emploi pour l'équipe : page « Installer le guide », lien en bas de chaque page.

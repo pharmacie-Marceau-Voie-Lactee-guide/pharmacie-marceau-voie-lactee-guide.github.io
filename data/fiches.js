@@ -175,6 +175,11 @@ GUIDE.fiches = [
         ],
         "note": "Dans tous les cas : paracétamol possible si la douleur ou la fièvre est gênante. Si le mal de gorge dure plus de quelques jours ou s'aggrave, le patient doit être revu par le pharmacien."
       }
+    },
+    "resume": {
+      "souvent": "Pastilles ou spray adaptés à la gêne (adoucissant, antiseptique, anesthésique) + paracétamol si besoin.",
+      "regle": "Pas de pastilles avant 6 ans ; pas d'ibuprofène ni d'aspirine en cas d'infection ORL.",
+      "alerte": "Gêne pour respirer ou avaler sa salive, fièvre sous traitement qui baisse les défenses, femme enceinte, enfant de moins de 6 ans."
     }
   },
   {
@@ -216,6 +221,11 @@ GUIDE.fiches = [
     "validation": {
       "par": "À COMPLÉTER",
       "le": "À COMPLÉTER"
+    },
+    "resume": {
+      "souvent": "Toux sèche : antitussif non opiacé chez l'adulte. Toux grasse : on laisse tousser, mucolytique possible chez l'adulte.",
+      "regle": "Jamais un antitussif avec un mucolytique ; mucolytiques contre-indiqués avant 2 ans.",
+      "alerte": "Gêne respiratoire, sifflements, sang dans les crachats, toux de plus de 3 semaines, patient sous traitement de la tension."
     }
   },
   {
@@ -255,6 +265,11 @@ GUIDE.fiches = [
     "validation": {
       "par": "À COMPLÉTER",
       "le": "À COMPLÉTER"
+    },
+    "resume": {
+      "souvent": "Lavage du nez au sérum physiologique + paracétamol si fièvre ou douleur.",
+      "regle": "Pseudoéphédrine par voie orale et sprays vasoconstricteurs : uniquement sur ordonnance.",
+      "alerte": "Fièvre de plus de 3 jours, douleur d'oreille ou du visage, nourrisson, symptômes de plus de 10 jours."
     }
   },
   {
@@ -297,6 +312,11 @@ GUIDE.fiches = [
     "validation": {
       "par": "À COMPLÉTER",
       "le": "À COMPLÉTER"
+    },
+    "resume": {
+      "souvent": "Paracétamol : 1 g par prise, 4 h minimum entre deux prises, 3 g par jour maximum (adulte de plus de 50 kg).",
+      "regle": "Pas d'AINS chez la femme enceinte (contre-indiqués à partir du 6e mois), sous anticoagulant ou en cas d'infection.",
+      "alerte": "Mal de tête brutal avec raideur de la nuque, taches violacées sur la peau, fièvre de plus de 3 jours."
     }
   },
   {
@@ -336,6 +356,11 @@ GUIDE.fiches = [
     "validation": {
       "par": "À COMPLÉTER",
       "le": "À COMPLÉTER"
+    },
+    "resume": {
+      "souvent": "Boire souvent par petites quantités ; soluté de réhydratation pour les personnes fragiles.",
+      "regle": "Pas de lopéramide en cas de fièvre ou de sang dans les selles.",
+      "alerte": "Enfant, personne âgée, déshydratation, fièvre, sang dans les selles, plus de 2 à 3 jours."
     }
   },
   {
@@ -371,6 +396,307 @@ GUIDE.fiches = [
       "Patient qui prend un anti-inflammatoire, un anticoagulant ou du clopidogrel.",
       "Femme enceinte ou qui allaite, enfant.",
       "Signes de gravité (gêne respiratoire, malaise, douleur thoracique, confusion, somnolence anormale) : prévenir immédiatement le pharmacien, qui oriente si besoin vers le 15."
+    ],
+    "validation": {
+      "par": "À COMPLÉTER",
+      "le": "À COMPLÉTER"
+    },
+    "resume": {
+      "souvent": "Antiacide ou alginate pour un soulagement rapide ; IPP 20 mg chez l'adulte si c'est fréquent (14 jours maximum).",
+      "regle": "Espacer de 2 h les antiacides et alginates des autres médicaments.",
+      "alerte": "Douleur dans la poitrine vers le bras ou la mâchoire (urgence), difficulté à avaler, sang, amaigrissement."
+    }
+  },
+  {
+    "id": "constipation",
+    "titre": "Constipation de l'adulte",
+    "resume": {
+      "souvent": "Conseils d'hygiène de vie + laxatif doux (osmotique comme le macrogol, ou de lest).",
+      "regle": "Les laxatifs stimulants ne se prennent que sur une courte durée, jamais en première intention.",
+      "alerte": "Sang dans les selles, douleurs fortes, vomissements, plus de gaz, amaigrissement, constipation inhabituelle après 50 ans."
+    },
+    "motif": "Un adulte va moins souvent à la selle que d'habitude, avec des selles dures ou difficiles à évacuer, et demande un laxatif.",
+    "questions": [
+      "Pour qui est-ce ? Quel âge ?",
+      "Depuis quand ? Est-ce inhabituel pour vous ?",
+      "Avez-vous mal au ventre, le ventre gonflé, des vomissements ? Arrivez-vous encore à émettre des gaz ?",
+      "Avez-vous vu du sang dans les selles ? Avez-vous perdu du poids sans raison ?",
+      "Avez-vous changé récemment votre alimentation, votre activité, vos habitudes (voyage, alitement) ?",
+      "Quels médicaments prenez-vous ? (certains constipent : antidouleurs à base de codéine ou de morphine, fer, certains antiacides, antidépresseurs…)",
+      "Prenez-vous déjà un laxatif ? Depuis combien de temps ?",
+      "Êtes-vous enceinte ou allaitez-vous ?"
+    ],
+    "orientations": [
+      "Conseils en premier : boire environ 1,5 L d'eau par jour, manger plus de fibres (fruits, légumes, céréales complètes), bouger, aller aux toilettes dès que l'envie se présente et à heures régulières.",
+      "Laxatif osmotique (ex : macrogol, lactulose) : doux, bien toléré, il agit en 1 à 2 jours.",
+      "Laxatif de lest (ex : ispaghul) : à prendre avec un grand verre d'eau.",
+      "Laxatif par voie rectale (ex : suppositoire à la glycérine, microlavement) : pour un effet rapide et ponctuel.",
+      "Laxatif lubrifiant (huile de paraffine) : pas au coucher, et à distance des repas."
+    ],
+    "vigilance": [
+      "Laxatifs stimulants (ex : bisacodyl, séné) : seulement sur une courte durée ; pris longtemps, ils irritent l'intestin et font baisser le potassium.",
+      "Huile de paraffine : à prendre à distance des autres médicaments et des repas ; risque de fausse route chez la personne âgée ou alitée.",
+      "Lactulose : peut donner des ballonnements au début.",
+      "Laxatif de lest sans eau suffisante : risque de bouchon dans l'intestin.",
+      "Une constipation peut être un effet indésirable d'un médicament : le signaler au pharmacien."
+    ],
+    "passerLaMain": [
+      "Sang dans les selles, douleurs abdominales fortes, vomissements, ventre gonflé et dur, plus de gaz : urgence possible.",
+      "Amaigrissement, fatigue inhabituelle, constipation récente et inhabituelle après 50 ans, alternance diarrhée et constipation.",
+      "Constipation qui dure plus d'une à deux semaines malgré les conseils, ou utilisation de laxatifs depuis longtemps.",
+      "Patient sous antidouleur à base de morphine ou de codéine, ou autre traitement qui constipe.",
+      "Enfant, nourrisson, femme enceinte ou qui allaite.",
+      "Signes de gravité (gêne respiratoire, malaise, douleur thoracique, confusion, somnolence anormale) : prévenir immédiatement le pharmacien, qui oriente si besoin vers le 15."
+    ],
+    "validation": {
+      "par": "À COMPLÉTER",
+      "le": "À COMPLÉTER"
+    }
+  },
+  {
+    "id": "allergie-saisonniere",
+    "titre": "Allergie saisonnière (rhume des foins)",
+    "resume": {
+      "souvent": "Lavage du nez + antihistaminique sans ordonnance (ex : cétirizine, loratadine), collyre antiallergique si les yeux piquent.",
+      "regle": "Prévenir du risque de somnolence (conduite, alcool), surtout avec la cétirizine.",
+      "alerte": "Sifflements, gêne pour respirer, toux la nuit (asthme), œil rouge et douloureux, fièvre."
+    },
+    "motif": "Le patient éternue, a le nez qui coule (écoulement clair) et les yeux qui piquent, souvent à la même saison chaque année, et demande un traitement contre l'allergie.",
+    "questions": [
+      "Pour qui est-ce ? Quel âge ?",
+      "Quels sont les symptômes : éternuements, nez qui coule ou bouché, yeux rouges qui piquent, démangeaisons ?",
+      "Est-ce que ça revient à la même saison ? Avez-vous déjà eu un diagnostic d'allergie ?",
+      "Avez-vous de la fièvre ? (plutôt un rhume ou une infection)",
+      "Avez-vous du mal à respirer, des sifflements, une toux la nuit ? Êtes-vous asthmatique ?",
+      "Avez-vous mal à l'œil, une baisse de la vue ou une gêne à la lumière ?",
+      "Conduisez-vous ? Travaillez-vous sur des machines ?",
+      "Êtes-vous enceinte ou allaitez-vous ? Quels médicaments prenez-vous ?"
+    ],
+    "orientations": [
+      "Lavage du nez au sérum physiologique ou à l'eau de mer, pour éliminer les pollens.",
+      "Antihistaminique par voie orale disponible sans ordonnance chez l'adulte (ex : cétirizine, loratadine), une prise par jour, selon la notice.",
+      "Si les yeux piquent : collyre antiallergique (ex : cromoglicate de sodium) ou lavage des yeux au sérum physiologique.",
+      "Conseils : aérer tôt le matin ou tard le soir, garder les fenêtres fermées en voiture, se rincer les cheveux le soir, ne pas faire sécher le linge dehors pendant la saison des pollens."
+    ],
+    "vigilance": [
+      "Les antihistaminiques peuvent faire dormir (surtout la cétirizine) : prudence pour la conduite, pas d'alcool.",
+      "Vérifier l'âge minimum sur la notice.",
+      "Collyre : ne pas toucher l'œil avec l'embout ; les porteurs de lentilles doivent vérifier la notice.",
+      "Une allergie qui touche les bronches (asthme) ne se traite pas au comptoir."
+    ],
+    "passerLaMain": [
+      "Sifflements, gêne respiratoire, toux la nuit ou à l'effort : possible asthme.",
+      "Œil rouge et douloureux, baisse de la vue, gêne à la lumière, écoulement purulent.",
+      "Fièvre, écoulement épais et coloré, douleur du visage.",
+      "Enfant, femme enceinte ou qui allaite.",
+      "Symptômes toute l'année, ou pas d'amélioration après quelques jours de traitement.",
+      "Gonflement du visage, des lèvres ou de la gorge : urgence (15)."
+    ],
+    "validation": {
+      "par": "À COMPLÉTER",
+      "le": "À COMPLÉTER"
+    }
+  },
+  {
+    "id": "piqures-insectes",
+    "titre": "Piqûres d'insectes et de tiques",
+    "resume": {
+      "souvent": "Nettoyer, appliquer du froid, puis un soin apaisant ; retirer le dard d'abeille ou la tique correctement.",
+      "regle": "Tique : la retirer avec un tire-tique, désinfecter et surveiller la peau pendant un mois.",
+      "alerte": "Gêne pour respirer, gonflement du visage ou de la gorge, malaise, urticaire sur tout le corps : appeler le 15."
+    },
+    "motif": "Le patient a été piqué (moustique, guêpe, abeille, tique…) et demande quelque chose pour calmer la douleur ou les démangeaisons.",
+    "questions": [
+      "Pour qui est-ce ? Quel âge ?",
+      "Quel insecte ? Quand ? Combien de piqûres ?",
+      "Où se trouve la piqûre ? (bouche, gorge, visage, œil)",
+      "La zone est-elle très gonflée, rouge et chaude, est-ce que ça s'étend ?",
+      "Avez-vous du mal à respirer, un gonflement des lèvres ou du visage, des plaques qui grattent sur tout le corps, un malaise ?",
+      "Avez-vous déjà fait une réaction grave à une piqûre ? Avez-vous un stylo d'adrénaline ?",
+      "Pour une tique : depuis combien de temps était-elle accrochée ? Y a-t-il une plaque rouge qui s'agrandit autour ?",
+      "Quels médicaments prenez-vous ? Êtes-vous enceinte ?"
+    ],
+    "orientations": [
+      "Abeille : retirer le dard en le grattant avec l'ongle ou une carte, sans le pincer (pour ne pas injecter plus de venin).",
+      "Laver à l'eau et au savon, puis appliquer un antiseptique.",
+      "Appliquer du froid (glaçon dans un linge, quelques minutes) pour calmer la douleur et le gonflement.",
+      "Soin apaisant ou crème contre les démangeaisons selon la notice ; antihistaminique par voie orale si les démangeaisons sont fortes (adulte).",
+      "Tique : la retirer avec un tire-tique en tournant, sans l'écraser ni mettre de produit avant ; désinfecter ; noter la date ; surveiller la peau pendant 30 jours."
+    ],
+    "vigilance": [
+      "Certaines crèmes antihistaminiques rendent la peau sensible au soleil : ne pas s'exposer après application.",
+      "Ne pas gratter : risque d'infection.",
+      "Pour une tique, ne jamais l'endormir avec de l'éther ou de l'alcool avant de la retirer.",
+      "Vérifier l'âge minimum des produits chez l'enfant."
+    ],
+    "passerLaMain": [
+      "Gêne pour respirer, gonflement du visage, des lèvres ou de la gorge, malaise, urticaire étendue, vomissements : urgence, appeler le 15.",
+      "Piqûre dans la bouche ou la gorge.",
+      "Piqûres multiples (plusieurs guêpes ou abeilles), enfant en bas âge.",
+      "Antécédent de réaction grave à une piqûre.",
+      "Gonflement très étendu, qui s'aggrave, ou signes d'infection (chaleur, pus, fièvre).",
+      "Après une piqûre de tique : plaque rouge qui s'agrandit, fièvre ou douleurs dans les jours ou semaines qui suivent."
+    ],
+    "validation": {
+      "par": "À COMPLÉTER",
+      "le": "À COMPLÉTER"
+    }
+  },
+  {
+    "id": "brulures-peau",
+    "titre": "Petites brûlures et coups de soleil",
+    "resume": {
+      "souvent": "Refroidir 15 minutes sous l'eau tempérée, puis crème ou pansement adapté aux brûlures légères.",
+      "regle": "Ni glace, ni beurre, ni dentifrice ; ne jamais percer les cloques.",
+      "alerte": "Brûlure plus grande que la paume de la main, profonde, au visage, aux mains, aux pieds, aux parties génitales, électrique ou chimique."
+    },
+    "motif": "Le patient s'est brûlé (eau chaude, four, fer à repasser, soleil…) et demande comment le soigner.",
+    "questions": [
+      "Pour qui est-ce ? Quel âge ?",
+      "Comment est-ce arrivé ? (liquide chaud, flamme, électricité, produit chimique, soleil)",
+      "Quand ? La brûlure a-t-elle été refroidie à l'eau ?",
+      "Quelle taille fait-elle ? Plus ou moins que la paume de la main de la personne ?",
+      "Où ? (visage, mains, pieds, plis, parties génitales)",
+      "Y a-t-il des cloques ? La peau est-elle blanche, cartonnée, noire ou insensible ?",
+      "Avez-vous de la fièvre, des frissons, un malaise ? (coup de soleil étendu)",
+      "Votre vaccin contre le tétanos est-il à jour ?"
+    ],
+    "orientations": [
+      "Refroidir immédiatement sous l'eau tempérée pendant environ 15 minutes ; retirer bagues et bracelets avant que ça gonfle.",
+      "Petite brûlure superficielle (rougeur sans cloque) : crème ou émulsion pour brûlures légères, ou pansement gras stérile.",
+      "Petite cloque intacte : la laisser intacte et la protéger avec un pansement adapté (ex : hydrocolloïde).",
+      "Paracétamol si la douleur est gênante.",
+      "Coup de soleil : se mettre à l'ombre, boire, appliquer une émulsion apaisante ; ne plus s'exposer pendant quelques jours."
+    ],
+    "vigilance": [
+      "Pas de glace directement sur la peau, pas de beurre, d'huile ou de dentifrice.",
+      "Ne jamais percer ni arracher les cloques.",
+      "Ne pas mettre de produit coloré qui masquerait l'aspect de la brûlure.",
+      "Vérifier que la vaccination contre le tétanos est à jour."
+    ],
+    "passerLaMain": [
+      "Brûlure plus grande que la paume de la main, ou cloques étendues.",
+      "Brûlure profonde : peau blanche, cartonnée, noire ou insensible.",
+      "Brûlure du visage, du cou, des mains, des pieds, des plis ou des parties génitales.",
+      "Brûlure électrique ou chimique, ou brûlure par inhalation de fumée : urgence.",
+      "Nourrisson, enfant, personne âgée ou fragile.",
+      "Coup de soleil avec fièvre, frissons, maux de tête, vomissements ou malaise.",
+      "Signes d'infection : rougeur qui s'étend, pus, fièvre."
+    ],
+    "validation": {
+      "par": "À COMPLÉTER",
+      "le": "À COMPLÉTER"
+    }
+  },
+  {
+    "id": "poux",
+    "titre": "Poux",
+    "resume": {
+      "souvent": "Produit anti-poux (de préférence à action mécanique, ex : diméticone) + peignage soigneux au peigne fin, puis 2e application selon la notice.",
+      "regle": "On ne traite que les personnes qui ont des poux vivants, jamais en prévention.",
+      "alerte": "Nourrisson, femme enceinte ou qui allaite, personne asthmatique, cuir chevelu irrité ou infecté, échec après deux traitements bien faits."
+    },
+    "motif": "Des poux ont été trouvés (souvent chez un enfant) et la famille demande un traitement.",
+    "questions": [
+      "Pour qui est-ce ? Quel âge ?",
+      "Avez-vous vu des poux vivants, ou seulement des lentes ? Les lentes sont-elles collées près de la racine ?",
+      "Avez-vous déjà fait un traitement ? Lequel, quand, et a-t-il été renouvelé ?",
+      "La personne est-elle asthmatique ? A-t-elle des allergies ?",
+      "Le cuir chevelu est-il abîmé, avec des croûtes ou des plaies ?",
+      "Êtes-vous enceinte ou allaitez-vous ? (si c'est pour vous)"
+    ],
+    "orientations": [
+      "Produit à action mécanique, qui étouffe les poux (ex : à base de diméticone) : à appliquer selon la notice (durée de pose, rinçage).",
+      "Peigner ensuite mèche par mèche avec un peigne fin, sur cheveux mouillés, puis tous les 2 à 3 jours pendant 2 semaines.",
+      "Refaire une application après 7 à 10 jours selon la notice, pour tuer les poux sortis des lentes.",
+      "Vérifier la tête de toute la famille et ne traiter que les personnes qui ont des poux.",
+      "Laver à 60 °C le linge en contact avec la tête (taies, bonnets, écharpes) ; enfermer dans un sac fermé pendant quelques jours ce qui ne se lave pas."
+    ],
+    "vigilance": [
+      "Certains produits sont inflammables : pas de cigarette, de flamme ni de sèche-cheveux pendant l'application.",
+      "Respecter l'âge minimum indiqué sur la notice.",
+      "Les produits insecticides et les sprays demandent des précautions chez l'asthmatique et le jeune enfant.",
+      "Pas de traitement préventif : il n'empêche pas les poux et favorise les résistances."
+    ],
+    "passerLaMain": [
+      "Nourrisson ou enfant plus jeune que l'âge minimum du produit.",
+      "Femme enceinte ou qui allaite, personne asthmatique ou allergique.",
+      "Cuir chevelu irrité, avec des plaies ou des croûtes infectées.",
+      "Poux toujours présents après deux traitements bien réalisés."
+    ],
+    "validation": {
+      "par": "À COMPLÉTER",
+      "le": "À COMPLÉTER"
+    }
+  },
+  {
+    "id": "cystite",
+    "titre": "Brûlures urinaires (cystite)",
+    "resume": {
+      "souvent": "Accueillir discrètement, poser les questions, puis passer la main : la prise en charge relève du pharmacien ou du médecin.",
+      "regle": "Le test urinaire (bandelette) et l'antibiotique éventuel sont réservés au pharmacien formé.",
+      "alerte": "Fièvre, frissons, douleur dans le dos ou sur le côté, vomissements, homme, femme enceinte : consultation médicale rapide."
+    },
+    "motif": "Une patiente a des brûlures en urinant et des envies d'uriner fréquentes, et demande un traitement.",
+    "questions": [
+      "Pour qui est-ce ? Quel âge ?",
+      "Depuis quand ? Brûlures en urinant, envies fréquentes, sang dans les urines ?",
+      "Avez-vous de la fièvre, des frissons, une douleur dans le bas du dos ou sur le côté ?",
+      "Avez-vous des pertes inhabituelles ou des démangeaisons ?",
+      "Avez-vous déjà eu ces symptômes ? Combien de fois cette année ?",
+      "Êtes-vous enceinte ? Êtes-vous diabétique ou sous traitement qui baisse les défenses ?",
+      "Quels médicaments prenez-vous ?"
+    ],
+    "orientations": [
+      "Proposer un endroit discret pour parler, puis passer la main au pharmacien : il peut, sous conditions, réaliser une bandelette urinaire et délivrer un antibiotique sans ordonnance s'il est formé.",
+      "Conseils en attendant : boire au moins 1,5 L d'eau par jour, uriner souvent sans se retenir, uriner après les rapports sexuels.",
+      "Paracétamol possible si la douleur est gênante."
+    ],
+    "vigilance": [
+      "Ne jamais conseiller un antibiotique au comptoir : c'est le rôle du pharmacien formé ou du médecin.",
+      "Une cystite chez l'homme, la femme enceinte ou l'enfant n'est jamais simple : consultation.",
+      "Les produits à base de canneberge ne traitent pas une cystite déclarée."
+    ],
+    "passerLaMain": [
+      "Toujours : la prise en charge relève du pharmacien ou du médecin.",
+      "Fièvre, frissons, douleur dans le dos ou sur le côté, vomissements : possible infection du rein, consultation le jour même.",
+      "Homme, enfant, femme enceinte, personne âgée ou fragile.",
+      "Sang important dans les urines, cystites à répétition (plusieurs fois par an), symptômes qui durent.",
+      "Signes de gravité (gêne respiratoire, malaise, douleur thoracique, confusion, somnolence anormale) : prévenir immédiatement le pharmacien, qui oriente si besoin vers le 15."
+    ],
+    "validation": {
+      "par": "À COMPLÉTER",
+      "le": "À COMPLÉTER"
+    }
+  },
+  {
+    "id": "contraception-urgence",
+    "titre": "Contraception d'urgence",
+    "resume": {
+      "souvent": "Passer la main au pharmacien tout de suite, avec discrétion et sans jugement.",
+      "regle": "Plus elle est prise tôt, plus elle est efficace : ne jamais faire attendre la personne.",
+      "alerte": "Retard de règles, douleur dans le bas du ventre, saignements inhabituels après la prise : consulter."
+    },
+    "motif": "Une personne demande la « pilule du lendemain » après un rapport non protégé ou un oubli de contraception.",
+    "questions": [
+      "Ne pas faire l'entretien au comptoir : proposer tout de suite un endroit discret et appeler le pharmacien.",
+      "Si la personne en parle d'elle-même, noter seulement depuis combien de temps a eu lieu le rapport : cela aide le pharmacien à choisir."
+    ],
+    "orientations": [
+      "Le pharmacien délivre la contraception d'urgence après un court entretien. Elle est délivrée sans ordonnance, gratuitement, à toutes les femmes, mineures comprises, et de façon anonyme pour les mineures qui le souhaitent.",
+      "Deux médicaments existent : le lévonorgestrel (à prendre dans les 72 heures, ex : Norlevo) et l'ulipristal (dans les 120 heures, ex : EllaOne). Le choix revient au pharmacien.",
+      "Le stérilet au cuivre posé par un médecin ou une sage-femme dans les 5 jours est la méthode la plus efficace : le pharmacien peut en parler."
+    ],
+    "vigilance": [
+      "Confidentialité absolue : ne pas en parler à voix haute ni devant d'autres clients.",
+      "Aucun jugement, aucune remarque.",
+      "Certains médicaments (par exemple certains traitements de l'épilepsie, la rifampicine, le millepertuis) diminuent l'efficacité : c'est au pharmacien de le vérifier.",
+      "Après la prise : utiliser des préservatifs jusqu'aux règles suivantes ; faire un test de grossesse en cas de retard de règles.",
+      "Un rapport non protégé expose aussi aux infections sexuellement transmissibles : le pharmacien peut orienter vers un dépistage."
+    ],
+    "passerLaMain": [
+      "Toujours, immédiatement : c'est le pharmacien qui délivre la contraception d'urgence.",
+      "Si la personne semble en détresse, mineure en difficulté, ou parle de violences : prévenir le pharmacien en priorité."
     ],
     "validation": {
       "par": "À COMPLÉTER",

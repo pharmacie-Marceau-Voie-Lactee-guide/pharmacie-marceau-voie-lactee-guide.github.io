@@ -8,7 +8,14 @@
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Content-Security-Policy" content="connect-src 'none'; form-action 'none'; object-src 'none'; base-uri 'none'">
   <title>Guide d'intégration</title>
-  <link rel="stylesheet" href="css/style.css?v=20261126-7">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" href="assets/icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#0a6447">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Guide Marceau">
+  <link rel="stylesheet" href="css/style.css?v=20261126-8">
 </head>
 <body>
   <a class="skip-link" href="#main">Aller au contenu</a>
@@ -16,7 +23,8 @@
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="#/" id="brand">Guide d'intégration</a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+      <a class="hdr-btn" id="search-btn" href="#/recherche" aria-label="Rechercher"></a>
+      <button class="nav-toggle hdr-btn" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Menu"></button>
       <nav id="main-nav" aria-label="Navigation principale">
         <ul id="nav-list"></ul>
       </nav>
@@ -34,17 +42,18 @@
   <footer class="site-footer">
     <p id="footer-text">Contenu à usage interne. Ne pas diffuser aux patients.</p>
     <p>Aucune donnée n'est envoyée : les scores des quiz restent dans ce navigateur.</p>
+    <p><a href="#/page/installer">Installer le guide sur la tablette ou le téléphone</a></p>
   </footer>
 
   <!-- Contenu modifiable (voir README.md) -->
-  <script src="data/site.js?v=20261126-7"></script>
-  <script src="data/fiches.js?v=20261126-7"></script>
-  <script src="data/medicaments.js?v=20261126-7"></script>
-  <script src="data/animations.js?v=20261126-7"></script>
-  <script src="data/quiz.js?v=20261126-7"></script>
-  <script src="data/sources.js?v=20261126-7"></script>
-  <script src="data/pages.js?v=20261126-7"></script>
+  <script src="data/site.js?v=20261126-8"></script>
+  <script src="data/fiches.js?v=20261126-8"></script>
+  <script src="data/medicaments.js?v=20261126-8"></script>
+  <script src="data/animations.js?v=20261126-8"></script>
+  <script src="data/quiz.js?v=20261126-8"></script>
+  <script src="data/sources.js?v=20261126-8"></script>
+  <script src="data/pages.js?v=20261126-8"></script>
   <!-- Code du site -->
-  <script src="js/app.js?v=20261126-7"></script>
+  <script src="js/app.js?v=20261126-8"></script>
 </body>
 </html>

@@ -249,6 +249,95 @@ GUIDE.sources = {
         "type": "Base officielle",
         "lien": "https://ansm.sante.fr/actualites/rhume-ordonnance-obligatoire-pour-toute-dispensation-de-medicament-a-base-de-pseudoephedrine"
       }
+    ],
+    "constipation": [
+      {
+        "titre": "Notices des médicaments cités dans la fiche (macrogol, lactulose, ispaghul, laxatifs stimulants, huile de paraffine)",
+        "type": "Notice",
+        "lien": "https://base-donnees-publique.medicaments.gouv.fr/"
+      },
+      {
+        "titre": "Ameli.fr – fiches santé grand public (Assurance maladie)",
+        "type": "Document de référence",
+        "lien": "https://www.ameli.fr/"
+      }
+    ],
+    "allergie-saisonniere": [
+      {
+        "titre": "Notices des médicaments cités dans la fiche (cétirizine, loratadine, collyres antiallergiques)",
+        "type": "Notice",
+        "lien": "https://base-donnees-publique.medicaments.gouv.fr/"
+      },
+      {
+        "titre": "Ameli.fr – fiches santé grand public (Assurance maladie)",
+        "type": "Document de référence",
+        "lien": "https://www.ameli.fr/"
+      }
+    ],
+    "piqures-insectes": [
+      {
+        "titre": "Notices des médicaments cités dans la fiche (antiseptiques, crèmes apaisantes, antihistaminiques)",
+        "type": "Notice",
+        "lien": "https://base-donnees-publique.medicaments.gouv.fr/"
+      },
+      {
+        "titre": "Ameli.fr – fiches santé grand public (Assurance maladie)",
+        "type": "Document de référence",
+        "lien": "https://www.ameli.fr/"
+      }
+    ],
+    "brulures-peau": [
+      {
+        "titre": "Notices des médicaments cités dans la fiche (crèmes et pansements pour brûlures)",
+        "type": "Notice",
+        "lien": "https://base-donnees-publique.medicaments.gouv.fr/"
+      },
+      {
+        "titre": "Ameli.fr – fiches santé grand public (Assurance maladie)",
+        "type": "Document de référence",
+        "lien": "https://www.ameli.fr/"
+      }
+    ],
+    "poux": [
+      {
+        "titre": "Notices des médicaments cités dans la fiche (produits anti-poux)",
+        "type": "Notice",
+        "lien": "https://base-donnees-publique.medicaments.gouv.fr/"
+      },
+      {
+        "titre": "Ameli.fr – fiches santé grand public (Assurance maladie)",
+        "type": "Document de référence",
+        "lien": "https://www.ameli.fr/"
+      }
+    ],
+    "cystite": [
+      {
+        "titre": "Ordre national des pharmaciens – Délivrance sans ordonnance d'antibiotiques suite à un test positif",
+        "type": "Document de référence",
+        "lien": "https://www.ordre.pharmacien.fr/les-communications/focus-sur/les-actualites/delivrance-sans-ordonnance-d-antibiotiques-suite-a-un-test-positif-par-les-pharmaciens-d-officine-publication-des-textes"
+      },
+      {
+        "titre": "Ameli.fr – fiches santé grand public (Assurance maladie)",
+        "type": "Document de référence",
+        "lien": "https://www.ameli.fr/"
+      }
+    ],
+    "contraception-urgence": [
+      {
+        "titre": "Notices des médicaments cités dans la fiche (lévonorgestrel, ulipristal)",
+        "type": "Notice",
+        "lien": "https://base-donnees-publique.medicaments.gouv.fr/"
+      },
+      {
+        "titre": "Ameli.fr – Contraception d'urgence : délivrance gratuite et sans ordonnance en pharmacie",
+        "type": "Document de référence",
+        "lien": "https://www.ameli.fr/"
+      },
+      {
+        "titre": "Base de données publique des médicaments (notices et RCP)",
+        "type": "Base officielle",
+        "lien": "https://base-donnees-publique.medicaments.gouv.fr/"
+      }
     ]
   },
   "verification": {

@@ -105,6 +105,9 @@
     alert: "M12 3 2 20h20zM12 10v4M12 17h.01",
     hand: "M8 13V5.5a1.5 1.5 0 0 1 3 0V12M11 11V4.5a1.5 1.5 0 0 1 3 0V12M14 11.5V6a1.5 1.5 0 0 1 3 0v8a7 7 0 0 1-7 7h-.5A6.5 6.5 0 0 1 4 15.5L3.2 12a1.5 1.5 0 0 1 2.8-1L8 14",
     cross: "M9 3h6v6h6v6h-6v6H9v-6H3V9h6z",
+    search: "M10.5 18a7.5 7.5 0 1 0 0-15 7.5 7.5 0 0 0 0 15zM16 16l5 5",
+    menu: "M4 6h16M4 12h16M4 18h16",
+    star: "M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z",
     clock: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3 2"
   };
 
@@ -177,14 +180,14 @@
 
   var NAV = [
     { href: "#/", label: "Accueil", key: "" },
-    { href: "#/fiches", label: "Fiches par situation", key: "fiches" },
-    { href: "#/medicaments", label: "Types de médicaments", key: "medicaments" },
+    { href: "#/fiches", label: "Fiches", key: "fiches" },
+    { href: "#/medicaments", label: "Médicaments", key: "medicaments" },
     { href: "#/animations", label: "Animations", key: "animations" },
     { href: "#/quiz", label: "Quiz", key: "quiz" },
     { href: "#/sources", label: "Sources", key: "sources" }
   ];
   (G.pages || []).forEach(function (p) {
-    if (p.menu) NAV.push({ href: "#/page/" + encodeURIComponent(p.id), label: p.titre, key: "page/" + p.id });
+    if (p.menu) NAV.push({ href: "#/page/" + encodeURIComponent(p.id), label: p.menuTitre || p.titre, key: "page/" + p.id });
   });
 
   var SECTION_OF = { fiche: "fiches", animation: "animations" };
@@ -207,7 +210,11 @@
     var brand = document.getElementById("brand");
     brand.textContent = "";
     brand.appendChild(el("span", { class: "brand-logo" }, uiIcon("cross")));
-    brand.appendChild(el("span", null, SITE_TITLE));
+    brand.appendChild(el("span", { class: "brand-full" }, SITE_TITLE));
+    brand.appendChild(el("span", { class: "brand-short" }, site.nomOfficine || SITE_TITLE));
+    document.getElementById("search-btn").appendChild(uiIcon("search"));
+    toggle.appendChild(uiIcon("menu"));
+    toggle.appendChild(el("span", { class: "hdr-label" }, "Menu"));
     document.getElementById("footer-text").textContent = avertissement();
   }
 
@@ -237,8 +244,11 @@
             el("p", { class: "hero-text" }, site.presentation || TODO)
           ])
         ]),
-        el("p", { class: "callout callout-warning", role: "note" }, [el("strong", null, "Avertissement : "), avertissement()]),
-        site.brouillon ? el("p", { class: "callout callout-todo", role: "note" }, el("strong", null, site.brouillon)) : null,
+        searchForm("").form,
+        el("div", { class: "callout callout-warning home-note", role: "note" }, [
+          el("p", null, [el("strong", null, "Usage interne. "), avertissement()]),
+          site.brouillon ? el("p", { class: "draft" }, site.brouillon) : null
+        ]),
         el("h2", null, "Mode d'emploi"),
         el("ol", { class: "how-to" }, (site.modeEmploi || [TODO]).map(function (t, i) {
           return el("li", { class: "c-" + ["green", "blue", "red"][i % 3] }, [el("span", { class: "how-num", "aria-hidden": "true" }, String(i + 1)), el("span", null, t)]);
@@ -286,6 +296,16 @@
         el("h1", null, f.titre || TODO),
         validationLine(f.validation),
         hasTodo(f) ? todoBanner("Cette fiche contient des éléments à compléter. Ne l'utilisez pas au comptoir avant validation par la pharmacienne.") : null,
+        f.resume ? el("section", { class: "essentiel", "aria-labelledby": "h-essentiel" }, [
+          el("h2", { id: "h-essentiel" }, "L'essentiel en 10 secondes"),
+          el("ul", null, [
+            ["compass", "Le plus souvent", f.resume.souvent, "c-green"],
+            ["star", "La règle à retenir", f.resume.regle, "c-blue"],
+            ["alert", "Pharmacien si", f.resume.alerte, "c-red"]
+          ].filter(function (r) { return r[2]; }).map(function (r) {
+            return el("li", { class: r[3] }, [el("span", { class: "ess-icon" }, uiIcon(r[0])), el("span", null, [el("strong", null, r[1] + " : "), r[2]])]);
+          }))
+        ]) : null,
         el("p", null, el("a", { href: "#passer-la-main", class: "jump", onclick: jumpTo("passer-la-main") }, "Aller directement à « Quand passer la main au pharmacien »")),
         el("section", { class: "sec c-blue", "aria-labelledby": "h-motif" }, [sectionTitle("h-motif", "Motif de la demande", "chat", "blue"), el("p", null, f.motif || TODO)]),
         el("section", { class: "sec c-teal", "aria-labelledby": "h-questions" }, [sectionTitle("h-questions", "Questions à poser au patient", "help", "teal"), list(f.questions, true, "num-list")]),
@@ -1020,6 +1040,124 @@
     };
   }
 
+  /* ---------- Recherche ---------- */
+
+  function norm(t) {
+    return String(t || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/œ/g, "oe");
+  }
+
+  function flat(x) {
+    if (x == null) return [];
+    if (typeof x === "string") return [x];
+    if (Array.isArray(x)) return x.reduce(function (a, v) { return a.concat(flat(v)); }, []);
+    if (typeof x === "object") return Object.keys(x).reduce(function (a, k) { return k === "id" || k === "forme" || k === "cle" ? a : a.concat(flat(x[k])); }, []);
+    return [];
+  }
+
+  var SEARCH_INDEX = null;
+  function searchIndex() {
+    if (SEARCH_INDEX) return SEARCH_INDEX;
+    var idx = [];
+    (G.fiches || []).forEach(function (f) {
+      idx.push({ kind: "Fiche", title: f.titre, href: "#/fiche/" + encodeURIComponent(f.id),
+        parts: [f.titre].concat(flat(f.resume), [f.motif], flat(f.questions), flat(f.orientations), flat(f.produits), flat(f.vigilance), flat(f.passerLaMain)) });
+    });
+    var m = G.medicaments || {};
+    (m.lignes || []).forEach(function (r) {
+      idx.push({ kind: "Médicaments", title: r.classe, href: "#/medicaments", parts: [r.classe, r.role].concat(flat(r.exemples), flat(r.vigilance)) });
+    });
+    (m.comparaisons || []).forEach(function (c) {
+      idx.push({ kind: "Médicaments", title: c.titre, href: "#/medicaments/" + encodeURIComponent(c.id), parts: [c.titre, c.introduction].concat(flat(c.lignes), [c.note]) });
+    });
+    (G.animations || []).forEach(function (a) {
+      idx.push({ kind: "Animation", title: a.titre, href: "#/animation/" + encodeURIComponent(a.id), parts: [a.titre, a.classe, a.introduction].concat(flat(a.etapes)) });
+    });
+    (G.pages || []).forEach(function (p) {
+      idx.push({ kind: "Page", title: p.titre, href: "#/page/" + encodeURIComponent(p.id), parts: [p.titre, p.introduction].concat(flat(p.sections)) });
+    });
+    idx.forEach(function (e) {
+      e.parts = e.parts.filter(function (t) { return t && String(t).indexOf(TODO) === -1; });
+      e.normParts = e.parts.map(norm);
+      e.normTitle = norm(e.title);
+    });
+    return (SEARCH_INDEX = idx);
+  }
+
+  function runSearch(q) {
+    var terms = norm(q).split(/[^a-z0-9]+/).filter(function (t) { return t.length > 1; });
+    if (!terms.length) return [];
+    return searchIndex().map(function (e) {
+      var all = e.normParts.join(" ");
+      if (!terms.every(function (t) { return all.indexOf(t) !== -1; })) return null;
+      var score = terms.reduce(function (s, t) { return s + (e.normTitle.indexOf(t) !== -1 ? 10 : 0); }, 0);
+      var hit = -1;
+      for (var i = 0; i < e.normParts.length && hit < 0; i++) if (e.normParts[i].indexOf(terms[0]) !== -1) hit = i;
+      return { e: e, score: score, snippet: hit >= 0 ? snippet(e.parts[hit], e.normParts[hit], terms) : "" };
+    }).filter(Boolean).sort(function (a, b) { return b.score - a.score; });
+  }
+
+  // Extrait de texte autour du premier mot trouvé, avec les mots surlignés.
+  function snippet(text, nText, terms) {
+    var pos = nText.indexOf(terms[0]);
+    var start = Math.max(0, pos - 50), end = Math.min(text.length, pos + 110);
+    var part = (start > 0 ? "… " : "") + text.slice(start, end) + (end < text.length ? " …" : "");
+    var nPart = norm(part);
+    var marks = [];
+    terms.forEach(function (t) {
+      var i = 0;
+      while ((i = nPart.indexOf(t, i)) !== -1) { marks.push([i, i + t.length]); i += t.length; }
+    });
+    marks.sort(function (a, b) { return a[0] - b[0]; });
+    var out = [], last = 0;
+    marks.forEach(function (mk) {
+      if (mk[0] < last) return;
+      out.push(part.slice(last, mk[0])); out.push(el("mark", { class: "hit" }, part.slice(mk[0], mk[1]))); last = mk[1];
+    });
+    out.push(part.slice(last));
+    return out;
+  }
+
+  function searchForm(initial, live) {
+    var input = el("input", { type: "search", id: "q", name: "q", value: initial || "", placeholder: "Ex : toux, Strepsils, fièvre, ordonnance…", autocomplete: "off", "aria-label": "Rechercher dans le guide" });
+    var form = el("form", { class: "search-form", role: "search" }, [
+      el("span", { class: "search-icon", "aria-hidden": "true" }, uiIcon("search")), input,
+      el("button", { type: "submit", class: "btn btn-primary" }, "Chercher")
+    ]);
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (live) live(input.value, true); else location.hash = "#/recherche/" + encodeURIComponent(input.value.trim());
+    });
+    if (live) input.addEventListener("input", function () { live(input.value, false); });
+    return { form: form, input: input };
+  }
+
+  function viewSearch(q) {
+    var results = el("div", { class: "search-results", "aria-live": "polite" });
+    function render(value, commit) {
+      results.textContent = "";
+      var v = (value || "").trim();
+      try { history.replaceState(null, "", "#/recherche/" + encodeURIComponent(v)); } catch (e) { /* file:// */ }
+      if (v.length < 2) {
+        add(results, el("p", { class: "meta" }, "Tapez au moins deux lettres : un symptôme, un nom de médicament, une procédure…"));
+        return;
+      }
+      var res = runSearch(v);
+      add(results, el("p", { class: "meta" }, res.length ? res.length + " résultat" + (res.length > 1 ? "s" : "") : "Aucun résultat. Essayez un autre mot, ou demandez au pharmacien."));
+      add(results, el("ul", { class: "result-list" }, res.slice(0, 30).map(function (r) {
+        return el("li", null, el("a", { href: r.e.href, class: "result" }, [
+          el("span", { class: "result-kind" }, r.e.kind),
+          el("span", { class: "result-title" }, r.e.title),
+          r.snippet ? el("span", { class: "result-snippet" }, r.snippet) : null
+        ]));
+      })));
+      if (commit && res.length === 1) location.hash = res[0].e.href;
+    }
+    var f = searchForm(q, render);
+    render(q, false);
+    setTimeout(function () { f.input.focus(); var n = f.input.value.length; try { f.input.setSelectionRange(n, n); } catch (e) {} }, 0);
+    return { title: "Recherche", section: "recherche", node: el("div", null, [el("h1", null, "Rechercher"), f.form, results]) };
+  }
+
   function viewNotFound() {
     return {
       title: "Page introuvable",
@@ -1055,6 +1193,7 @@
       case "quiz": v = id ? viewQuiz(id) : viewQuizList(); break;
       case "sources": v = viewSources(id); break;
       case "page": v = viewPage(id); break;
+      case "recherche": v = viewSearch(id || ""); break;
       default: v = viewNotFound();
     }
 
@@ -1073,6 +1212,11 @@
       window.scrollTo(0, 0);
     }
     firstRender = false;
+  }
+
+  // Installation comme application + hors connexion (uniquement en ligne, pas en double-clic).
+  if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) {
+    window.addEventListener("load", function () { navigator.serviceWorker.register("sw.js").catch(function () {}); });
   }
 
   buildNav();
