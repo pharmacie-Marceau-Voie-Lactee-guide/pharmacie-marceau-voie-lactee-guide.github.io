@@ -160,72 +160,123 @@
 
   var COLORS = ["green", "blue", "purple", "orange", "teal", "pink", "red", "gray"];
 
-  /* ---------- Illustrations des fiches (dessinées ici, 64 × 64) ---------- */
+  /* ---------- Illustrations des fiches (dessinées ici, 64 × 64) ----------
+   * Chaque entrée : [couleur de fond, [formes]]. Ombres et reflets en couches semi-transparentes.
+   */
+  var SH = function (cx, cy, rx) { return ["ellipse", { cx: cx, cy: cy, rx: rx, ry: rx * 0.22, fill: "#000", opacity: ".08" }]; };
+  var HL = function (d, w) { return ["path", { d: d, stroke: "#fff", "stroke-width": w || 2.2, fill: "none", "stroke-linecap": "round", opacity: ".7" }]; };
   var ART = {
-    "mal-de-gorge": ["#fdeee6", [
-      ["path", { d: "M22 50c0-8 2-14 2-20a10 10 0 1 1 20 0c0 6-2 12 2 20z", fill: "#f6c8a8" }],
-      ["circle", { cx: 34, cy: 26, r: 12, fill: "#f8d3b6" }],
-      ["path", { d: "M31 40c2 3 6 3 8 0", stroke: "#e0533d", "stroke-width": 3, fill: "none", "stroke-linecap": "round" }],
-      ["circle", { cx: 35, cy: 43, r: 4.5, fill: "#ef6b54", opacity: ".85" }],
-      ["path", { d: "M44 39l5-2M45 44l5 1M44 48l4 3", stroke: "#ef6b54", "stroke-width": 2, "stroke-linecap": "round" }]]],
-    "toux": ["#e8f1fb", [
-      ["circle", { cx: 26, cy: 32, r: 13, fill: "#f8d3b6" }],
-      ["ellipse", { cx: 36, cy: 35, rx: 3, ry: 2.5, fill: "#c2524a" }],
-      ["circle", { cx: 46, cy: 30, r: 5, fill: "#b9d4f1" }], ["circle", { cx: 53, cy: 36, r: 4, fill: "#cfe1f6" }], ["circle", { cx: 47, cy: 41, r: 3.5, fill: "#dceaf9" }]]],
-    "rhume": ["#e9f4fb", [
-      ["path", { d: "M18 22h22l4 26H22z", fill: "#ffffff", stroke: "#c9d9e6", "stroke-width": 1.5 }],
-      ["path", { d: "M23 28h17M24 34h17M25 40h17", stroke: "#dbe7f0", "stroke-width": 1.5 }],
-      ["path", { d: "M47 18s5 6 5 9a5 5 0 0 1-10 0c0-3 5-9 5-9z", fill: "#62a8e3" }],
-      ["path", { d: "M50 34s3.5 4 3.5 6a3.5 3.5 0 0 1-7 0c0-2 3.5-6 3.5-6z", fill: "#8cc0ee" }]]],
-    "douleur-fievre": ["#fdecea", [
-      ["rect", { x: 28, y: 12, width: 9, height: 32, rx: 4.5, fill: "#ffffff", stroke: "#d6dde0", "stroke-width": 1.5 }],
-      ["rect", { x: 30.5, y: 22, width: 4, height: 24, rx: 2, fill: "#e0533d" }],
-      ["circle", { cx: 32.5, cy: 47, r: 7, fill: "#e0533d" }],
-      ["path", { d: "M40 18h5M40 24h3M40 30h5M40 36h3", stroke: "#b5c0c4", "stroke-width": 1.5, "stroke-linecap": "round" }]]],
-    "diarrhee": ["#eaf5ef", [
-      ["rect", { x: 16, y: 22, width: 26, height: 24, rx: 3, fill: "#ffffff", stroke: "#d6dde0", "stroke-width": 1.5 }],
-      ["ellipse", { cx: 42, cy: 34, rx: 7, ry: 12, fill: "#f2f5f4", stroke: "#d6dde0", "stroke-width": 1.5 }],
-      ["ellipse", { cx: 42, cy: 34, rx: 2.5, ry: 4.5, fill: "#c9d3d0" }],
-      ["path", { d: "M50 16s4 5 4 7.5a4 4 0 0 1-8 0c0-2.5 4-7.5 4-7.5z", fill: "#62a8e3" }]]],
-    "brulures-estomac": ["#fff1e6", [
-      ["path", { d: "M24 20c10-4 22 0 24 12 2 12-6 20-16 20-6 0-10-3-12-7 6 0 12-2 14-8 1-5-3-8-8-7z", fill: "#f3a27e" }],
-      ["path", { d: "M33 12c1 4 5 5 5 9a5 5 0 0 1-10 0c0-2 1-3 2-4 1 1 2 1 3 1 0-2-1-4 0-6z", fill: "#f2891f" }],
-      ["path", { d: "M33 17c.6 2 2.6 2.6 2.6 4.5a2.6 2.6 0 0 1-5.2 0", fill: "#ffd15c" }]]],
-    "constipation": ["#f6efe6", [
-      ["path", { d: "M18 22h28v8H18zM18 30h28v8H18zM18 38h28v8H18z", fill: "none" }],
-      ["path", { d: "M20 24c4-4 8 4 12 0s8 4 12 0M20 33c4-4 8 4 12 0s8 4 12 0M20 42c4-4 8 4 12 0s8 4 12 0", stroke: "#e7a68a", "stroke-width": 5, fill: "none", "stroke-linecap": "round" }],
-      ["circle", { cx: 49, cy: 16, r: 6, fill: "#ffffff", stroke: "#d6dde0", "stroke-width": 1.5 }],
-      ["path", { d: "M49 13v3l2 1.5", stroke: "#7a8a83", "stroke-width": 1.5, fill: "none", "stroke-linecap": "round" }]]],
-    "allergie-saisonniere": ["#fff8e1", [
-      ["path", { d: "M32 50V34", stroke: "#5aa86a", "stroke-width": 3, "stroke-linecap": "round" }],
-      ["path", { d: "M32 44c-6 0-9-4-9-7 5 0 9 3 9 7z", fill: "#7cc28a" }],
-      ["circle", { cx: 32, cy: 18, r: 6, fill: "#f6a3b8" }], ["circle", { cx: 41, cy: 25, r: 6, fill: "#f6a3b8" }],
-      ["circle", { cx: 23, cy: 25, r: 6, fill: "#f6a3b8" }], ["circle", { cx: 36, cy: 33, r: 6, fill: "#f6a3b8" }], ["circle", { cx: 28, cy: 33, r: 6, fill: "#f6a3b8" }],
-      ["circle", { cx: 32, cy: 26, r: 5, fill: "#ffcf3a" }],
-      ["circle", { cx: 48, cy: 14, r: 1.8, fill: "#f0b21a" }], ["circle", { cx: 52, cy: 20, r: 1.4, fill: "#f0b21a" }], ["circle", { cx: 46, cy: 10, r: 1.2, fill: "#f0b21a" }]]],
-    "piqures-insectes": ["#fff7e0", [
-      ["ellipse", { cx: 24, cy: 24, rx: 8, ry: 6, fill: "#d8ecf7", transform: "rotate(-25 24 24)" }],
-      ["ellipse", { cx: 38, cy: 22, rx: 8, ry: 6, fill: "#d8ecf7", transform: "rotate(25 38 22)" }],
-      ["ellipse", { cx: 32, cy: 38, rx: 9, ry: 12, fill: "#ffc83a" }],
-      ["path", { d: "M23.5 34h17M23 40h18M25 46h14", stroke: "#3b3b3b", "stroke-width": 3 }],
-      ["circle", { cx: 32, cy: 25, r: 5, fill: "#3b3b3b" }], ["path", { d: "M32 50l0 5", stroke: "#3b3b3b", "stroke-width": 2, "stroke-linecap": "round" }]]],
-    "brulures-peau": ["#fff6df", [
-      ["circle", { cx: 32, cy: 32, r: 10, fill: "#ffbf2e" }],
-      ["path", { d: "M32 12v6M32 46v6M12 32h6M46 32h6M18 18l4 4M42 42l4 4M18 46l4-4M42 22l4-4", stroke: "#ffbf2e", "stroke-width": 3.5, "stroke-linecap": "round" }],
-      ["circle", { cx: 29, cy: 29, r: 3, fill: "#ffe08a" }]]],
-    "poux": ["#f3eefa", [
-      ["rect", { x: 14, y: 22, width: 36, height: 9, rx: 2, fill: "#a7835f" }],
-      ["path", { d: "M17 31v14M21 31v14M25 31v14M29 31v14M33 31v14M37 31v14M41 31v14M45 31v14", stroke: "#a7835f", "stroke-width": 2.4, "stroke-linecap": "round" }],
-      ["circle", { cx: 50, cy: 16, r: 2, fill: "#6b5b4b" }], ["circle", { cx: 44, cy: 14, r: 1.5, fill: "#6b5b4b" }]]],
-    "cystite": ["#e8f3fb", [
-      ["path", { d: "M20 18h24l-3 32a3 3 0 0 1-3 3H26a3 3 0 0 1-3-3z", fill: "#ffffff", stroke: "#c9d9e6", "stroke-width": 1.5 }],
-      ["path", { d: "M22.5 30h19l-2 20a2 2 0 0 1-2 2H26.5a2 2 0 0 1-2-2z", fill: "#9fcdf2" }],
-      ["path", { d: "M27 36h3M28 42h2", stroke: "#ffffff", "stroke-width": 2, "stroke-linecap": "round", opacity: ".8" }]]],
-    "contraception-urgence": ["#eef3fb", [
-      ["circle", { cx: 28, cy: 30, r: 14, fill: "#ffffff", stroke: "#c9d4e6", "stroke-width": 2 }],
-      ["path", { d: "M28 21v9l6 4", stroke: "#4a6fb5", "stroke-width": 2.6, fill: "none", "stroke-linecap": "round" }],
-      ["rect", { x: 38, y: 38, width: 18, height: 9, rx: 4.5, fill: "#f6a3b8", transform: "rotate(-30 47 42.5)" }],
-      ["path", { d: "M47 38.5v8", stroke: "#ffffff", "stroke-width": 1.5, transform: "rotate(-30 47 42.5)" }]]]
+    "mal-de-gorge": ["#fde9df", [
+      SH(32, 56, 16),
+      ["path", { d: "M21 56c1-7 3-12 3-17h16c0 5 2 10 3 17z", fill: "#e9b08d" }],
+      ["path", { d: "M24 39h16c0 3-.5 5-1 7H25c-.5-2-1-4-1-7z", fill: "#d99a76" }],
+      ["circle", { cx: 32, cy: 24, r: 14, fill: "#f6c9a7" }],
+      ["path", { d: "M18.5 20c2-9 9-12 15-12s11 3 12 9c-5-4-12-4-18-1-3 1.5-6 3-9 4z", fill: "#6b4a3a" }],
+      ["circle", { cx: 27, cy: 25, r: 1.4, fill: "#5a3d30" }], ["circle", { cx: 37, cy: 25, r: 1.4, fill: "#5a3d30" }],
+      ["path", { d: "M28.5 32c2.2 1.6 4.8 1.6 7 0", stroke: "#b5654f", "stroke-width": 1.8, fill: "none", "stroke-linecap": "round" }],
+      ["ellipse", { cx: 32, cy: 45, rx: 6, ry: 4, fill: "#ef5a43", opacity: ".85" }],
+      ["ellipse", { cx: 32, cy: 45, rx: 3, ry: 2, fill: "#ff8a6e" }],
+      ["path", { d: "M42 42l5-2.5M42.5 46.5h5.5M42 50.5l4.5 2.5", stroke: "#ef5a43", "stroke-width": 2, "stroke-linecap": "round" }],
+      HL("M24 16c2-2 5-3 8-3", 1.8)]],
+    "toux": ["#e6f0fb", [
+      SH(26, 52, 13),
+      ["circle", { cx: 26, cy: 32, r: 15, fill: "#f6c9a7" }],
+      ["path", { d: "M12 28c1-9 8-13 14-13 7 0 13 4 14 11-6-3-12-3-17-1-4 1.5-8 2.5-11 3z", fill: "#3f3a36" }],
+      ["path", { d: "M20 31c1.5-1 3-1 4.5 0", stroke: "#5a3d30", "stroke-width": 1.6, fill: "none", "stroke-linecap": "round" }],
+      ["path", { d: "M29 30c1.5-1 3-1 4.5 0", stroke: "#5a3d30", "stroke-width": 1.6, fill: "none", "stroke-linecap": "round" }],
+      ["ellipse", { cx: 35.5, cy: 38.5, rx: 3.2, ry: 3.6, fill: "#a8423b" }],
+      ["path", { d: "M15 38c2 2 4 2 6 1", stroke: "#e8a88a", "stroke-width": 2, fill: "none", "stroke-linecap": "round", opacity: ".8" }],
+      ["circle", { cx: 46, cy: 33, r: 5.5, fill: "#a9c9ee" }], ["circle", { cx: 53.5, cy: 39, r: 4.5, fill: "#bfd7f3" }], ["circle", { cx: 47, cy: 44, r: 3.8, fill: "#d3e3f7" }],
+      ["circle", { cx: 54, cy: 29, r: 2.6, fill: "#d3e3f7" }],
+      HL("M44 31c1-1 2.5-1.5 4-1.2", 1.6)]],
+    "rhume": ["#e7f2fa", [
+      SH(30, 55, 15),
+      ["path", { d: "M15 24c5-3 21-3 27 0l3 26c-8 3-24 3-31 0z", fill: "#ffffff", stroke: "#c8d8e4", "stroke-width": 1.3 }],
+      ["path", { d: "M15 24c5 3 21 3 27 0", fill: "#eef4f8", stroke: "#c8d8e4", "stroke-width": 1.3 }],
+      ["path", { d: "M20 33c5 1.5 14 1.5 19 0M20.5 40c5 1.5 14 1.5 19 0", stroke: "#dbe7f0", "stroke-width": 1.4, fill: "none" }],
+      ["path", { d: "M29 15c3-4 7-4 9 0-1 3-3 5-4.5 9-1.5-4-3.5-6-4.5-9z", fill: "#ffffff", stroke: "#c8d8e4", "stroke-width": 1.2 }],
+      ["path", { d: "M49 14s5.5 6.5 5.5 10a5.5 5.5 0 0 1-11 0c0-3.5 5.5-10 5.5-10z", fill: "#4f9be0" }],
+      ["path", { d: "M47 22c0-1.5 1-3 2-4", stroke: "#fff", "stroke-width": 1.5, "stroke-linecap": "round", opacity: ".8" }],
+      ["path", { d: "M52 34s3.5 4 3.5 6.3a3.5 3.5 0 0 1-7 0c0-2.3 3.5-6.3 3.5-6.3z", fill: "#82bbee" }]]],
+    "douleur-fievre": ["#fde9e7", [
+      SH(32, 57, 11),
+      ["rect", { x: 27, y: 8, width: 11, height: 37, rx: 5.5, fill: "#ffffff", stroke: "#cfd8dc", "stroke-width": 1.5 }],
+      ["rect", { x: 30, y: 18, width: 5, height: 29, rx: 2.5, fill: "#e0412d" }],
+      ["circle", { cx: 32.5, cy: 48, r: 8, fill: "#e0412d" }],
+      ["circle", { cx: 30, cy: 45.5, r: 2.4, fill: "#ff8a78" }],
+      ["path", { d: "M40 14h5M40 20h3M40 26h5M40 32h3M40 38h5", stroke: "#aab6bb", "stroke-width": 1.5, "stroke-linecap": "round" }],
+      HL("M29.5 12v6", 1.6),
+      ["path", { d: "M14 20c2 2 2 5 0 7M10 17c3.5 3.5 3.5 9.5 0 13", stroke: "#f28b70", "stroke-width": 2, fill: "none", "stroke-linecap": "round", opacity: ".8" }]]],
+    "diarrhee": ["#e7f4ec", [
+      SH(32, 55, 17),
+      ["rect", { x: 13, y: 20, width: 28, height: 28, rx: 4, fill: "#ffffff", stroke: "#d2dbd8", "stroke-width": 1.4 }],
+      ["path", { d: "M13 26h28", stroke: "#e6ecea", "stroke-width": 1.4 }],
+      ["ellipse", { cx: 41, cy: 34, rx: 9, ry: 14, fill: "#f4f7f6", stroke: "#d2dbd8", "stroke-width": 1.4 }],
+      ["ellipse", { cx: 41, cy: 34, rx: 3.4, ry: 5.8, fill: "#c3cfcb" }],
+      ["path", { d: "M17 31h8M17 36h10M17 41h7", stroke: "#e6ecea", "stroke-width": 1.4 }],
+      ["path", { d: "M52 12s4.5 5.5 4.5 8.4a4.5 4.5 0 0 1-9 0c0-2.9 4.5-8.4 4.5-8.4z", fill: "#4f9be0" }],
+      HL("M50.3 19c0-1.2.6-2.4 1.4-3.3", 1.3)]],
+    "brulures-estomac": ["#fff0e3", [
+      SH(34, 55, 15),
+      ["path", { d: "M23 22c11-5 24 0 26 13 2 12-6 19-16 19-7 0-11-3-13-8 7 0 13-2 15-8 1.5-5-2.5-9-8-8.5z", fill: "#f19b76" }],
+      ["path", { d: "M27 41c6 0 11-2 13-7", stroke: "#d8714e", "stroke-width": 2, fill: "none", "stroke-linecap": "round", opacity: ".7" }],
+      HL("M30 24c5-1.5 10-.5 13 2.5", 2),
+      ["path", { d: "M34 6c1.5 5 6.5 6.5 6.5 11.5a6.5 6.5 0 0 1-13 0c0-2.5 1.2-4 2.5-5 1.2 1.2 2.5 1.4 3.6 1.4 0-2.6-1-5 .4-7.9z", fill: "#f2811a" }],
+      ["path", { d: "M34 13c.8 2.6 3.4 3.4 3.4 5.8a3.4 3.4 0 0 1-6.8 0c0-1.2.7-2 1.3-2.5.7.6 1.3.7 1.9.7 0-1.3-.4-2.6.2-4z", fill: "#ffd25e" }]]],
+    "constipation": ["#f6eee4", [
+      SH(32, 55, 17),
+      ["path", { d: "M17 22c4-5 8 5 12 0s8 5 12 0 6 5 6 2M17 32c4-5 8 5 12 0s8 5 12 0 6 5 6 2M17 42c4-5 8 5 12 0s8 5 12 0", stroke: "#e5a083", "stroke-width": 6, fill: "none", "stroke-linecap": "round" }],
+      ["path", { d: "M17 22c4-5 8 5 12 0s8 5 12 0M17 32c4-5 8 5 12 0s8 5 12 0M17 42c4-5 8 5 12 0s8 5 12 0", stroke: "#f6c2aa", "stroke-width": 2, fill: "none", "stroke-linecap": "round", opacity: ".9" }],
+      ["path", { d: "M45 10h12M45 34h12", stroke: "#8b7a66", "stroke-width": 2, "stroke-linecap": "round" }],
+      ["path", { d: "M46.5 10.5c0 5 9 6.5 9 11.5s-9 6.5-9 11.5M55.5 10.5c0 5-9 6.5-9 11.5s9 6.5 9 11.5", fill: "#fff", stroke: "#8b7a66", "stroke-width": 1.6 }],
+      ["path", { d: "M48 31.5c1-2 2.2-3 3-3.5.8.5 2 1.5 3 3.5z", fill: "#e9c27a" }],
+      ["path", { d: "M49 14.5h4c-.5 1.5-1.5 2.5-2 3-.5-.5-1.5-1.5-2-3z", fill: "#e9c27a" }]]],
+    "allergie-saisonniere": ["#fff6db", [
+      SH(32, 57, 12),
+      ["path", { d: "M32 56V34", stroke: "#4f9e61", "stroke-width": 3, "stroke-linecap": "round" }],
+      ["path", { d: "M32 47c-7 0-10-4.5-10-8 6 0 10 3.5 10 8z", fill: "#6fbd7f" }],
+      ["path", { d: "M32 51c6 0 8.5-3.5 8.5-6.5-5 0-8.5 3-8.5 6.5z", fill: "#86cb94" }],
+      ["circle", { cx: 32, cy: 15, r: 6.5, fill: "#f497ae" }], ["circle", { cx: 42, cy: 22, r: 6.5, fill: "#f497ae" }], ["circle", { cx: 22, cy: 22, r: 6.5, fill: "#f497ae" }],
+      ["circle", { cx: 37, cy: 31, r: 6.5, fill: "#ef8aa3" }], ["circle", { cx: 27, cy: 31, r: 6.5, fill: "#ef8aa3" }],
+      ["circle", { cx: 32, cy: 24, r: 6, fill: "#ffc928" }], ["circle", { cx: 30.5, cy: 22.5, r: 2, fill: "#ffe48a" }],
+      ["circle", { cx: 49, cy: 11, r: 1.8, fill: "#e8a915" }], ["circle", { cx: 53, cy: 17, r: 1.4, fill: "#e8a915" }], ["circle", { cx: 46, cy: 7, r: 1.2, fill: "#e8a915" }], ["circle", { cx: 54, cy: 9, r: 1, fill: "#e8a915" }]]],
+    "piqures-insectes": ["#fff5da", [
+      SH(32, 57, 12),
+      ["ellipse", { cx: 22, cy: 23, rx: 9, ry: 6.5, fill: "#e2f1fa", stroke: "#b9d7e8", "stroke-width": 1, transform: "rotate(-28 22 23)" }],
+      ["ellipse", { cx: 42, cy: 21, rx: 9, ry: 6.5, fill: "#e2f1fa", stroke: "#b9d7e8", "stroke-width": 1, transform: "rotate(28 42 21)" }],
+      ["ellipse", { cx: 32, cy: 38, rx: 10, ry: 13, fill: "#ffc52e" }],
+      ["path", { d: "M22.6 33h18.8M22 39.5h20M23.8 46h16.4", stroke: "#33302c", "stroke-width": 3.4 }],
+      HL("M26 29c1.5-2 3.5-3 5.5-3", 1.6),
+      ["circle", { cx: 32, cy: 24, r: 5.5, fill: "#33302c" }],
+      ["path", { d: "M29 19.5l-3-4M35 19.5l3-4", stroke: "#33302c", "stroke-width": 1.5, "stroke-linecap": "round" }],
+      ["path", { d: "M32 51l0 5", stroke: "#33302c", "stroke-width": 2, "stroke-linecap": "round" }]]],
+    "brulures-peau": ["#fff4d8", [
+      ["circle", { cx: 32, cy: 32, r: 11.5, fill: "#ffb81f" }],
+      ["circle", { cx: 32, cy: 32, r: 8, fill: "#ffcd45" }],
+      ["path", { d: "M32 10v7M32 47v7M10 32h7M47 32h7M16.5 16.5l5 5M42.5 42.5l5 5M16.5 47.5l5-5M42.5 21.5l5-5", stroke: "#ffb81f", "stroke-width": 3.6, "stroke-linecap": "round" }],
+      ["circle", { cx: 28.5, cy: 28.5, r: 3, fill: "#ffe7a0" }]]],
+    "poux": ["#f2ecfa", [
+      SH(32, 54, 18),
+      ["rect", { x: 12, y: 20, width: 40, height: 10, rx: 3, fill: "#b58d63" }],
+      ["rect", { x: 12, y: 20, width: 40, height: 3.5, rx: 1.75, fill: "#cba57d" }],
+      ["path", { d: "M15 30v16M19 30v16M23 30v16M27 30v16M31 30v16M35 30v16M39 30v16M43 30v16M47 30v16", stroke: "#a17b53", "stroke-width": 2.4, "stroke-linecap": "round" }],
+      ["ellipse", { cx: 51, cy: 13, rx: 2.4, ry: 1.6, fill: "#6b5b4b" }], ["ellipse", { cx: 45, cy: 10, rx: 1.8, ry: 1.2, fill: "#6b5b4b" }]]],
+    "cystite": ["#e7f2fb", [
+      SH(32, 57, 12),
+      ["path", { d: "M19 14h26l-3.5 38a3 3 0 0 1-3 2.7h-13a3 3 0 0 1-3-2.7z", fill: "#ffffff", stroke: "#c6d6e3", "stroke-width": 1.4 }],
+      ["path", { d: "M21.8 28h20.4l-2.3 24a2 2 0 0 1-2 1.8H26.1a2 2 0 0 1-2-1.8z", fill: "#8fc5f0" }],
+      ["path", { d: "M21.8 28c4 2 7 2 10.2 0s6.2-2 10.2 0", fill: "#a8d3f4" }],
+      HL("M24 18l2 30", 1.8),
+      ["circle", { cx: 36, cy: 40, r: 1.5, fill: "#fff", opacity: ".8" }], ["circle", { cx: 31, cy: 46, r: 1.1, fill: "#fff", opacity: ".8" }]]],
+    "contraception-urgence": ["#ecf2fb", [
+      SH(30, 56, 15),
+      ["circle", { cx: 27, cy: 29, r: 15, fill: "#ffffff", stroke: "#c3cfe3", "stroke-width": 2 }],
+      ["circle", { cx: 27, cy: 29, r: 1.6, fill: "#3d5fa8" }],
+      ["path", { d: "M27 19v10l6.5 4", stroke: "#3d5fa8", "stroke-width": 2.6, fill: "none", "stroke-linecap": "round" }],
+      ["path", { d: "M27 15.5v2M27 40.5v2M13.5 29h2M38.5 29h2", stroke: "#a9b6cf", "stroke-width": 1.6, "stroke-linecap": "round" }],
+      ["rect", { x: 37, y: 39, width: 19, height: 10, rx: 5, fill: "#f497ae", transform: "rotate(-30 46.5 44)" }],
+      ["rect", { x: 46.5, y: 39, width: 9.5, height: 10, rx: 0, fill: "#ffffff", opacity: ".55", transform: "rotate(-30 46.5 44)" }],
+      HL("M40 41.5l5-3", 1.4)]]
   };
 
   function ficheArt(id, size) {
@@ -920,7 +971,10 @@
     var stepTime = el("p", { class: "step-time" });
     var stepTitle = el("h2", { class: "step-title" });
     var stepText = el("p", { class: "step-text" });
-    var live = el("div", { class: "step-panel", "aria-live": "polite", "aria-atomic": "true" }, [counter, stepTime, stepTitle, stepText]);
+    var bigNum = el("span", { class: "step-big", "aria-hidden": "true" });
+    var stepBar = el("div", { class: "step-bar", "aria-hidden": "true" }, el("span"));
+    var live = el("div", { class: "step-panel", "aria-live": "polite", "aria-atomic": "true" }, [
+      el("div", { class: "step-head" }, [bigNum, el("div", null, [counter, stepTime])]), stepBar, stepTitle, stepText]);
 
     var timeline = el("ol", { class: "timeline", "aria-label": "Chronologie" }, steps.map(function (s, i) {
       var z = ZONES[s.zone];
@@ -980,6 +1034,8 @@
       var s = steps[current];
       var z = ZONES[s.zone];
       counter.textContent = "Étape " + (current + 1) + " sur " + steps.length;
+      bigNum.textContent = String(current + 1);
+      stepBar.firstChild.style.width = Math.round(100 * (current + 1) / steps.length) + "%";
       stepTime.textContent = "";
       if (s.temps) add(stepTime, [uiIcon("clock"), el("span", null, s.temps)]);
       setText(stepTitle, s.titre);
