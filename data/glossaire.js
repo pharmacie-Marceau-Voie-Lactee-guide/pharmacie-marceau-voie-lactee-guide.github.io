@@ -88,17 +88,17 @@ GUIDE.glossaire = [
   },
   {
     "terme": "DCI",
-    "definition": "Dénomination commune internationale : le nom de la molécule, identique dans tous les pays (ex : paracétamol), par opposition au nom commercial (ex : Doliprane).",
+    "definition": "Dénomination commune internationale : le nom de la molécule (la substance active), identique dans tous les pays. Le princeps et ses génériques ont la même DCI. Exemple : oméprazole est la DCI ; Mopral est le nom du princeps ; « Oméprazole Biogaran » est un générique.",
     "variantes": []
   },
   {
     "terme": "Princeps",
-    "definition": "Médicament d'origine, commercialisé en premier par le laboratoire qui l'a mis au point.",
+    "definition": "Médicament d'origine, mis au point et commercialisé en premier par un laboratoire, sous un nom de marque (ex : Mopral pour l'oméprazole).",
     "variantes": []
   },
   {
     "terme": "Générique",
-    "definition": "Copie d'un médicament princeps : même molécule, même dosage, même efficacité, souvent moins cher (ex : les médicaments Biogaran).",
+    "definition": "Copie d'un princeps : même substance active (même DCI), même dosage, même efficacité, souvent moins cher. Il porte souvent le nom de la DCI suivi du nom du laboratoire (ex : Oméprazole Biogaran). Les excipients peuvent être différents.",
     "variantes": [
       "génériques"
     ]
@@ -214,5 +214,20 @@ GUIDE.glossaire = [
     "terme": "3237",
     "definition": "Numéro pour trouver la pharmacie de garde la plus proche.",
     "variantes": []
+  },
+  {
+    "terme": "Substitution",
+    "definition": "Droit du pharmacien de remplacer le médicament prescrit (souvent un princeps) par un générique de la même DCI, sauf si le médecin a écrit « non substituable » avec une justification valable.",
+    "variantes": [
+      "substituer",
+      "substitué"
+    ]
+  },
+  {
+    "terme": "Non substituable",
+    "definition": "Mention écrite à la main par le médecin sur l'ordonnance, à côté du médicament, pour interdire le remplacement par un générique. Elle doit être justifiée par l'une de trois situations : MTE (médicament à marge thérapeutique étroite), EFG (enfant de moins de 6 ans, quand aucun générique n'a une forme adaptée) ou CIF (contre-indication formelle à un excipient du générique). Si un patient refuse le générique sans mention valable, il avance les frais et est remboursé sur la base du prix du générique.",
+    "variantes": [
+      "NS"
+    ]
   }
 ];
