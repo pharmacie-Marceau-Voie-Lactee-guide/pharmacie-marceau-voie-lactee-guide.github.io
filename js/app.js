@@ -360,50 +360,77 @@
     if (!f) return viewNotFound();
     var i = fiches.indexOf(f);
     var prev = fiches[i - 1], next = fiches[i + 1];
+
+    var essentiel = f.resume ? el("section", { class: "essentiel", "aria-labelledby": "h-essentiel" }, [
+      el("h2", { id: "h-essentiel" }, "L'essentiel en 10 secondes"),
+      el("ul", null, [
+        ["compass", "Le plus souvent", f.resume.souvent, "c-green"],
+        ["star", "La règle à retenir", f.resume.regle, "c-blue"],
+        ["alert", "Pharmacien si", f.resume.alerte, "c-red"]
+      ].filter(function (r) { return r[2]; }).map(function (r) {
+        return el("li", { class: r[3] }, [el("span", { class: "ess-icon" }, uiIcon(r[0])), el("span", null, [el("strong", null, r[1] + " : "), r[2]])]);
+      }))
+    ]) : null;
+
+    var toc = [["h-motif", "Motif de la demande"], ["h-questions", "Questions à poser"], ["h-orient", "Orientations"]]
+      .concat(f.produits ? [["h-produits", "Produits"]] : [], [["h-vigil", "Vigilance"], ["passer-la-main", "Passer la main"]]);
+    var tocNav = el("nav", { class: "fiche-toc", "aria-label": "Sommaire de la fiche" }, [
+      el("p", { class: "toc-title" }, "Sur cette fiche"),
+      el("ol", null, toc.map(function (t) {
+        return el("li", null, el("a", { href: "#" + t[0], onclick: function (e) {
+          e.preventDefault();
+          var target = document.getElementById(t[0]);
+          if (!target) return;
+          var d = target.closest("details"); if (d) d.open = true;
+          (target.closest("details, section") || target).scrollIntoView({ behavior: "smooth", block: "start" });
+        } }, t[1]));
+      }))
+    ]);
+
+    var main = el("div", { class: "fiche-main" }, [
+      el("section", { class: "sec c-blue", "aria-labelledby": "h-motif" }, [sectionTitle("h-motif", "Motif de la demande", "chat", "blue"), el("p", null, f.motif || TODO)]),
+      el("div", { class: "fold-tools" }, [
+        el("button", { type: "button", class: "btn btn-ghost btn-small", onclick: function (e) {
+          var folds = e.currentTarget.closest("article").querySelectorAll("details.fold");
+          var anyClosed = Array.prototype.some.call(folds, function (d) { return !d.open; });
+          folds.forEach(function (d) { d.open = anyClosed; });
+          e.currentTarget.textContent = anyClosed ? "Tout replier" : "Tout déplier";
+        } }, window.matchMedia && window.matchMedia("(min-width: 861px)").matches ? "Tout replier" : "Tout déplier")
+      ]),
+      fold("h-questions", "Questions à poser au patient", "help", "teal", list(f.questions, true, "num-list")),
+      fold("h-orient", "Orientations possibles", "compass", "green", list(f.orientations, false, "check-list")),
+      f.produits ? fold("h-produits", f.produits.titre || "Les produits", "pill", "purple", productsBlock(f.produits, true), "products") : null,
+      fold("h-vigil", "Points de vigilance", "alert", "orange", list(f.vigilance), "fold-warn"),
+      el("section", { class: "callout callout-alert", id: "passer-la-main", tabindex: "-1", "aria-labelledby": "h-main" }, [
+        sectionTitle("h-main", "Quand passer la main au pharmacien", "hand", "red"),
+        list(f.passerLaMain)
+      ]),
+      el("p", null, el("a", { href: "#/sources/" + encodeURIComponent(f.id) }, "Voir les sources de cette fiche")),
+      el("nav", { class: "pager", "aria-label": "Fiches précédente et suivante" }, [
+        prev ? el("a", { href: "#/fiche/" + encodeURIComponent(prev.id), rel: "prev" }, [el("span", { class: "pg-label" }, "Fiche précédente"), el("span", null, "← " + (prev.titre || ""))]) : el("span"),
+        next ? el("a", { href: "#/fiche/" + encodeURIComponent(next.id), rel: "next", class: "pg-next" }, [el("span", { class: "pg-label" }, "Fiche suivante"), el("span", null, (next.titre || "") + " →")]) : el("span")
+      ])
+    ]);
+
+    var aside = el("aside", { class: "fiche-aside", "aria-label": "Résumé de la fiche" }, [
+      essentiel,
+      el("div", { class: "fiche-actions" }, [
+        (G.arbres || {})[f.id] ? el("a", { class: "btn btn-primary btn-tree", href: "#/arbre/" + encodeURIComponent(f.id) }, [uiIcon("tree"), el("span", null, "Suivre l'arbre de décision")]) : null,
+        favButton(f)
+      ]),
+      tocNav
+    ]);
+
     return {
       title: f.titre || "Fiche",
       section: "fiches",
       node: el("article", { class: "fiche" }, [
         el("p", { class: "breadcrumb" }, el("a", { href: "#/fiches" }, "← Toutes les fiches")),
-        el("div", { class: "fiche-head" }, [el("span", { class: "fiche-icon" }, uiIcon(f.icone || "fiches")), el("h1", null, f.titre || TODO)]),
-        el("div", { class: "fiche-actions" }, [
-          (G.arbres || {})[f.id] ? el("a", { class: "btn btn-primary btn-tree", href: "#/arbre/" + encodeURIComponent(f.id) }, [uiIcon("tree"), el("span", null, "Suivre l'arbre de décision")]) : null,
-          favButton(f)
+        el("header", { class: "fiche-header" }, [
+          el("div", { class: "fiche-head" }, [el("span", { class: "fiche-icon" }, uiIcon(f.icone || "fiches")), el("h1", null, f.titre || TODO)]),
+          statusPill(f.validation, "fiche")
         ]),
-        statusPill(f.validation, "fiche"),
-        f.resume ? el("section", { class: "essentiel", "aria-labelledby": "h-essentiel" }, [
-          el("h2", { id: "h-essentiel" }, "L'essentiel en 10 secondes"),
-          el("ul", null, [
-            ["compass", "Le plus souvent", f.resume.souvent, "c-green"],
-            ["star", "La règle à retenir", f.resume.regle, "c-blue"],
-            ["alert", "Pharmacien si", f.resume.alerte, "c-red"]
-          ].filter(function (r) { return r[2]; }).map(function (r) {
-            return el("li", { class: r[3] }, [el("span", { class: "ess-icon" }, uiIcon(r[0])), el("span", null, [el("strong", null, r[1] + " : "), r[2]])]);
-          }))
-        ]) : null,
-        el("p", null, el("a", { href: "#passer-la-main", class: "jump", onclick: jumpTo("passer-la-main") }, "Aller directement à « Quand passer la main au pharmacien »")),
-        el("section", { class: "sec c-blue", "aria-labelledby": "h-motif" }, [sectionTitle("h-motif", "Motif de la demande", "chat", "blue"), el("p", null, f.motif || TODO)]),
-        el("div", { class: "fold-tools" }, [
-          el("button", { type: "button", class: "btn btn-ghost btn-small", onclick: function (e) {
-            var folds = e.currentTarget.closest("article").querySelectorAll("details.fold");
-            var anyClosed = Array.prototype.some.call(folds, function (d) { return !d.open; });
-            folds.forEach(function (d) { d.open = anyClosed; });
-            e.currentTarget.textContent = anyClosed ? "Tout replier" : "Tout déplier";
-          } }, "Tout déplier")
-        ]),
-        fold("h-questions", "Questions à poser au patient", "help", "teal", list(f.questions, true, "num-list")),
-        fold("h-orient", "Orientations possibles", "compass", "green", list(f.orientations, false, "check-list")),
-        f.produits ? fold("h-produits", f.produits.titre || "Les produits", "pill", "purple", productsBlock(f.produits, true), "products") : null,
-        fold("h-vigil", "Points de vigilance", "alert", "orange", list(f.vigilance), "fold-warn"),
-        el("section", { class: "callout callout-alert", id: "passer-la-main", tabindex: "-1", "aria-labelledby": "h-main" }, [
-          sectionTitle("h-main", "Quand passer la main au pharmacien", "hand", "red"),
-          list(f.passerLaMain)
-        ]),
-        el("p", null, el("a", { href: "#/sources/" + encodeURIComponent(f.id) }, "Voir les sources de cette fiche")),
-        el("nav", { class: "pager", "aria-label": "Fiches précédente et suivante" }, [
-          prev ? el("a", { href: "#/fiche/" + encodeURIComponent(prev.id), rel: "prev" }, "← " + (prev.titre || "Précédente")) : el("span"),
-          next ? el("a", { href: "#/fiche/" + encodeURIComponent(next.id), rel: "next" }, (next.titre || "Suivante") + " →") : el("span")
-        ])
+        el("div", { class: "fiche-layout" }, [aside, main])
       ])
     };
   }
@@ -417,7 +444,7 @@
     function choose(id, btn) {
       bar.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", String(b === btn)); });
       var n = 0;
-      document.querySelectorAll(".meds-table tbody tr").forEach(function (tr) {
+      document.querySelectorAll(".meds-table [data-famille]").forEach(function (tr) {
         var show = id === "tout" || tr.getAttribute("data-famille") === id;
         tr.hidden = !show; if (show) n++;
       });
@@ -442,22 +469,21 @@
         m.introduction ? el("p", null, m.introduction) : null,
         familyFilter(m),
         pictoLegend(),
-        el("div", { class: "table-wrap meds-table", role: "region", "aria-labelledby": "tab-caption", tabindex: "0" },
-          el("table", null, [
-            el("caption", { id: "tab-caption" }, "Classes de médicaments : rôle, exemples et points de vigilance"),
-            el("thead", null, el("tr", null, ["Classe", "Rôle", "Exemples de médicaments", "Points de vigilance"].map(function (h) {
-              return el("th", { scope: "col" }, h);
-            }))),
-            el("tbody", null, rows.map(function (r) {
-              return el("tr", { "data-famille": r.famille || "autre" }, [
-                el("th", { scope: "row" }, [el("span", { class: "no-gloss" }, r.classe || TODO), pictoBadges(r.pictos)]),
-                el("td", { "data-label": "Rôle" }, r.role || TODO),
-                el("td", { "data-label": "Exemples" }, list(r.exemples, false, "compact")),
-                el("td", { "data-label": "Vigilance" }, list(r.vigilance, false, "compact"))
-              ]);
-            }))
-          ])
-        ),
+        el("ul", { class: "med-grid meds-table", "aria-label": "Classes de médicaments" }, rows.map(function (r) {
+          var fam = (m.familles || []).filter(function (x) { return x.id === r.famille; })[0];
+          return el("li", { class: "med-card fam-" + (r.famille || "autre"), "data-famille": r.famille || "autre" }, [
+            el("div", { class: "med-top" }, [
+              el("span", { class: "med-fam" }, fam ? fam.nom : ""),
+              el("h2", { class: "med-title" }, el("span", { class: "no-gloss" }, r.classe || TODO)),
+              el("p", { class: "med-role" }, r.role || TODO),
+              pictoBadges(r.pictos)
+            ]),
+            el("div", { class: "med-body" }, [
+              el("h3", null, "Exemples"), list(r.exemples, false, "compact"),
+              el("h3", null, "Points de vigilance"), list(r.vigilance, false, "compact med-vig")
+            ])
+          ]);
+        })),
         (m.comparaisons || []).map(comparisonBlock),
         el("p", null, el("a", { href: "#/sources/medicaments" }, "Voir les sources de ce tableau"))
       ])
@@ -582,7 +608,17 @@
         el("p", null, "Chaque animation montre, étape par étape, comment agit une classe de médicaments. Avancez à votre rythme avec les boutons ou les flèches du clavier."),
         el("p", null, el("a", { href: "#/medicaments/ains-ipp" }, "AINS ou IPP : voir le tableau des différences")),
         anims.length
-          ? el("ul", { class: "cards" }, anims.map(function (a, i) { return card("#/animation/" + encodeURIComponent(a.id), a.titre || TODO, a.classe, ["purple", "blue"][i % 2], "play"); }))
+          ? el("ul", { class: "anim-grid" }, anims.map(function (a) {
+              var n = (a.etapes || []).length;
+              return el("li", null, el("a", { class: "anim-card", href: "#/animation/" + encodeURIComponent(a.id) }, [
+                el("span", { class: "anim-thumb" }, [el("img", { src: PLATE.src, alt: "", loading: "lazy" }), el("span", { class: "anim-play" }, uiIcon("play"))]),
+                el("span", { class: "anim-info" }, [
+                  el("span", { class: "anim-kind" }, a.classe || ""),
+                  el("span", { class: "anim-title" }, a.titre || TODO),
+                  el("span", { class: "meta" }, n + " étapes · environ 2 minutes")
+                ])
+              ]));
+            }))
           : todoBanner(TODO + " : aucune animation dans data/animations.js.")
       ])
     };
@@ -1053,10 +1089,31 @@
       var saved = saveScore(q.id, score, questions.length);
       feedback.textContent = "";
       stage.textContent = "";
-      var heading = el("h2", { tabindex: "-1" }, "Score final : " + score + " / " + questions.length);
+      var total = questions.length, pct = total ? Math.round(100 * score / total) : 0;
+      var essais = ((readScores()[q.id] || {}).essais) || [];
+      var before = essais.length > 1 ? essais[essais.length - 2] : null;
+      var msg = pct === 100 ? ["Parfait !", "Toutes les réponses sont justes."]
+        : pct >= 80 ? ["Très bien", "Relisez les quelques points manqués dans les fiches."]
+        : pct >= 50 ? ["Bon début", "Reprenez les fiches concernées, puis refaites le quiz."]
+        : ["À retravailler", "Relisez les fiches et les « essentiels », puis réessayez."];
+      var R = 52, C = 2 * Math.PI * R;
+      var gauge = svg("svg", { viewBox: "0 0 120 120", class: "gauge" + (pct >= 80 ? " g-ok" : pct >= 50 ? " g-mid" : " g-low"), "aria-hidden": "true" }, [
+        svg("circle", { cx: 60, cy: 60, r: R, class: "g-track" }),
+        svg("circle", { cx: 60, cy: 60, r: R, class: "g-bar", "stroke-dasharray": C, "stroke-dashoffset": C * (1 - pct / 100), transform: "rotate(-90 60 60)" }),
+        svg("text", { x: 60, y: 58, "text-anchor": "middle", class: "g-num" }, [score + "/" + total]),
+        svg("text", { x: 60, y: 78, "text-anchor": "middle", class: "g-pct" }, [pct + " %"])
+      ]);
+      var heading = el("h2", { tabindex: "-1" }, msg[0]);
+      var delta = before ? score - before.score : null;
       add(stage, el("div", { class: "quiz-end" }, [
-        heading,
-        el("p", null, saved ? "Score enregistré sur cet appareil uniquement." : "Le score n'a pas pu être enregistré (stockage du navigateur indisponible). Il n'est envoyé nulle part."),
+        el("div", { class: "qe-top" }, [gauge, el("div", null, [
+          heading,
+          el("p", { class: "qe-msg" }, msg[1]),
+          el("p", { class: "visually-hidden" }, "Score : " + score + " sur " + total + "."),
+          delta !== null ? el("p", { class: "qe-delta " + (delta > 0 ? "up" : delta < 0 ? "down" : "same") },
+            delta > 0 ? "+" + delta + " par rapport à l'essai précédent" : delta < 0 ? delta + " par rapport à l'essai précédent" : "Même score qu'à l'essai précédent") : null
+        ])]),
+        el("p", { class: "meta" }, saved ? "Score enregistré sur cet appareil uniquement." : "Le score n'a pas pu être enregistré (stockage du navigateur indisponible). Il n'est envoyé nulle part."),
         el("div", { class: "controls" }, [
           el("button", { type: "button", class: "btn btn-primary", onclick: function () { idx = 0; score = 0; renderQuestion(); stage.querySelector("input") && stage.querySelector("input").focus(); } }, "Recommencer ce quiz"),
           el("a", { class: "btn btn-ghost", href: "#/quiz" }, "Retour aux quiz")

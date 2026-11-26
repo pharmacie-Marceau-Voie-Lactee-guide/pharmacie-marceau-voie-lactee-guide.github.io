@@ -892,3 +892,99 @@ body.review main::before { content: "Mode relecture : les informations à compl�
 }
 .filter-chip[aria-pressed="true"] { background: var(--primary); color: #fff; border-color: var(--primary); }
 .meds-table tr[hidden] { display: none; }
+
+/* =========================================================
+   v8 : affichage ordinateur — fiche en deux colonnes, cartes médicaments,
+   fin de quiz, vignettes d'animations, accueil
+   ========================================================= */
+
+main { max-width: 1240px; }
+.fiche-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 16px; }
+.fiche-header .status { margin: 0 0 8px; }
+.fiche-toc { display: none; }
+
+@media (min-width: 1000px) {
+  .fiche-layout { display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 28px; align-items: start; }
+  .fiche-aside { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow: auto; padding-bottom: 8px; scrollbar-width: thin; }
+  .fiche-aside .essentiel { margin-top: 0; }
+  .fiche-aside .fiche-actions { flex-direction: column; }
+  .fiche-aside .fiche-actions > * { width: 100%; justify-content: center; }
+  .fiche-toc { display: block; background: var(--surface); border-radius: var(--radius); padding: 12px 14px; box-shadow: var(--shadow); margin-top: 12px; }
+  .toc-title { margin: 0 0 6px; font-size: .78rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .fiche-toc ol { list-style: none; padding: 0; margin: 0; counter-reset: t; }
+  .fiche-toc li { counter-increment: t; }
+  .fiche-toc a { display: flex; gap: 10px; align-items: center; padding: 7px 8px; border-radius: 8px; text-decoration: none; color: var(--text); font-weight: 600; font-size: .95rem; }
+  .fiche-toc a::before { content: counter(t); display: inline-flex; width: 22px; height: 22px; border-radius: 50%; background: var(--c-teal-soft); color: var(--c-teal); font-size: .75rem; align-items: center; justify-content: center; flex: none; }
+  .fiche-toc a:hover { background: var(--c-teal-soft); color: var(--primary-dark); }
+  .fiche-toc li:last-child a { color: var(--c-red); }
+  .fiche-toc li:last-child a::before { background: var(--c-red-soft); color: var(--c-red); }
+  .fiche-main > .sec:first-child { margin-top: 0; }
+  .fiche-main .fold-tools { margin-top: -4px; }
+  details.fold, .fiche-main .sec, #passer-la-main { scroll-margin-top: 16px; }
+}
+
+/* Pager plus lisible */
+.pager a { display: inline-flex; flex-direction: column; gap: 2px; padding: 10px 14px; border-radius: 12px; background: var(--surface); box-shadow: var(--shadow); text-decoration: none; font-weight: 700; max-width: 48%; }
+.pager a:hover { background: var(--c-teal-soft); }
+.pg-label { font-size: .75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+.pg-next { text-align: right; margin-left: auto; }
+
+/* Médicaments en cartes */
+.med-grid { list-style: none; padding: 0; margin: 12px 0 24px; display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); }
+.med-grid li { max-width: none; }
+.med-grid > li[hidden] { display: none; }
+.med-card { --fc: var(--c-gray); --fs: var(--c-gray-soft); background: var(--surface); border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; border-top: 5px solid var(--fc); }
+.fam-douleur  { --fc: #c2410c; --fs: #fff1e8; }
+.fam-orl      { --fc: #1f5fa8; --fs: #e9f1fb; }
+.fam-digestif { --fc: #0a6447; --fs: #e3f2ec; }
+.fam-reperer  { --fc: #6a3fa3; --fs: #f2ecfa; }
+.med-top { background: var(--fs); padding: 14px 16px 12px; }
+.med-fam { display: inline-block; font-size: .72rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--fc); }
+.med-title { font-size: 1.12rem; margin: 4px 0 4px; color: var(--text); }
+.med-role { margin: 0; color: #33403c; font-size: .95rem; }
+.med-top .pictos { margin-top: 8px; }
+.med-body { padding: 10px 16px 14px; font-size: .94rem; }
+.med-body h3 { font-size: .75rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); margin: 10px 0 4px; }
+.med-body ul { margin: 0; }
+.med-body li { margin: .2em 0; }
+.med-vig li::marker { color: #c2620f; }
+
+/* Fin de quiz */
+.quiz-end { background: var(--surface); border-radius: 18px; padding: 22px; box-shadow: var(--shadow); max-width: 640px; }
+.qe-top { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+.qe-top h2 { margin: 0 0 4px; font-size: 1.6rem; }
+.qe-msg { margin: 0 0 6px; color: #33403c; }
+.gauge { width: 132px; height: 132px; flex: none; }
+.g-track { fill: none; stroke: #e7ecea; stroke-width: 12; }
+.g-bar { fill: none; stroke-width: 12; stroke-linecap: round; transition: stroke-dashoffset 1s ease; }
+.g-ok .g-bar { stroke: #0a6447; } .g-mid .g-bar { stroke: #e07b1a; } .g-low .g-bar { stroke: #b42318; }
+.g-num { font: 800 22px var(--font); fill: var(--text); }
+.g-pct { font: 600 13px var(--font); fill: var(--muted); }
+.qe-delta { display: inline-block; margin: 0; padding: 3px 10px; border-radius: 999px; font-size: .85rem; font-weight: 700; }
+.qe-delta.up { background: var(--c-green-soft); color: var(--primary-dark); }
+.qe-delta.down { background: var(--c-red-soft); color: var(--c-red); }
+.qe-delta.same { background: var(--c-gray-soft); color: var(--c-gray); }
+@media (prefers-reduced-motion: reduce) { .g-bar { transition: none; } }
+
+/* Animations : vignettes */
+.anim-grid { list-style: none; padding: 0; margin: 14px 0; display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+.anim-grid li { max-width: none; }
+.anim-card { display: flex; flex-direction: column; height: 100%; background: var(--surface); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); text-decoration: none; color: var(--text); transition: transform .15s, box-shadow .15s; }
+.anim-card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(10,60,45,.15); color: var(--text); }
+.anim-thumb { position: relative; height: 200px; background: #fff; overflow: hidden; display: block; }
+.anim-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center 62%; display: block; }
+.anim-play { position: absolute; inset: 0; margin: auto; width: 58px; height: 58px; border-radius: 50%; background: rgba(10,100,71,.92); color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 16px rgba(0,0,0,.25); }
+.anim-play .ui-icon { width: 30px; height: 30px; }
+.anim-info { display: flex; flex-direction: column; gap: 4px; padding: 14px 16px 16px; }
+.anim-kind { font-size: .72rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--c-purple); }
+.anim-title { font-weight: 800; font-size: 1.05rem; color: var(--primary-dark); }
+@media (prefers-reduced-motion: reduce) { .anim-card { transition: none; } .anim-card:hover { transform: none; } }
+
+/* Accueil sur grand écran */
+@media (min-width: 1000px) {
+  .hero { padding: 26px 30px; }
+  .hero h1 { font-size: 2.2rem; }
+  .cards { grid-template-columns: repeat(4, 1fr); }
+  .how-to { grid-template-columns: repeat(3, 1fr); }
+}
+.card { min-height: 100%; }
