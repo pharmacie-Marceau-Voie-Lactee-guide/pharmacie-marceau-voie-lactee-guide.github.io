@@ -8,7 +8,7 @@ GUIDE.site = {
   "nomPharmacienne": "À COMPLÉTER : nom de la pharmacienne",
 
   // Illustration de l'accueil (remplaçable par une photo : "assets/photos/officine.jpg").
-  "photoAccueil": "assets/illustrations/officine.svg",
+  "photoAccueil": "assets/illustrations/officine.svg?v=2",
   "photoAccueilTexte": "",
 
   "presentation": "Ce guide rassemble, pour chaque demande courante du comptoir, les questions à poser, les orientations possibles et le moment où il faut appeler le pharmacien. Il est réservé à l'équipe de l'officine.",

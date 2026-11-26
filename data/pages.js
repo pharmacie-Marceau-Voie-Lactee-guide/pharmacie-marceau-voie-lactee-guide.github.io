@@ -32,6 +32,7 @@ GUIDE.pages = [
         "titre": "Numéros de l'officine",
         "paragraphes": [],
         "liste": [
+          "Adresse de l'officine (à donner au 15 en cas d'urgence) : 116 avenue Marceau, 92400 Courbevoie",
           "Centre antipoison de la région : À COMPLÉTER",
           "Médecins du secteur : À COMPLÉTER",
           "Grossiste-répartiteur : À COMPLÉTER",
