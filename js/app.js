@@ -1015,8 +1015,7 @@
         else if (e.key === "ArrowLeft") { go(current - 1, true); e.preventDefault(); }
       }
     }, [
-      el("figure", { class: "animation-figure" }, [figure, el("figcaption", { class: "credit" },
-        "Illustration de l'appareil digestif : Mariana Ruiz Villarreal (LadyofHats), Wikimedia Commons, domaine public. Cœur, vaisseaux, reins, légendes et trajet ajoutés pour ce guide.")]),
+      el("figure", { class: "animation-figure" }, [figure]),
       el("div", { class: "animation-side" }, [
         live,
         el("div", { class: "controls" }, [btnPrev, btnNext, btnReset]),
