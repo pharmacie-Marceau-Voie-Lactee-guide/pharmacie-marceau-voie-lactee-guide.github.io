@@ -305,12 +305,15 @@
     return {
       title: "Accueil",
       node: el("div", null, [
-        el("div", { class: "hero" }, [
+        el("div", { class: "hero" + (site.photoAccueil ? " has-photo" : "") }, [
+          site.photoAccueil ? el("img", { class: "hero-photo", src: site.photoAccueil, alt: site.photoAccueilTexte || "" }) : null,
+          el("div", { class: "hero-copy" }, [
           el("span", { class: "hero-badge" }, uiIcon("cross")),
           el("div", null, [
             el("p", { class: "hero-kicker" }, site.nomOfficine || TODO),
             el("h1", null, "Guide d'intégration"),
             el("p", { class: "hero-text" }, site.presentation || TODO)
+          ])
           ])
         ]),
         searchForm("").form,
@@ -472,6 +475,7 @@
         el("ul", { class: "med-grid meds-table", "aria-label": "Classes de médicaments" }, rows.map(function (r) {
           var fam = (m.familles || []).filter(function (x) { return x.id === r.famille; })[0];
           return el("li", { class: "med-card fam-" + (r.famille || "autre"), "data-famille": r.famille || "autre" }, [
+            r.photo ? el("img", { class: "med-photo", src: r.photo, alt: r.photoTexte || "", loading: "lazy" }) : null,
             el("div", { class: "med-top" }, [
               el("span", { class: "med-fam" }, fam ? fam.nom : ""),
               el("h2", { class: "med-title" }, el("span", { class: "no-gloss" }, r.classe || TODO)),
@@ -535,7 +539,7 @@
   function productItem(x) {
     if (typeof x === "string") return el("li", { class: "prod-item" }, [el("span", { class: "form-icon-empty", "aria-hidden": "true" }), el("span", null, x)]);
     return el("li", { class: "prod-item" + (x.indisponible ? " is-unavailable" : "") }, [
-      formIcon(x.forme) || el("span", { class: "form-icon-empty", "aria-hidden": "true" }),
+      x.photo ? el("img", { class: "prod-photo", src: x.photo, alt: "Boîte de " + x.nom, loading: "lazy" }) : (formIcon(x.forme) || el("span", { class: "form-icon-empty", "aria-hidden": "true" })),
       el("span", { class: "prod-text" }, [
         el("strong", null, x.nom || TODO),
         x.forme && FORM_LABEL[x.forme] ? el("span", { class: "prod-form" }, " · " + FORM_LABEL[x.forme]) : null,

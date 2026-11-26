@@ -177,3 +177,11 @@ Bouton « Mode relecture (pharmacienne) » en bas de chaque page.
 - En temps normal, les informations manquantes (« À COMPLÉTER ») sont discrètes (« information à venir ») et les lignes vides sont masquées. Chaque page affiche une seule étiquette « Version de travail » tant que son champ `"validation"` n'est pas rempli.
 - En mode relecture, tout ce qui manque est affiché en orange, et les sections marquées `"relecture": true` (dans `data/pages.js`) apparaissent.
 - Dès que `"validation": { "par": "...", "le": "..." }` est rempli, l'étiquette devient verte : « Validé par … le … ».
+
+## Photos
+
+Déposer les photos dans `assets/photos/` (format JPG, environ 1200 px de large au maximum), puis :
+- photo d'accueil : dans `data/site.js`, ajouter `"photoAccueil": "assets/photos/officine.jpg"` et `"photoAccueilTexte": "description courte"` ;
+- photo d'un produit (fiche) : ajouter `"photo": "assets/photos/strepsils.jpg"` au produit ;
+- photo d'une classe de médicaments : ajouter `"photo"` et `"photoTexte"` à la ligne dans `data/medicaments.js`.
+Ne jamais mettre de photo montrant un patient, une ordonnance ou un écran Winpharma : le site est public.
