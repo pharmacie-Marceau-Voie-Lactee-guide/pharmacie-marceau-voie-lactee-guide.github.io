@@ -5,6 +5,7 @@
 window.GUIDE = window.GUIDE || {};
 GUIDE.site = {
   "nomOfficine": "Pharmacie Marceau Voie Lactée",
+  "adresse": "116 avenue Marceau, 92400 Courbevoie",
   "nomPharmacienne": "À COMPLÉTER : nom de la pharmacienne",
 
   // Illustration de l'accueil (remplaçable par une photo : "assets/photos/officine.jpg").

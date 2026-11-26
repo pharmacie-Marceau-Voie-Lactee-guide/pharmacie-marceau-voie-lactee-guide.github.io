@@ -185,3 +185,10 @@ Déposer les photos dans `assets/photos/` (format JPG, environ 1200 px de large 
 - photo d'un produit (fiche) : ajouter `"photo": "assets/photos/strepsils.jpg"` au produit ;
 - photo d'une classe de médicaments : ajouter `"photo"` et `"photoTexte"` à la ligne dans `data/medicaments.js`.
 Ne jamais mettre de photo montrant un patient, une ordonnance ou un écran Winpharma : le site est public.
+
+## Chiffres clés, « À dire au patient », illustrations
+
+- Dans `data/fiches.js`, `"chiffres"` affiche les repères en grand (`{ "valeur": "1 g", "texte": "par prise" }`) et `"aDire"` les phrases à dire au patient.
+- Les illustrations de fiches sont dessinées dans `js/app.js` (objet `ART`, une entrée par `id` de fiche). Une nouvelle fiche sans illustration affiche son icône.
+- L'adresse de l'officine (pied de page) est dans `data/site.js` (`"adresse"`).
+- Le mode sombre s'active automatiquement selon le réglage de l'appareil.

@@ -160,9 +160,84 @@
 
   var COLORS = ["green", "blue", "purple", "orange", "teal", "pink", "red", "gray"];
 
-  function card(href, title, text, color, icon) {
+  /* ---------- Illustrations des fiches (dessinées ici, 64 × 64) ---------- */
+  var ART = {
+    "mal-de-gorge": ["#fdeee6", [
+      ["path", { d: "M22 50c0-8 2-14 2-20a10 10 0 1 1 20 0c0 6-2 12 2 20z", fill: "#f6c8a8" }],
+      ["circle", { cx: 34, cy: 26, r: 12, fill: "#f8d3b6" }],
+      ["path", { d: "M31 40c2 3 6 3 8 0", stroke: "#e0533d", "stroke-width": 3, fill: "none", "stroke-linecap": "round" }],
+      ["circle", { cx: 35, cy: 43, r: 4.5, fill: "#ef6b54", opacity: ".85" }],
+      ["path", { d: "M44 39l5-2M45 44l5 1M44 48l4 3", stroke: "#ef6b54", "stroke-width": 2, "stroke-linecap": "round" }]]],
+    "toux": ["#e8f1fb", [
+      ["circle", { cx: 26, cy: 32, r: 13, fill: "#f8d3b6" }],
+      ["ellipse", { cx: 36, cy: 35, rx: 3, ry: 2.5, fill: "#c2524a" }],
+      ["circle", { cx: 46, cy: 30, r: 5, fill: "#b9d4f1" }], ["circle", { cx: 53, cy: 36, r: 4, fill: "#cfe1f6" }], ["circle", { cx: 47, cy: 41, r: 3.5, fill: "#dceaf9" }]]],
+    "rhume": ["#e9f4fb", [
+      ["path", { d: "M18 22h22l4 26H22z", fill: "#ffffff", stroke: "#c9d9e6", "stroke-width": 1.5 }],
+      ["path", { d: "M23 28h17M24 34h17M25 40h17", stroke: "#dbe7f0", "stroke-width": 1.5 }],
+      ["path", { d: "M47 18s5 6 5 9a5 5 0 0 1-10 0c0-3 5-9 5-9z", fill: "#62a8e3" }],
+      ["path", { d: "M50 34s3.5 4 3.5 6a3.5 3.5 0 0 1-7 0c0-2 3.5-6 3.5-6z", fill: "#8cc0ee" }]]],
+    "douleur-fievre": ["#fdecea", [
+      ["rect", { x: 28, y: 12, width: 9, height: 32, rx: 4.5, fill: "#ffffff", stroke: "#d6dde0", "stroke-width": 1.5 }],
+      ["rect", { x: 30.5, y: 22, width: 4, height: 24, rx: 2, fill: "#e0533d" }],
+      ["circle", { cx: 32.5, cy: 47, r: 7, fill: "#e0533d" }],
+      ["path", { d: "M40 18h5M40 24h3M40 30h5M40 36h3", stroke: "#b5c0c4", "stroke-width": 1.5, "stroke-linecap": "round" }]]],
+    "diarrhee": ["#eaf5ef", [
+      ["rect", { x: 16, y: 22, width: 26, height: 24, rx: 3, fill: "#ffffff", stroke: "#d6dde0", "stroke-width": 1.5 }],
+      ["ellipse", { cx: 42, cy: 34, rx: 7, ry: 12, fill: "#f2f5f4", stroke: "#d6dde0", "stroke-width": 1.5 }],
+      ["ellipse", { cx: 42, cy: 34, rx: 2.5, ry: 4.5, fill: "#c9d3d0" }],
+      ["path", { d: "M50 16s4 5 4 7.5a4 4 0 0 1-8 0c0-2.5 4-7.5 4-7.5z", fill: "#62a8e3" }]]],
+    "brulures-estomac": ["#fff1e6", [
+      ["path", { d: "M24 20c10-4 22 0 24 12 2 12-6 20-16 20-6 0-10-3-12-7 6 0 12-2 14-8 1-5-3-8-8-7z", fill: "#f3a27e" }],
+      ["path", { d: "M33 12c1 4 5 5 5 9a5 5 0 0 1-10 0c0-2 1-3 2-4 1 1 2 1 3 1 0-2-1-4 0-6z", fill: "#f2891f" }],
+      ["path", { d: "M33 17c.6 2 2.6 2.6 2.6 4.5a2.6 2.6 0 0 1-5.2 0", fill: "#ffd15c" }]]],
+    "constipation": ["#f6efe6", [
+      ["path", { d: "M18 22h28v8H18zM18 30h28v8H18zM18 38h28v8H18z", fill: "none" }],
+      ["path", { d: "M20 24c4-4 8 4 12 0s8 4 12 0M20 33c4-4 8 4 12 0s8 4 12 0M20 42c4-4 8 4 12 0s8 4 12 0", stroke: "#e7a68a", "stroke-width": 5, fill: "none", "stroke-linecap": "round" }],
+      ["circle", { cx: 49, cy: 16, r: 6, fill: "#ffffff", stroke: "#d6dde0", "stroke-width": 1.5 }],
+      ["path", { d: "M49 13v3l2 1.5", stroke: "#7a8a83", "stroke-width": 1.5, fill: "none", "stroke-linecap": "round" }]]],
+    "allergie-saisonniere": ["#fff8e1", [
+      ["path", { d: "M32 50V34", stroke: "#5aa86a", "stroke-width": 3, "stroke-linecap": "round" }],
+      ["path", { d: "M32 44c-6 0-9-4-9-7 5 0 9 3 9 7z", fill: "#7cc28a" }],
+      ["circle", { cx: 32, cy: 18, r: 6, fill: "#f6a3b8" }], ["circle", { cx: 41, cy: 25, r: 6, fill: "#f6a3b8" }],
+      ["circle", { cx: 23, cy: 25, r: 6, fill: "#f6a3b8" }], ["circle", { cx: 36, cy: 33, r: 6, fill: "#f6a3b8" }], ["circle", { cx: 28, cy: 33, r: 6, fill: "#f6a3b8" }],
+      ["circle", { cx: 32, cy: 26, r: 5, fill: "#ffcf3a" }],
+      ["circle", { cx: 48, cy: 14, r: 1.8, fill: "#f0b21a" }], ["circle", { cx: 52, cy: 20, r: 1.4, fill: "#f0b21a" }], ["circle", { cx: 46, cy: 10, r: 1.2, fill: "#f0b21a" }]]],
+    "piqures-insectes": ["#fff7e0", [
+      ["ellipse", { cx: 24, cy: 24, rx: 8, ry: 6, fill: "#d8ecf7", transform: "rotate(-25 24 24)" }],
+      ["ellipse", { cx: 38, cy: 22, rx: 8, ry: 6, fill: "#d8ecf7", transform: "rotate(25 38 22)" }],
+      ["ellipse", { cx: 32, cy: 38, rx: 9, ry: 12, fill: "#ffc83a" }],
+      ["path", { d: "M23.5 34h17M23 40h18M25 46h14", stroke: "#3b3b3b", "stroke-width": 3 }],
+      ["circle", { cx: 32, cy: 25, r: 5, fill: "#3b3b3b" }], ["path", { d: "M32 50l0 5", stroke: "#3b3b3b", "stroke-width": 2, "stroke-linecap": "round" }]]],
+    "brulures-peau": ["#fff6df", [
+      ["circle", { cx: 32, cy: 32, r: 10, fill: "#ffbf2e" }],
+      ["path", { d: "M32 12v6M32 46v6M12 32h6M46 32h6M18 18l4 4M42 42l4 4M18 46l4-4M42 22l4-4", stroke: "#ffbf2e", "stroke-width": 3.5, "stroke-linecap": "round" }],
+      ["circle", { cx: 29, cy: 29, r: 3, fill: "#ffe08a" }]]],
+    "poux": ["#f3eefa", [
+      ["rect", { x: 14, y: 22, width: 36, height: 9, rx: 2, fill: "#a7835f" }],
+      ["path", { d: "M17 31v14M21 31v14M25 31v14M29 31v14M33 31v14M37 31v14M41 31v14M45 31v14", stroke: "#a7835f", "stroke-width": 2.4, "stroke-linecap": "round" }],
+      ["circle", { cx: 50, cy: 16, r: 2, fill: "#6b5b4b" }], ["circle", { cx: 44, cy: 14, r: 1.5, fill: "#6b5b4b" }]]],
+    "cystite": ["#e8f3fb", [
+      ["path", { d: "M20 18h24l-3 32a3 3 0 0 1-3 3H26a3 3 0 0 1-3-3z", fill: "#ffffff", stroke: "#c9d9e6", "stroke-width": 1.5 }],
+      ["path", { d: "M22.5 30h19l-2 20a2 2 0 0 1-2 2H26.5a2 2 0 0 1-2-2z", fill: "#9fcdf2" }],
+      ["path", { d: "M27 36h3M28 42h2", stroke: "#ffffff", "stroke-width": 2, "stroke-linecap": "round", opacity: ".8" }]]],
+    "contraception-urgence": ["#eef3fb", [
+      ["circle", { cx: 28, cy: 30, r: 14, fill: "#ffffff", stroke: "#c9d4e6", "stroke-width": 2 }],
+      ["path", { d: "M28 21v9l6 4", stroke: "#4a6fb5", "stroke-width": 2.6, fill: "none", "stroke-linecap": "round" }],
+      ["rect", { x: 38, y: 38, width: 18, height: 9, rx: 4.5, fill: "#f6a3b8", transform: "rotate(-30 47 42.5)" }],
+      ["path", { d: "M47 38.5v8", stroke: "#ffffff", "stroke-width": 1.5, transform: "rotate(-30 47 42.5)" }]]]
+  };
+
+  function ficheArt(id, size) {
+    var a = ART[id];
+    if (!a) return null;
+    return svg("svg", { viewBox: "0 0 64 64", width: size || 64, height: size || 64, class: "fiche-art", "aria-hidden": "true", focusable: "false" },
+      [svg("circle", { cx: 32, cy: 32, r: 32, fill: a[0] })].concat(a[1].map(function (p) { return svg(p[0], p[1]); })));
+  }
+
+  function card(href, title, text, color, icon, artId) {
     return el("li", null, el("a", { class: "card c-" + (color || "green"), href: href }, [
-      icon ? el("span", { class: "card-icon" }, uiIcon(icon)) : null,
+      artId && ART[artId] ? el("span", { class: "card-art" }, ficheArt(artId, 56)) : (icon ? el("span", { class: "card-icon" }, uiIcon(icon)) : null),
       el("span", { class: "card-body" }, [
         el("span", { class: "card-title" }, title),
         text ? el("span", { class: "card-text" }, text) : null
@@ -351,7 +426,7 @@
         el("h1", null, "Fiches par situation"),
         el("p", null, "Choisissez la situation qui correspond à la demande du patient."),
         fiches.length
-          ? el("ul", { class: "cards" }, fiches.map(function (f, i) { return card("#/fiche/" + encodeURIComponent(f.id), f.titre || TODO, (f.resume && f.resume.souvent) || f.motif, COLORS[i % 6], f.icone || "fiches"); }))
+          ? el("ul", { class: "cards" }, fiches.map(function (f, i) { return card("#/fiche/" + encodeURIComponent(f.id), f.titre || TODO, (f.resume && f.resume.souvent) || f.motif, COLORS[i % 6], f.icone || "fiches", f.id); }))
           : todoBanner(TODO + " : aucune fiche dans data/fiches.js.")
       ])
     };
@@ -376,7 +451,7 @@
     ]) : null;
 
     var toc = [["h-motif", "Motif de la demande"], ["h-questions", "Questions à poser"], ["h-orient", "Orientations"]]
-      .concat(f.produits ? [["h-produits", "Produits"]] : [], [["h-vigil", "Vigilance"], ["passer-la-main", "Passer la main"]]);
+      .concat(f.aDire ? [["h-adire", "À dire au patient"]] : [], f.produits ? [["h-produits", "Produits"]] : [], [["h-vigil", "Vigilance"], ["passer-la-main", "Passer la main"]]);
     var tocNav = el("nav", { class: "fiche-toc", "aria-label": "Sommaire de la fiche" }, [
       el("p", { class: "toc-title" }, "Sur cette fiche"),
       el("ol", null, toc.map(function (t) {
@@ -400,8 +475,12 @@
           e.currentTarget.textContent = anyClosed ? "Tout replier" : "Tout déplier";
         } }, window.matchMedia && window.matchMedia("(min-width: 861px)").matches ? "Tout replier" : "Tout déplier")
       ]),
+      f.chiffres && f.chiffres.length ? el("section", { class: "chiffres", "aria-label": "Repères chiffrés" }, f.chiffres.map(function (c) {
+        return el("div", { class: "chiffre" }, [el("span", { class: "ch-val" }, c.valeur), el("span", { class: "ch-txt" }, c.texte)]);
+      })) : null,
       fold("h-questions", "Questions à poser au patient", "help", "teal", list(f.questions, true, "num-list")),
       fold("h-orient", "Orientations possibles", "compass", "green", list(f.orientations, false, "check-list")),
+      f.aDire && f.aDire.length ? fold("h-adire", "À dire au patient", "chat", "green", el("ul", { class: "a-dire" }, f.aDire.map(function (t) { return el("li", null, el("q", null, t)); }))) : null,
       f.produits ? fold("h-produits", f.produits.titre || "Les produits", "pill", "purple", productsBlock(f.produits, true), "products") : null,
       fold("h-vigil", "Points de vigilance", "alert", "orange", list(f.vigilance), "fold-warn"),
       el("section", { class: "callout callout-alert", id: "passer-la-main", tabindex: "-1", "aria-labelledby": "h-main" }, [
@@ -430,7 +509,7 @@
       node: el("article", { class: "fiche" }, [
         el("p", { class: "breadcrumb" }, el("a", { href: "#/fiches" }, "← Toutes les fiches")),
         el("header", { class: "fiche-header" }, [
-          el("div", { class: "fiche-head" }, [el("span", { class: "fiche-icon" }, uiIcon(f.icone || "fiches")), el("h1", null, f.titre || TODO)]),
+          el("div", { class: "fiche-head" }, [ART[f.id] ? el("span", { class: "fiche-art-big" }, ficheArt(f.id, 72)) : el("span", { class: "fiche-icon" }, uiIcon(f.icone || "fiches")), el("h1", null, f.titre || TODO)]),
           statusPill(f.validation, "fiche")
         ]),
         el("div", { class: "fiche-layout" }, [aside, main])
@@ -972,23 +1051,29 @@
 
   function viewQuizList() {
     var quizzes = G.quiz || [];
-    var scores = readScores();
     var status = el("p", { class: "visually-hidden", "aria-live": "polite" });
-    var tableBody = el("tbody");
+    var grid = el("ul", { class: "quiz-tiles" });
 
     function fillHistory() {
-      scores = readScores();
-      tableBody.textContent = "";
-      quizzes.forEach(function (q) {
+      var scores = readScores();
+      grid.textContent = "";
+      quizzes.forEach(function (q, i) {
         var essais = (scores[q.id] && scores[q.id].essais) || [];
         var last = essais[essais.length - 1];
         var best = essais.reduce(function (b, e) { return !b || e.score / e.total > b.score / b.total ? e : b; }, null);
-        tableBody.appendChild(el("tr", null, [
-          el("th", { scope: "row" }, q.titre || q.id),
-          el("td", null, last ? last.score + " / " + last.total + " (" + formatDate(last.date) + ")" : "Pas encore fait"),
-          el("td", null, best ? best.score + " / " + best.total : "—"),
-          el("td", null, String(essais.length))
-        ]));
+        var n = (q.questions || []).length;
+        grid.appendChild(el("li", null, el("article", { class: "quiz-tile" }, [
+          el("p", { class: "qt-kicker" }, i === 0 ? "Premier jour" : "Après un mois"),
+          el("h2", null, q.titre || q.id),
+          el("p", { class: "qt-desc" }, q.description || ""),
+          el("dl", { class: "qt-stats" }, [
+            el("div", null, [el("dt", null, "Questions"), el("dd", null, String(n))]),
+            el("div", null, [el("dt", null, "Dernier score"), el("dd", null, last ? last.score + "/" + last.total : "—")]),
+            el("div", null, [el("dt", null, "Meilleur"), el("dd", null, best ? best.score + "/" + best.total : "—")])
+          ]),
+          last ? el("p", { class: "meta" }, "Dernier essai le " + formatDate(last.date) + " · " + essais.length + " essai" + (essais.length > 1 ? "s" : "")) : el("p", { class: "meta" }, "Pas encore fait"),
+          el("a", { class: "btn btn-primary", href: "#/quiz/" + encodeURIComponent(q.id) }, last ? "Refaire le quiz" : "Commencer le quiz")
+        ])));
       });
     }
     fillHistory();
@@ -998,16 +1083,9 @@
       node: el("div", null, [
         el("h1", null, "Quiz"),
         el("p", null, "Deux quiz de dix questions : le quiz J0 à faire le premier jour, le quiz J30 après un mois. Chaque réponse est corrigée immédiatement."),
-        el("ul", { class: "cards" }, quizzes.map(function (q) {
-          return card("#/quiz/" + encodeURIComponent(q.id), q.titre || q.id, q.description, ["orange", "pink"][quizzes.indexOf(q) % 2], "quiz");
-        })),
-        el("h2", null, "Mes résultats sur cet appareil"),
-        el("div", { class: "table-wrap", role: "region", "aria-label": "Mes résultats", tabindex: "0" }, el("table", null, [
-          el("thead", null, el("tr", null, ["Quiz", "Dernier score", "Meilleur score", "Essais"].map(function (h) { return el("th", { scope: "col" }, h); }))),
-          tableBody
-        ])),
-        el("p", { class: "meta" }, "Ces résultats sont enregistrés uniquement dans ce navigateur. Ils ne sont jamais envoyés et personne d'autre ne les voit."),
-        el("button", { type: "button", class: "btn btn-ghost", onclick: function () {
+        grid,
+        el("p", { class: "meta" }, "Les résultats sont enregistrés uniquement dans ce navigateur. Ils ne sont jamais envoyés et personne d'autre ne les voit."),
+        el("button", { type: "button", class: "btn btn-ghost btn-small", onclick: function () {
           if (window.confirm("Effacer tous vos résultats de quiz sur cet appareil ?")) {
             clearScores(); fillHistory(); status.textContent = "Résultats effacés.";
           }
@@ -1142,9 +1220,11 @@
     refs = refs && refs.length ? refs : [{ titre: TODO }];
     return el("ul", { class: "refs" }, refs.map(function (r) {
       var safe = typeof r.lien === "string" && /^https?:\/\//i.test(r.lien);
-      return el("li", null, [
-        safe ? el("a", { href: r.lien, target: "_blank", rel: "noopener noreferrer" }, r.titre || r.lien) : el("span", null, r.titre || TODO),
-        r.type ? el("span", { class: "meta" }, " — " + r.type) : null,
+      var host = safe ? r.lien.replace(/^https?:\/\//, "").split("/")[0].replace(/^www\./, "") : "";
+      return el("li", { class: "ref" }, [
+        el("span", { class: "ref-type" }, r.type || "Source"),
+        safe ? el("a", { href: r.lien, target: "_blank", rel: "noopener noreferrer" }, r.titre || r.lien) : el("span", { class: "ref-title" }, r.titre || TODO),
+        host ? el("span", { class: "ref-host" }, host) : null,
         r.consulteLe ? el("span", { class: "meta" }, " — consulté le " + r.consulteLe) : null
       ]);
     }));
@@ -1184,6 +1264,15 @@
     return { title: "Sources", section: "sources", node: node, focusId: focusKey ? "src-" + focusKey : null };
   }
 
+  function phoneTiles(items) {
+    return el("ul", { class: "phone-tiles" }, items.map(function (t) {
+      var m = t.match(/^(\d{2,4}) : (.*)$/);
+      return el("li", null, el("a", { class: "phone-tile" + (m[1] === "15" || m[1] === "112" ? " urgent" : ""), href: "tel:" + m[1] }, [
+        el("span", { class: "pt-num" }, m[1]), el("span", { class: "pt-label" }, m[2])
+      ]));
+    }));
+  }
+
   function viewPage(id) {
     var p = findById(G.pages, id);
     if (!p) return viewNotFound();
@@ -1199,7 +1288,7 @@
             sec.titre ? el("h2", null, sec.titre) : null,
             (sec.paragraphes || []).map(function (t) { return el("p", null, t); }),
             sec.etapes && sec.etapes.length ? list(sec.etapes, true, "steps-list") : null,
-            sec.liste && sec.liste.length ? list(sec.liste) : null,
+            sec.liste && sec.liste.length ? (sec.liste.every(function (t) { return /^\d{2,4} : /.test(t); }) ? phoneTiles(sec.liste) : list(sec.liste)) : null,
             sec.attention && sec.attention.length
               ? el("div", { class: "callout callout-warning", role: "note" }, [el("p", null, el("strong", null, "Attention")), list(sec.attention)])
               : null
@@ -1470,7 +1559,7 @@
       el("h2", { id: "h-season" }, ["En ce moment · ", s.nom]),
       el("p", { class: "meta" }, s.texte + " Les demandes les plus fréquentes au comptoir :"),
       el("ul", { class: "chips" }, fiches.map(function (f) {
-        return el("li", null, el("a", { href: "#/fiche/" + encodeURIComponent(f.id), class: "chip-link" }, [uiIcon(f.icone || "fiches"), el("span", null, f.titre)]));
+        return el("li", null, el("a", { href: "#/fiche/" + encodeURIComponent(f.id), class: "chip-link" }, [ficheArt(f.id, 30) || uiIcon(f.icone || "fiches"), el("span", null, f.titre)]));
       }))
     ]);
   }
@@ -1481,7 +1570,7 @@
     return el("section", { class: "favs", "aria-labelledby": "h-favs" }, [
       el("h2", { id: "h-favs" }, "Mes fiches favorites"),
       el("ul", { class: "chips" }, favs.map(function (f) {
-        return el("li", null, el("a", { href: "#/fiche/" + encodeURIComponent(f.id), class: "chip-link fav" }, [uiIcon(f.icone || "fiches"), el("span", null, f.titre)]));
+        return el("li", null, el("a", { href: "#/fiche/" + encodeURIComponent(f.id), class: "chip-link fav" }, [ficheArt(f.id, 30) || uiIcon(f.icone || "fiches"), el("span", null, f.titre)]));
       }))
     ]);
   }
@@ -1607,6 +1696,27 @@
     return { title: "Recherche", section: "recherche", node: el("div", null, [el("h1", null, "Rechercher"), f.form, results]) };
   }
 
+  // Regroupe le titre et l'introduction des pages en un bandeau d'en-tête.
+  var PAGE_ICONS = { fiches: "fiches", medicaments: "pill", animations: "play", quiz: "quiz", sources: "book", glossaire: "book2", recherche: "search", "page/urgences": "phone", "page/reception-commandes": "box", "page/installer": "home" };
+  function pageHead(root, key) {
+    var first = root.firstElementChild;
+    if (!first) return;
+    var h1 = first.querySelector(":scope > h1");
+    if (!h1 || first.querySelector(":scope > .hero, :scope > .fiche-header") || first.classList.contains("fiche")) return;
+    if (h1.closest(".fiche-head")) return;
+    var head = el("header", { class: "page-head" });
+    var icon = PAGE_ICONS[key];
+    var textBox = el("div", { class: "ph-text" });
+    if (icon) head.appendChild(el("span", { class: "ph-icon" }, uiIcon(icon)));
+    head.appendChild(textBox);
+    h1.parentNode.insertBefore(head, h1);
+    textBox.appendChild(h1);
+    var n = head.nextElementSibling;
+    while (n && (n.matches("p.status") || (n.tagName === "P" && !n.querySelector("a.btn") && n.textContent.length > 30 && !textBox.querySelector("p:not(.status)")))) {
+      var nx = n.nextElementSibling; textBox.appendChild(n); n = nx;
+    }
+  }
+
   function viewNotFound() {
     return {
       title: "Page introuvable",
@@ -1652,6 +1762,8 @@
     app.appendChild(v.node);
     if (section !== "glossaire" && section !== "recherche" && section !== "quiz") { try { linkGlossary(app); } catch (e) { /* sans glossaire */ } }
     tidyDrafts(app);
+    pageHead(app, v.section || SECTION_OF[section] || section);
+    app.classList.remove("page-enter"); void app.offsetWidth; app.classList.add("page-enter");
     document.title = v.title + " – " + SITE_TITLE;
     setCurrentNav(v.section || SECTION_OF[section] || section);
 
@@ -1704,10 +1816,29 @@
     return btn;
   }
 
+  function buildFooter() {
+    var f = document.querySelector(".site-footer");
+    var keep = Array.prototype.slice.call(f.children);
+    f.textContent = "";
+    f.appendChild(el("div", { class: "foot-inner" }, [
+      el("div", { class: "foot-brand" }, [el("span", { class: "brand-logo" }, uiIcon("cross")), el("div", null, [
+        el("strong", null, site.nomOfficine || ""),
+        el("p", null, site.adresse || ""),
+        el("p", null, "Guide d'intégration des apprentis · usage interne")
+      ])]),
+      el("nav", { class: "foot-links", "aria-label": "Liens du pied de page" }, [
+        el("a", { href: "#/fiches" }, "Fiches"), el("a", { href: "#/glossaire" }, "Glossaire"), el("a", { href: "#/page/urgences" }, "Urgences"),
+        el("a", { href: "#/sources" }, "Sources"), el("a", { href: "#/page/installer" }, "Installer le guide")
+      ]),
+      el("div", { class: "foot-legal" }, keep.filter(function (n) { return !n.querySelector('a[href="#/page/installer"]'); }))
+    ]));
+  }
+
   buildNav();
   buildBottomNav();
+  buildFooter();
   applyReview();
-  document.querySelector(".site-footer").appendChild(el("p", null, reviewToggle()));
+  document.querySelector(".foot-legal").appendChild(el("p", null, reviewToggle()));
   // Impression : tout déplier pour que la fiche papier soit complète.
   window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });
   document.querySelector(".skip-link").addEventListener("click", jumpTo("main"));

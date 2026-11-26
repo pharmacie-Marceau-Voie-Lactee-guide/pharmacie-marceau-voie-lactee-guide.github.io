@@ -4,6 +4,8 @@
  * "id" : identifiant court, sans espace ni accent (sert dans l'adresse de la page et dans data/sources.js).
  * Chaque liste [ ... ] contient des phrases entre guillemets séparées par des virgules.
  * Tout texte contenant « À COMPLÉTER » est signalé sur le site (souligné orange, badge « à valider »).
+ * "chiffres" : repères chiffrés affichés en grand ({ "valeur", "texte" }).
+ * "aDire" : phrases simples à dire au patient.
  * "icone" : dessin de la fiche. Choix : gorge, toux, goutte, thermo, intestin, flamme, sablier,
  *   fleur, insecte, soleil, peigne, urine, horloge, pill, fiches.
  */
@@ -212,7 +214,25 @@ GUIDE.fiches = [
       "regle": "Pas de pastilles avant 6 ans ; pas d'ibuprofène ni d'aspirine en cas d'infection ORL.",
       "alerte": "Gêne pour respirer ou avaler sa salive, fièvre sous traitement qui baisse les défenses, femme enceinte, enfant de moins de 6 ans."
     },
-    "icone": "gorge"
+    "icone": "gorge",
+    "chiffres": [
+      {
+        "valeur": "6 ans",
+        "texte": "âge minimum habituel des pastilles"
+      },
+      {
+        "valeur": "3 g",
+        "texte": "de paracétamol par jour au maximum (adulte)"
+      },
+      {
+        "valeur": "3 jours",
+        "texte": "de fièvre : au-delà, avis médical"
+      }
+    ],
+    "aDire": [
+      "Laissez fondre la pastille sans la croquer, et attendez un peu avant de manger ou de boire.",
+      "Si vous avez du mal à avaler votre salive ou si la fièvre dure, il faut consulter."
+    ]
   },
   {
     "id": "toux",
@@ -259,7 +279,21 @@ GUIDE.fiches = [
       "regle": "Jamais un antitussif avec un mucolytique ; mucolytiques contre-indiqués avant 2 ans.",
       "alerte": "Gêne respiratoire, sifflements, sang dans les crachats, toux de plus de 3 semaines, patient sous traitement de la tension."
     },
-    "icone": "toux"
+    "icone": "toux",
+    "chiffres": [
+      {
+        "valeur": "2 ans",
+        "texte": "mucolytiques contre-indiqués avant cet âge"
+      },
+      {
+        "valeur": "3 semaines",
+        "texte": "de toux : au-delà, consulter"
+      }
+    ],
+    "aDire": [
+      "Ce sirop peut faire dormir : évitez de conduire après l'avoir pris.",
+      "Si la toux dure plus de trois semaines ou si vous avez du mal à respirer, consultez un médecin."
+    ]
   },
   {
     "id": "rhume",
@@ -304,7 +338,21 @@ GUIDE.fiches = [
       "regle": "Pseudoéphédrine par voie orale et sprays vasoconstricteurs : uniquement sur ordonnance.",
       "alerte": "Fièvre de plus de 3 jours, douleur d'oreille ou du visage, nourrisson, symptômes de plus de 10 jours."
     },
-    "icone": "goutte"
+    "icone": "goutte",
+    "chiffres": [
+      {
+        "valeur": "7 à 10 j",
+        "texte": "durée habituelle d'un rhume"
+      },
+      {
+        "valeur": "3 jours",
+        "texte": "de fièvre : au-delà, consulter"
+      }
+    ],
+    "aDire": [
+      "Lavez-vous le nez plusieurs fois par jour avec du sérum physiologique.",
+      "Le rhume guérit tout seul en une semaine environ ; revenez si la fièvre dure ou si vous avez mal aux oreilles."
+    ]
   },
   {
     "id": "douleur-fievre",
@@ -353,7 +401,25 @@ GUIDE.fiches = [
       "regle": "Pas d'AINS chez la femme enceinte (contre-indiqués à partir du 6e mois), sous anticoagulant ou en cas d'infection.",
       "alerte": "Mal de tête brutal avec raideur de la nuque, taches violacées sur la peau, fièvre de plus de 3 jours."
     },
-    "icone": "thermo"
+    "icone": "thermo",
+    "chiffres": [
+      {
+        "valeur": "1 g",
+        "texte": "de paracétamol par prise"
+      },
+      {
+        "valeur": "4 h",
+        "texte": "minimum entre deux prises"
+      },
+      {
+        "valeur": "3 g",
+        "texte": "par jour au maximum sans avis médical"
+      }
+    ],
+    "aDire": [
+      "Ne prenez pas en même temps un autre médicament qui contient du paracétamol.",
+      "Sans avis médical : pas plus de 3 jours pour la fièvre, 5 jours pour la douleur."
+    ]
   },
   {
     "id": "diarrhee",
@@ -398,7 +464,17 @@ GUIDE.fiches = [
       "regle": "Pas de lopéramide en cas de fièvre ou de sang dans les selles.",
       "alerte": "Enfant, personne âgée, déshydratation, fièvre, sang dans les selles, plus de 2 à 3 jours."
     },
-    "icone": "intestin"
+    "icone": "intestin",
+    "chiffres": [
+      {
+        "valeur": "2 à 3 j",
+        "texte": "au-delà, avis nécessaire"
+      }
+    ],
+    "aDire": [
+      "Buvez souvent, par petites gorgées, même si vous n'avez pas soif.",
+      "Lavez-vous bien les mains après être allé aux toilettes."
+    ]
   },
   {
     "id": "brulures-estomac",
@@ -443,7 +519,21 @@ GUIDE.fiches = [
       "regle": "Espacer de 2 h les antiacides et alginates des autres médicaments.",
       "alerte": "Douleur dans la poitrine vers le bras ou la mâchoire (urgence), difficulté à avaler, sang, amaigrissement."
     },
-    "icone": "flamme"
+    "icone": "flamme",
+    "chiffres": [
+      {
+        "valeur": "2 h",
+        "texte": "d'écart avec les autres médicaments"
+      },
+      {
+        "valeur": "14 jours",
+        "texte": "maximum pour un IPP sans ordonnance"
+      }
+    ],
+    "aDire": [
+      "Prenez ce produit à distance de vos autres médicaments, environ deux heures.",
+      "Évitez de vous allonger juste après le repas."
+    ]
   },
   {
     "id": "constipation",
@@ -490,7 +580,17 @@ GUIDE.fiches = [
       "par": "À COMPLÉTER",
       "le": "À COMPLÉTER"
     },
-    "icone": "sablier"
+    "icone": "sablier",
+    "chiffres": [
+      {
+        "valeur": "1,5 L",
+        "texte": "d'eau par jour environ"
+      }
+    ],
+    "aDire": [
+      "Buvez environ un litre et demi d'eau par jour, mangez des fruits et des légumes, et bougez.",
+      "Allez aux toilettes dès que l'envie se présente, sans vous retenir."
+    ]
   },
   {
     "id": "allergie-saisonniere",
@@ -535,7 +635,17 @@ GUIDE.fiches = [
       "par": "À COMPLÉTER",
       "le": "À COMPLÉTER"
     },
-    "icone": "fleur"
+    "icone": "fleur",
+    "chiffres": [
+      {
+        "valeur": "1 prise",
+        "texte": "par jour pour la plupart des antihistaminiques"
+      }
+    ],
+    "aDire": [
+      "Ce médicament peut faire dormir : prudence au volant.",
+      "Pendant la saison des pollens, rincez-vous les cheveux le soir et aérez tôt le matin."
+    ]
   },
   {
     "id": "piqures-insectes",
@@ -581,7 +691,17 @@ GUIDE.fiches = [
       "par": "À COMPLÉTER",
       "le": "À COMPLÉTER"
     },
-    "icone": "insecte"
+    "icone": "insecte",
+    "chiffres": [
+      {
+        "valeur": "30 jours",
+        "texte": "de surveillance après une piqûre de tique"
+      }
+    ],
+    "aDire": [
+      "Surveillez la peau pendant un mois : si une plaque rouge s'agrandit, consultez.",
+      "Si vous avez du mal à respirer ou si votre visage gonfle, appelez le 15."
+    ]
   },
   {
     "id": "brulures-peau",
@@ -628,7 +748,17 @@ GUIDE.fiches = [
       "par": "À COMPLÉTER",
       "le": "À COMPLÉTER"
     },
-    "icone": "soleil"
+    "icone": "soleil",
+    "chiffres": [
+      {
+        "valeur": "15 min",
+        "texte": "sous l'eau tempérée"
+      }
+    ],
+    "aDire": [
+      "Ne percez pas les cloques et ne mettez ni glace, ni beurre, ni dentifrice.",
+      "Si la brûlure est grande, profonde ou sur le visage, il faut consulter."
+    ]
   },
   {
     "id": "poux",
@@ -670,7 +800,21 @@ GUIDE.fiches = [
       "par": "À COMPLÉTER",
       "le": "À COMPLÉTER"
     },
-    "icone": "peigne"
+    "icone": "peigne",
+    "chiffres": [
+      {
+        "valeur": "7 à 10 j",
+        "texte": "avant la deuxième application"
+      },
+      {
+        "valeur": "60 °C",
+        "texte": "pour laver le linge"
+      }
+    ],
+    "aDire": [
+      "Refaites une application 7 à 10 jours plus tard, et peignez au peigne fin tous les 2 à 3 jours.",
+      "On ne traite que les personnes qui ont des poux, pas toute la famille par précaution."
+    ]
   },
   {
     "id": "cystite",
@@ -711,7 +855,17 @@ GUIDE.fiches = [
       "par": "À COMPLÉTER",
       "le": "À COMPLÉTER"
     },
-    "icone": "urine"
+    "icone": "urine",
+    "chiffres": [
+      {
+        "valeur": "1,5 L",
+        "texte": "d'eau par jour au minimum"
+      }
+    ],
+    "aDire": [
+      "Je vais demander au pharmacien de vous recevoir dans un endroit plus discret.",
+      "En attendant, buvez beaucoup d'eau."
+    ]
   },
   {
     "id": "contraception-urgence",
@@ -746,6 +900,20 @@ GUIDE.fiches = [
       "par": "À COMPLÉTER",
       "le": "À COMPLÉTER"
     },
-    "icone": "horloge"
+    "icone": "horloge",
+    "chiffres": [
+      {
+        "valeur": "72 h",
+        "texte": "délai du lévonorgestrel"
+      },
+      {
+        "valeur": "120 h",
+        "texte": "délai de l'ulipristal"
+      }
+    ],
+    "aDire": [
+      "Je vais chercher le pharmacien, il va vous recevoir tout de suite.",
+      "C'est confidentiel : nous allons dans un endroit plus calme."
+    ]
   }
 ];
