@@ -338,6 +338,28 @@ GUIDE.sources = {
         "type": "Base officielle",
         "lien": "https://base-donnees-publique.medicaments.gouv.fr/"
       }
+    ],
+    "ordonnance": [
+      {
+        "titre": "Ordre national des pharmaciens – Délivrance en officine des médicaments relevant des listes I et II : principes généraux",
+        "type": "Document de référence",
+        "lien": "https://www.ordre.pharmacien.fr/je-suis/pharmacien/pharmacien/mon-exercice-professionnel/les-fiches-professionnelles/delivrance-en-officine-des-medicaments-relevant-des-listes-i-et-ii-principes-generaux"
+      },
+      {
+        "titre": "Vidal – Règles générales de prescription et de délivrance des médicaments à prescription obligatoire",
+        "type": "Document de référence",
+        "lien": "https://www.vidal.fr/infos-pratiques/regles-generales-de-prescription-et-de-delivrance-medicaments-a-prescription-obligatoire-id14193.html"
+      },
+      {
+        "titre": "Meddispar – Médicaments à dispensation particulière (stupéfiants et assimilés)",
+        "type": "Base officielle",
+        "lien": "https://www.meddispar.fr/"
+      },
+      {
+        "titre": "Légifrance – Code de la santé publique, articles R. 5132-22 et R. 5132-29 à R. 5132-37",
+        "type": "Texte officiel",
+        "lien": "https://www.legifrance.gouv.fr/"
+      }
     ]
   },
   "verification": {

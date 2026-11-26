@@ -166,6 +166,15 @@
   var SH = function (cx, cy, rx) { return ["ellipse", { cx: cx, cy: cy, rx: rx, ry: rx * 0.22, fill: "#000", opacity: ".08" }]; };
   var HL = function (d, w) { return ["path", { d: d, stroke: "#fff", "stroke-width": w || 2.2, fill: "none", "stroke-linecap": "round", opacity: ".7" }]; };
   var ART = {
+    "ordonnance": ["#e9f4ef", [
+      SH(32, 57, 15),
+      ["path", { d: "M18 9h22l8 8v38a2 2 0 0 1-2 2H18a2 2 0 0 1-2-2V11a2 2 0 0 1 2-2z", fill: "#ffffff", stroke: "#c9d6d1", "stroke-width": 1.5 }],
+      ["path", { d: "M40 9v8h8", fill: "#eef3f1", stroke: "#c9d6d1", "stroke-width": 1.5 }],
+      ["path", { d: "M22 16h12", stroke: "#00805a", "stroke-width": 2.6, "stroke-linecap": "round" }],
+      ["path", { d: "M22 24h20M22 30h16M22 36h20M22 42h12", stroke: "#d3ddd9", "stroke-width": 2, "stroke-linecap": "round" }],
+      ["path", { d: "M33 49c2-3 4 1 6-2s3 1 5-1", stroke: "#3d5fa8", "stroke-width": 1.6, fill: "none", "stroke-linecap": "round" }],
+      ["rect", { x: 40, y: 34, width: 16, height: 8, rx: 4, fill: "#f497ae", transform: "rotate(-35 48 38)" }],
+      ["rect", { x: 48, y: 34, width: 8, height: 8, fill: "#fff", opacity: ".55", transform: "rotate(-35 48 38)" }]]],
     "mal-de-gorge": ["#fde9df", [
       SH(32, 56, 16),
       ["path", { d: "M21 56c1-7 3-12 3-17h16c0 5 2 10 3 17z", fill: "#e9b08d" }],
@@ -501,7 +510,7 @@
       }))
     ]) : null;
 
-    var toc = [["h-motif", "Motif de la demande"], ["h-questions", "Questions à poser"], ["h-orient", "Orientations"]]
+    var toc = [["h-motif", "Motif de la demande"], ["h-questions", f.titreQuestions || "Questions à poser"], ["h-orient", "Orientations"]]
       .concat(f.aDire ? [["h-adire", "À dire au patient"]] : [], f.produits ? [["h-produits", "Produits"]] : [], [["h-vigil", "Vigilance"], ["passer-la-main", "Passer la main"]]);
     var tocNav = el("nav", { class: "fiche-toc", "aria-label": "Sommaire de la fiche" }, [
       el("p", { class: "toc-title" }, "Sur cette fiche"),
@@ -529,7 +538,7 @@
       f.chiffres && f.chiffres.length ? el("section", { class: "chiffres", "aria-label": "Repères chiffrés" }, f.chiffres.map(function (c) {
         return el("div", { class: "chiffre" }, [el("span", { class: "ch-val" }, c.valeur), el("span", { class: "ch-txt" }, c.texte)]);
       })) : null,
-      fold("h-questions", "Questions à poser au patient", "help", "teal", list(f.questions, true, "num-list")),
+      fold("h-questions", f.titreQuestions || "Questions à poser au patient", "help", "teal", list(f.questions, true, "num-list")),
       fold("h-orient", "Orientations possibles", "compass", "green", list(f.orientations, false, "check-list")),
       f.aDire && f.aDire.length ? fold("h-adire", "À dire au patient", "chat", "green", el("ul", { class: "a-dire" }, f.aDire.map(function (t) { return el("li", null, el("q", null, t)); }))) : null,
       f.produits ? fold("h-produits", f.produits.titre || "Les produits", "pill", "purple", productsBlock(f.produits, true), "products") : null,
@@ -1116,13 +1125,13 @@
         var essais = (scores[q.id] && scores[q.id].essais) || [];
         var last = essais[essais.length - 1];
         var best = essais.reduce(function (b, e) { return !b || e.score / e.total > b.score / b.total ? e : b; }, null);
-        var n = (q.questions || []).length;
+        var n = q.tirage || (q.questions || []).length;
         grid.appendChild(el("li", null, el("article", { class: "quiz-tile" }, [
-          el("p", { class: "qt-kicker" }, i === 0 ? "Premier jour" : "Après un mois"),
+          el("p", { class: "qt-kicker" }, q.tirage ? "Série au hasard" : (i === 0 ? "Premier jour" : "Après un mois")),
           el("h2", null, q.titre || q.id),
           el("p", { class: "qt-desc" }, q.description || ""),
           el("dl", { class: "qt-stats" }, [
-            el("div", null, [el("dt", null, "Questions"), el("dd", null, String(n))]),
+            el("div", null, [el("dt", null, q.tirage ? "Par série" : "Questions"), el("dd", null, String(n))]),
             el("div", null, [el("dt", null, "Dernier score"), el("dd", null, last ? last.score + "/" + last.total : "—")]),
             el("div", null, [el("dt", null, "Meilleur"), el("dd", null, best ? best.score + "/" + best.total : "—")])
           ]),
@@ -1137,7 +1146,7 @@
       title: "Quiz",
       node: el("div", null, [
         el("h1", null, "Quiz"),
-        el("p", null, "Deux quiz de dix questions : le quiz J0 à faire le premier jour, le quiz J30 après un mois. Chaque réponse est corrigée immédiatement."),
+        el("p", null, "Le quiz J0 se fait le premier jour, le quiz J30 après un mois. L'entraînement tire 10 questions au hasard dans toute la banque, pour réviser autant de fois que nécessaire. Chaque réponse est corrigée immédiatement."),
         grid,
         el("p", { class: "meta" }, "Les résultats sont enregistrés uniquement dans ce navigateur. Ils ne sont jamais envoyés et personne d'autre ne les voit."),
         el("button", { type: "button", class: "btn btn-ghost btn-small", onclick: function () {
@@ -1153,7 +1162,12 @@
   function viewQuiz(id) {
     var q = findById(G.quiz, id);
     if (!q) return viewNotFound();
-    var questions = q.questions || [];
+    function draw() {
+      var all = q.questions || [];
+      if (!q.tirage || q.tirage >= all.length) return all;
+      return shuffle(all.slice()).slice(0, q.tirage);
+    }
+    var questions = draw();
     var idx = 0, score = 0, answered = false;
     var stage = el("div", { class: "quiz-stage" });
     var feedback = el("div", { class: "quiz-feedback", "aria-live": "polite" });
@@ -1252,7 +1266,7 @@
         ])]),
         el("p", { class: "meta" }, saved ? "Score enregistré sur cet appareil uniquement." : "Le score n'a pas pu être enregistré (stockage du navigateur indisponible). Il n'est envoyé nulle part."),
         el("div", { class: "controls" }, [
-          el("button", { type: "button", class: "btn btn-primary", onclick: function () { idx = 0; score = 0; renderQuestion(); stage.querySelector("input") && stage.querySelector("input").focus(); } }, "Recommencer ce quiz"),
+          el("button", { type: "button", class: "btn btn-primary", onclick: function () { idx = 0; score = 0; questions = draw(); renderQuestion(); stage.querySelector("input") && stage.querySelector("input").focus(); } }, "Recommencer ce quiz"),
           el("a", { class: "btn btn-ghost", href: "#/quiz" }, "Retour aux quiz")
         ])
       ]));

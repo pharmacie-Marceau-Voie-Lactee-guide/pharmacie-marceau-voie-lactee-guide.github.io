@@ -12,6 +12,79 @@
 window.GUIDE = window.GUIDE || {};
 GUIDE.fiches = [
   {
+    "id": "ordonnance",
+    "titre": "Délivrer une ordonnance",
+    "icone": "rx",
+    "motif": "Un patient présente une ordonnance (papier, électronique ou issue d'une téléconsultation) pour obtenir ses médicaments.",
+    "resume": {
+      "souvent": "Vérifier l'ordonnance et le patient, contrôler le dossier dans Winpharma, préparer et expliquer chaque médicament, puis faire valider par le pharmacien.",
+      "regle": "Ordonnance incomplète ou douteuse, alerte du logiciel ou médicament à risque : on ne délivre jamais seul.",
+      "alerte": "Stupéfiant, ordonnance qui paraît falsifiée, interaction signalée, femme enceinte, enfant, posologie inhabituelle, « non substituable »."
+    },
+    "chiffres": [
+      {
+        "valeur": "3 mois",
+        "texte": "pour présenter une ordonnance de liste I ou II (1re délivrance)"
+      },
+      {
+        "valeur": "1 mois",
+        "texte": "de traitement délivré à la fois, en règle générale"
+      },
+      {
+        "valeur": "12 mois",
+        "texte": "durée maximale d'une prescription de liste I ou II"
+      },
+      {
+        "valeur": "28 jours",
+        "texte": "durée maximale de prescription d'un stupéfiant (souvent moins)"
+      }
+    ],
+    "titreQuestions": "Ce qu'il faut vérifier",
+    "questions": [
+      "Le prescripteur : nom, qualité, identifiant (RPPS), adresse, signature et date.",
+      "Le patient : nom, prénom, sexe et âge ; le poids pour un enfant ou quand le médicament le demande.",
+      "Chaque médicament : nom, dosage, forme, posologie et durée du traitement (ou nombre de boîtes).",
+      "La date : pour une première délivrance, une ordonnance de médicaments sur liste I ou II doit dater de moins de 3 mois.",
+      "Le renouvellement : liste I, seulement si l'ordonnance indique « à renouveler » ; liste II, renouvelable sauf si le médecin l'interdit.",
+      "Les mentions particulières : « non substituable » (avec MTE, EFG ou CIF), ordonnance sécurisée, ordonnance bizone (ALD), médicament d'exception.",
+      "Le dossier du patient dans Winpharma et le Dossier Pharmaceutique : traitements en cours, allergies, interactions, délivrances récentes (doublon ou chevauchement).",
+      "La carte Vitale et la mutuelle, pour le tiers payant."
+    ],
+    "orientations": [
+      "Ordonnance complète et sans alerte : préparer les médicaments, proposer le générique quand la substitution est possible, puis faire valider la délivrance par le pharmacien avant de la remettre.",
+      "Délivrer en règle générale un mois de traitement à la fois (trois mois pour les grands conditionnements et certains traitements, comme les contraceptifs).",
+      "Expliquer chaque médicament : à quoi il sert, quand et comment le prendre, pendant combien de temps ; écrire la posologie sur chaque boîte.",
+      "Générique : expliquer qu'il contient le même principe actif, avec la même efficacité. Si le patient refuse sans mention « non substituable » valable, passer la main au pharmacien pour expliquer le remboursement.",
+      "Noter ce qui n'a pas pu être délivré (manquant, promis) et le dire clairement au patient."
+    ],
+    "aDire": [
+      "Je fais vérifier votre ordonnance par le pharmacien, ça ne prend qu'un instant.",
+      "Voici le générique de votre médicament : c'est le même principe actif, avec la même efficacité.",
+      "Je vous note la posologie sur chaque boîte."
+    ],
+    "vigilance": [
+      "Stupéfiants (ex : morphine, oxycodone, fentanyl, méthylphénidate) : ordonnance sécurisée, quantités écrites en toutes lettres, durée limitée (28 jours au maximum, moins pour certains), délivrance souvent fractionnée.",
+      "Stupéfiants : l'ordonnance doit être présentée dans les 3 jours suivant sa rédaction ; au-delà, on ne délivre que la durée qui reste. Pas de chevauchement avec une ordonnance précédente, sauf mention du médecin.",
+      "Ordonnance qui paraît modifiée, photocopiée, d'un médecin inconnu ou avec des quantités inhabituelles : risque de falsification. Ne rien dire au patient et prévenir discrètement le pharmacien.",
+      "Posologie qui paraît anormale (dose très élevée, dose d'enfant pour un adulte ou l'inverse) : ne jamais corriger soi-même.",
+      "Alerte d'interaction ou d'allergie dans Winpharma ou dans le Dossier Pharmaceutique : ne jamais l'ignorer.",
+      "Confidentialité : parler à voix basse et ne pas énoncer les médicaments devant les autres clients."
+    ],
+    "passerLaMain": [
+      "Toute ordonnance de stupéfiant ou d'assimilé stupéfiant.",
+      "Ordonnance incomplète, illisible, trop ancienne ou qui paraît falsifiée.",
+      "Alerte d'interaction, allergie, doublon ou chevauchement de traitement.",
+      "Mention « non substituable », refus du générique ou question sur le remboursement.",
+      "Femme enceinte ou qui allaite, nourrisson ou enfant, posologie qui paraît anormale.",
+      "Traitement habituel dont l'ordonnance est expirée (dépannage) ou médicament en rupture.",
+      "Toute question du patient à laquelle vous ne savez pas répondre."
+    ],
+    "validation": {
+      "par": "À COMPLÉTER",
+      "le": "À COMPLÉTER"
+    }
+  },
+  {
     "id": "mal-de-gorge",
     "titre": "Mal de gorge",
     "motif": "Le patient a mal à la gorge (douleur, irritation, gêne pour avaler) et demande des pastilles, un spray ou « quelque chose pour la gorge ».",
