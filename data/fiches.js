@@ -3,7 +3,9 @@
  * Une fiche = un bloc { ... } dans la liste. Séparez deux fiches par une virgule.
  * "id" : identifiant court, sans espace ni accent (sert dans l'adresse de la page et dans data/sources.js).
  * Chaque liste [ ... ] contient des phrases entre guillemets séparées par des virgules.
- * Tout texte contenant « À COMPLÉTER » est surligné en jaune sur le site.
+ * Tout texte contenant « À COMPLÉTER » est signalé sur le site (souligné orange, badge « à valider »).
+ * "icone" : dessin de la fiche. Choix : gorge, toux, goutte, thermo, intestin, flamme, sablier,
+ *   fleur, insecte, soleil, peigne, urine, horloge, pill, fiches.
  */
 window.GUIDE = window.GUIDE || {};
 GUIDE.fiches = [
@@ -180,7 +182,8 @@ GUIDE.fiches = [
       "souvent": "Pastilles ou spray adaptés à la gêne (adoucissant, antiseptique, anesthésique) + paracétamol si besoin.",
       "regle": "Pas de pastilles avant 6 ans ; pas d'ibuprofène ni d'aspirine en cas d'infection ORL.",
       "alerte": "Gêne pour respirer ou avaler sa salive, fièvre sous traitement qui baisse les défenses, femme enceinte, enfant de moins de 6 ans."
-    }
+    },
+    "icone": "gorge"
   },
   {
     "id": "toux",
@@ -226,7 +229,8 @@ GUIDE.fiches = [
       "souvent": "Toux sèche : antitussif non opiacé chez l'adulte. Toux grasse : on laisse tousser, mucolytique possible chez l'adulte.",
       "regle": "Jamais un antitussif avec un mucolytique ; mucolytiques contre-indiqués avant 2 ans.",
       "alerte": "Gêne respiratoire, sifflements, sang dans les crachats, toux de plus de 3 semaines, patient sous traitement de la tension."
-    }
+    },
+    "icone": "toux"
   },
   {
     "id": "rhume",
@@ -270,7 +274,8 @@ GUIDE.fiches = [
       "souvent": "Lavage du nez au sérum physiologique + paracétamol si fièvre ou douleur.",
       "regle": "Pseudoéphédrine par voie orale et sprays vasoconstricteurs : uniquement sur ordonnance.",
       "alerte": "Fièvre de plus de 3 jours, douleur d'oreille ou du visage, nourrisson, symptômes de plus de 10 jours."
-    }
+    },
+    "icone": "goutte"
   },
   {
     "id": "douleur-fievre",
@@ -287,7 +292,8 @@ GUIDE.fiches = [
       "Avez-vous en ce moment une infection, la varicelle ?"
     ],
     "orientations": [
-      "En première intention : paracétamol. Adulte de plus de 50 kg : 1 g par prise, au moins 4 heures entre deux prises, 3 g par jour au maximum sans avis médical.",
+      "En première intention : paracétamol. Adulte de plus de 50 kg : 1 g par prise, au moins 4 heures entre deux prises, 3 g par jour au maximum sans avis médical. En pratique, cela fait 3 prises par jour au plus.",
+      "Intervalle plus long entre deux prises de paracétamol : 6 heures minimum chez l'enfant (dose adaptée au poids) et en cas d'insuffisance rénale (8 heures si elle est sévère).",
       "Ibuprofène possible chez l'adulte sans contre-indication : 200 à 400 mg par prise, au moins 6 heures entre deux prises, 1 200 mg par jour au maximum en automédication, à la dose la plus faible et pendant la durée la plus courte.",
       "Durée maximale sans avis médical : 3 jours en cas de fièvre, 5 jours en cas de douleur.",
       "Toujours rappeler la dose, l'intervalle et le maximum par jour au moment de la délivrance."
@@ -317,7 +323,8 @@ GUIDE.fiches = [
       "souvent": "Paracétamol : 1 g par prise, 4 h minimum entre deux prises, 3 g par jour maximum (adulte de plus de 50 kg).",
       "regle": "Pas d'AINS chez la femme enceinte (contre-indiqués à partir du 6e mois), sous anticoagulant ou en cas d'infection.",
       "alerte": "Mal de tête brutal avec raideur de la nuque, taches violacées sur la peau, fièvre de plus de 3 jours."
-    }
+    },
+    "icone": "thermo"
   },
   {
     "id": "diarrhee",
@@ -361,7 +368,8 @@ GUIDE.fiches = [
       "souvent": "Boire souvent par petites quantités ; soluté de réhydratation pour les personnes fragiles.",
       "regle": "Pas de lopéramide en cas de fièvre ou de sang dans les selles.",
       "alerte": "Enfant, personne âgée, déshydratation, fièvre, sang dans les selles, plus de 2 à 3 jours."
-    }
+    },
+    "icone": "intestin"
   },
   {
     "id": "brulures-estomac",
@@ -405,7 +413,8 @@ GUIDE.fiches = [
       "souvent": "Antiacide ou alginate pour un soulagement rapide ; IPP 20 mg chez l'adulte si c'est fréquent (14 jours maximum).",
       "regle": "Espacer de 2 h les antiacides et alginates des autres médicaments.",
       "alerte": "Douleur dans la poitrine vers le bras ou la mâchoire (urgence), difficulté à avaler, sang, amaigrissement."
-    }
+    },
+    "icone": "flamme"
   },
   {
     "id": "constipation",
@@ -451,7 +460,8 @@ GUIDE.fiches = [
     "validation": {
       "par": "À COMPLÉTER",
       "le": "À COMPLÉTER"
-    }
+    },
+    "icone": "sablier"
   },
   {
     "id": "allergie-saisonniere",
@@ -495,7 +505,8 @@ GUIDE.fiches = [
     "validation": {
       "par": "À COMPLÉTER",
       "le": "À COMPLÉTER"
-    }
+    },
+    "icone": "fleur"
   },
   {
     "id": "piqures-insectes",
@@ -540,7 +551,8 @@ GUIDE.fiches = [
     "validation": {
       "par": "À COMPLÉTER",
       "le": "À COMPLÉTER"
-    }
+    },
+    "icone": "insecte"
   },
   {
     "id": "brulures-peau",
@@ -586,7 +598,8 @@ GUIDE.fiches = [
     "validation": {
       "par": "À COMPLÉTER",
       "le": "À COMPLÉTER"
-    }
+    },
+    "icone": "soleil"
   },
   {
     "id": "poux",
@@ -627,7 +640,8 @@ GUIDE.fiches = [
     "validation": {
       "par": "À COMPLÉTER",
       "le": "À COMPLÉTER"
-    }
+    },
+    "icone": "peigne"
   },
   {
     "id": "cystite",
@@ -667,7 +681,8 @@ GUIDE.fiches = [
     "validation": {
       "par": "À COMPLÉTER",
       "le": "À COMPLÉTER"
-    }
+    },
+    "icone": "urine"
   },
   {
     "id": "contraception-urgence",
@@ -701,6 +716,7 @@ GUIDE.fiches = [
     "validation": {
       "par": "À COMPLÉTER",
       "le": "À COMPLÉTER"
-    }
+    },
+    "icone": "horloge"
   }
 ];

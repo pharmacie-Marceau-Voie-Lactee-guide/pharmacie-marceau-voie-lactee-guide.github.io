@@ -661,3 +661,76 @@ mark.hit { background: #ffe58a; color: inherit; padding: 0 1px; border-radius: 2
   #main-nav { flex: 1 0 100%; order: 3; }
   #main-nav ul { justify-content: flex-start; }
 }
+
+/* =========================================================
+   v5 : police, icônes de fiches, parties repliables, barre du bas, badge « à valider »
+   ========================================================= */
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/inter-latin-var.woff2") format("woff2");
+  font-weight: 100 900; font-style: normal; font-display: swap;
+}
+:root { --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+body { font-feature-settings: "cv11", "ss01"; letter-spacing: -0.005em; }
+h1 { font-weight: 800; letter-spacing: -0.02em; }
+h2, h3 { letter-spacing: -0.01em; }
+
+/* « À COMPLÉTER » : visible mais discret */
+mark.todo {
+  background: #fff6ea; color: #7a3d00; outline: 0;
+  border-bottom: 2px dashed #e07b1a; border-radius: 3px; padding: 0 3px;
+}
+mark.todo::before {
+  content: "à valider"; display: inline-block; margin-right: 5px; padding: 0 6px; border-radius: 999px;
+  background: #e07b1a; color: #fff; font-size: .68em; font-weight: 800; letter-spacing: .02em; vertical-align: .12em; text-transform: uppercase;
+}
+.callout-todo { background: #fff6ea; border-color: #e07b1a; color: #5c2e00; }
+
+/* En-tête de fiche avec icône */
+.fiche-head { display: flex; align-items: center; gap: 14px; }
+.fiche-head h1 { margin: .2em 0 .3em; }
+.fiche-icon { display: inline-flex; width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, #0a6447, #0e9aa7); color: #fff; align-items: center; justify-content: center; flex: none; box-shadow: 0 4px 12px rgba(10,100,71,.25); }
+.fiche-icon .ui-icon { width: 30px; height: 30px; stroke-width: 1.8; }
+.card-icon .ui-icon { width: 26px; height: 26px; stroke-width: 1.8; }
+
+/* Parties repliables */
+.fold-tools { display: flex; justify-content: flex-end; margin: 6px 0 -4px; }
+.btn-small { min-height: 36px; padding: 4px 14px; font-size: .9rem; }
+details.fold { background: var(--surface); border-radius: var(--radius); margin: 12px 0; box-shadow: var(--shadow); border-left: 5px solid var(--c); overflow: hidden; }
+details.fold > summary { list-style: none; display: flex; align-items: center; gap: 10px; padding: 12px 14px; cursor: pointer; min-height: 56px; }
+details.fold > summary::-webkit-details-marker { display: none; }
+details.fold > summary:hover { background: var(--c-soft); }
+details.fold > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; }
+details.fold > summary h2 { margin: 0; flex: 1; font-size: 1.12rem; }
+.fold-chev { display: inline-flex; color: var(--c); transition: transform .2s ease; }
+details.fold[open] .fold-chev { transform: rotate(180deg); }
+.fold-body { padding: 0 16px 12px; }
+.fold-body > ul:first-child, .fold-body > ol:first-child { margin-top: 4px; }
+details.fold-warn { background: var(--warn-bg); }
+details.fold.products .comparison h2 { font-size: 1.05rem; }
+@media (prefers-reduced-motion: reduce) { .fold-chev { transition: none; } }
+
+/* Barre de navigation du bas (téléphone) */
+.bottom-nav { display: none; }
+@media (max-width: 700px) {
+  body { padding-bottom: calc(68px + env(safe-area-inset-bottom)); }
+  #search-btn { display: none; }
+  .bottom-nav {
+    display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+    background: rgba(255,255,255,.97); border-top: 1px solid var(--border);
+    box-shadow: 0 -4px 16px rgba(0,0,0,.08); padding-bottom: env(safe-area-inset-bottom);
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  }
+  .bottom-nav ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); }
+  .bottom-nav li { max-width: none; }
+  .bottom-nav a, .bottom-nav button {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+    width: 100%; min-height: 60px; padding: 6px 2px; font: inherit; font-size: .72rem; font-weight: 600;
+    color: var(--muted); text-decoration: none; background: none; border: 0; cursor: pointer;
+  }
+  .bottom-nav .ui-icon { width: 24px; height: 24px; }
+  .bottom-nav a[aria-current="page"] { color: var(--primary); }
+  .bottom-nav a[aria-current="page"] .ui-icon { stroke-width: 2.6; }
+  .site-footer { padding-bottom: 24px; }
+}
+@media print { .bottom-nav, .fold-tools { display: none !important; } details.fold { box-shadow: none; } }

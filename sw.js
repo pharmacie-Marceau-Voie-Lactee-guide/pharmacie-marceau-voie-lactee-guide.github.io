@@ -3,13 +3,13 @@
  * Stratégie : réseau d'abord (toujours la dernière version en ligne), copie enregistrée si pas de connexion.
  * Changer VERSION à chaque modification importante pour forcer le renouvellement du cache.
  */
-var VERSION = "guide-2026-11-26-1";
+var VERSION = "guide-2026-11-26-2";
 var FILES = [
   "./", "index.html", "manifest.webmanifest",
   "css/style.css", "js/app.js",
   "data/site.js", "data/fiches.js", "data/medicaments.js", "data/animations.js",
   "data/quiz.js", "data/sources.js", "data/pages.js",
-  "assets/planche-digestif.jpg",
+  "assets/planche-digestif.jpg", "assets/fonts/inter-latin-var.woff2",
   "assets/icons/icon-192.png", "assets/icons/icon-512.png", "assets/icons/apple-touch-icon.png", "assets/icons/favicon-32.png"
 ];
 

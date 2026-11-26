@@ -107,6 +107,22 @@
     cross: "M9 3h6v6h6v6h-6v6H9v-6H3V9h6z",
     search: "M10.5 18a7.5 7.5 0 1 0 0-15 7.5 7.5 0 0 0 0 15zM16 16l5 5",
     menu: "M4 6h16M4 12h16M4 18h16",
+    home: "M3 11l9-8 9 8M5 9.5V21h5v-6h4v6h5V9.5",
+    more: "M5 12h.01M12 12h.01M19 12h.01",
+    gorge: "M12 3a4.5 4.5 0 0 0-4.5 4.5V10a4.5 4.5 0 0 0 9 0V7.5A4.5 4.5 0 0 0 12 3zM9.5 14.5V21M14.5 14.5V21M10.5 9.5h3",
+    toux: "M3 8h10a3 3 0 1 0-3-3M3 12h15a3 3 0 1 1-3 3M3 16h7",
+    goutte: "M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z",
+    thermo: "M10 14V5a2 2 0 0 1 4 0v9a4 4 0 1 1-4 0zM12 9v7",
+    intestin: "M4 7c3-3 6 3 9 0s6 3 7 0M4 12c3-3 6 3 9 0s6 3 7 0M4 17c3-3 6 3 9 0s6 3 7 0",
+    flamme: "M12 3c1 4 5 5 5 10a5 5 0 0 1-10 0c0-3 2-4 2-6 1 1 2 2 3 2 0-2-1-4 0-6z",
+    sablier: "M7 3h10M7 21h10M8 3c0 5 8 5 8 9s-8 4-8 9M16 3c0 5-8 5-8 9",
+    fleur: "M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM12 10a3 3 0 1 1 0-6 3 3 0 0 1 0 6zM12 14a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM10 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM14 12a3 3 0 1 0 6 0 3 3 0 0 0-6 0z",
+    insecte: "M9 7a3 3 0 0 1 6 0M8 10h8v5a4 4 0 0 1-8 0zM12 10v9M4 13h4M16 13h4M5 8l3 2M19 8l-3 2M5 19l3-2M19 19l-3-2",
+    soleil: "M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4",
+    peigne: "M3 8h18v4H3zM5 12v7M8 12v7M11 12v7M14 12v7M17 12v7M20 12v7",
+    urine: "M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11zM12 11v6M9 14h6",
+    horloge: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3 2",
+    chevron: "M6 9l6 6 6-6",
     star: "M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z",
     clock: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3 2"
   };
@@ -128,6 +144,19 @@
         text ? el("span", { class: "card-text" }, text) : null
       ])
     ]));
+  }
+
+  // Partie repliable d'une fiche (ouverte d'office sur grand écran).
+  function fold(id, text, icon, color, content, extraClass) {
+    var wide = window.matchMedia && window.matchMedia("(min-width: 861px)").matches;
+    return el("details", { class: "fold c-" + color + (extraClass ? " " + extraClass : ""), open: wide }, [
+      el("summary", null, [
+        el("span", { class: "sec-icon" }, uiIcon(icon)),
+        el("h2", { id: id, class: "sec-title c-" + color }, text),
+        el("span", { class: "fold-chev", "aria-hidden": "true" }, uiIcon("chevron"))
+      ]),
+      el("div", { class: "fold-body" }, content)
+    ]);
   }
 
   function sectionTitle(id, text, icon, color) {
@@ -218,7 +247,21 @@
     document.getElementById("footer-text").textContent = avertissement();
   }
 
+  function buildBottomNav() {
+    var items = [["#/", "Accueil", "home", ""], ["#/fiches", "Fiches", "fiches", "fiches"], ["#/recherche", "Chercher", "search", "recherche"], ["#/quiz", "Quiz", "quiz", "quiz"]];
+    var bar = el("nav", { class: "bottom-nav", "aria-label": "Navigation rapide" }, el("ul", null, items.map(function (it) {
+      return el("li", null, el("a", { href: it[0], "data-key": it[3] }, [uiIcon(it[2]), el("span", null, it[1])]));
+    }).concat([el("li", null, el("button", { type: "button", class: "bn-more", onclick: function () {
+      document.querySelector(".nav-toggle").click();
+      window.scrollTo(0, 0);
+    } }, [uiIcon("more"), el("span", null, "Plus")]))])));
+    document.body.appendChild(bar);
+  }
+
   function setCurrentNav(key) {
+    document.querySelectorAll(".bottom-nav a").forEach(function (a) {
+      if (a.getAttribute("data-key") === key) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+    });
     document.querySelectorAll("#nav-list a").forEach(function (a) {
       if (a.getAttribute("data-key") === key) a.setAttribute("aria-current", "page");
       else a.removeAttribute("aria-current");
@@ -276,7 +319,7 @@
         el("h1", null, "Fiches par situation"),
         el("p", null, "Choisissez la situation qui correspond à la demande du patient."),
         fiches.length
-          ? el("ul", { class: "cards" }, fiches.map(function (f, i) { return card("#/fiche/" + encodeURIComponent(f.id), f.titre || TODO, f.motif, COLORS[i % 6], "fiches"); }))
+          ? el("ul", { class: "cards" }, fiches.map(function (f, i) { return card("#/fiche/" + encodeURIComponent(f.id), f.titre || TODO, (f.resume && f.resume.souvent) || f.motif, COLORS[i % 6], f.icone || "fiches"); }))
           : todoBanner(TODO + " : aucune fiche dans data/fiches.js.")
       ])
     };
@@ -293,7 +336,7 @@
       section: "fiches",
       node: el("article", { class: "fiche" }, [
         el("p", { class: "breadcrumb" }, el("a", { href: "#/fiches" }, "← Toutes les fiches")),
-        el("h1", null, f.titre || TODO),
+        el("div", { class: "fiche-head" }, [el("span", { class: "fiche-icon" }, uiIcon(f.icone || "fiches")), el("h1", null, f.titre || TODO)]),
         validationLine(f.validation),
         hasTodo(f) ? todoBanner("Cette fiche contient des éléments à compléter. Ne l'utilisez pas au comptoir avant validation par la pharmacienne.") : null,
         f.resume ? el("section", { class: "essentiel", "aria-labelledby": "h-essentiel" }, [
@@ -308,10 +351,18 @@
         ]) : null,
         el("p", null, el("a", { href: "#passer-la-main", class: "jump", onclick: jumpTo("passer-la-main") }, "Aller directement à « Quand passer la main au pharmacien »")),
         el("section", { class: "sec c-blue", "aria-labelledby": "h-motif" }, [sectionTitle("h-motif", "Motif de la demande", "chat", "blue"), el("p", null, f.motif || TODO)]),
-        el("section", { class: "sec c-teal", "aria-labelledby": "h-questions" }, [sectionTitle("h-questions", "Questions à poser au patient", "help", "teal"), list(f.questions, true, "num-list")]),
-        el("section", { class: "sec c-green", "aria-labelledby": "h-orient" }, [sectionTitle("h-orient", "Orientations possibles", "compass", "green"), list(f.orientations, false, "check-list")]),
-        f.produits ? productsBlock(f.produits) : null,
-        el("section", { class: "callout callout-warning", "aria-labelledby": "h-vigil" }, [sectionTitle("h-vigil", "Points de vigilance", "alert", "orange"), list(f.vigilance)]),
+        el("div", { class: "fold-tools" }, [
+          el("button", { type: "button", class: "btn btn-ghost btn-small", onclick: function (e) {
+            var folds = e.currentTarget.closest("article").querySelectorAll("details.fold");
+            var anyClosed = Array.prototype.some.call(folds, function (d) { return !d.open; });
+            folds.forEach(function (d) { d.open = anyClosed; });
+            e.currentTarget.textContent = anyClosed ? "Tout replier" : "Tout déplier";
+          } }, "Tout déplier")
+        ]),
+        fold("h-questions", "Questions à poser au patient", "help", "teal", list(f.questions, true, "num-list")),
+        fold("h-orient", "Orientations possibles", "compass", "green", list(f.orientations, false, "check-list")),
+        f.produits ? fold("h-produits", f.produits.titre || "Les produits", "pill", "purple", productsBlock(f.produits, true), "products") : null,
+        fold("h-vigil", "Points de vigilance", "alert", "orange", list(f.vigilance), "fold-warn"),
         el("section", { class: "callout callout-alert", id: "passer-la-main", tabindex: "-1", "aria-labelledby": "h-main" }, [
           sectionTitle("h-main", "Quand passer la main au pharmacien", "hand", "red"),
           list(f.passerLaMain)
@@ -412,7 +463,7 @@
   }
 
   // Encart « produits » d'une fiche (data/fiches.js > "produits").
-  function productsBlock(pr) {
+  function productsBlock(pr, inner) {
     function row(label, value) {
       if (!value || (Array.isArray(value) && !value.length)) return null;
       return el("div", { class: "prod-row" }, [
@@ -420,8 +471,8 @@
         el("dd", null, Array.isArray(value) ? list(value, false, "compact") : value)
       ]);
     }
-    return el("section", { class: "products", id: "produits", "aria-labelledby": "h-produits" }, [
-      el("h2", { id: "h-produits" }, pr.titre || "Les produits"),
+    var parts = [
+      inner ? null : el("h2", { id: "h-produits" }, pr.titre || "Les produits"),
       pr.introduction ? el("p", null, pr.introduction) : null,
       el("div", { class: "prod-grid" }, (pr.types || []).map(function (t) {
         return el("article", { class: "prod-card t-" + (t.cle || "autre") }, [
@@ -437,7 +488,8 @@
         ]);
       })),
       pr.choix ? comparisonBlock(pr.choix) : null
-    ]);
+    ];
+    return inner ? parts : el("section", { class: "products", id: "produits", "aria-labelledby": "h-produits" }, parts);
   }
 
   // Tableau comparatif (ex : AINS / IPP), défini dans data/medicaments.js > "comparaisons".
@@ -1220,6 +1272,9 @@
   }
 
   buildNav();
+  buildBottomNav();
+  // Impression : tout déplier pour que la fiche papier soit complète.
+  window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });
   document.querySelector(".skip-link").addEventListener("click", jumpTo("main"));
   window.addEventListener("hashchange", route);
   route();

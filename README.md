@@ -140,3 +140,7 @@ La recherche (loupe en haut à droite, ou barre sur l'accueil) parcourt automati
 - Après une modification, changer aussi la ligne `var VERSION = "..."` en haut de `sw.js`, en plus du numéro `?v=` dans `index.html`.
 - Si vous ajoutez un nouveau fichier (image, page de données), ajoutez-le à la liste `FILES` de `sw.js`.
 - Mode d'emploi pour l'équipe : page « Installer le guide », lien en bas de chaque page.
+
+## Police de caractères
+
+Le site utilise la police Inter, intégrée dans `assets/fonts/` (licence libre SIL Open Font License, voir `LICENSE-Inter.txt`). Elle est chargée depuis le site lui-même : aucune requête vers Internet.

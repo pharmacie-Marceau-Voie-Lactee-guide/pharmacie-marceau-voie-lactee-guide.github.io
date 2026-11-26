@@ -17,7 +17,7 @@ GUIDE.medicaments = {
         "Paracétamol (ex : Doliprane, Dafalgan, Efferalgan)"
       ],
       "vigilance": [
-        "Adulte de plus de 50 kg : 1 g par prise, 4 h minimum entre deux prises, 3 g par jour maximum sans avis médical.",
+        "Adulte de plus de 50 kg : 1 g par prise, 4 h minimum entre deux prises, 3 g par jour maximum sans avis médical. Enfant et insuffisance rénale : 6 h minimum (8 h si insuffisance rénale sévère).",
         "Toxique pour le foie en cas de surdosage : chercher le paracétamol caché dans les autres médicaments.",
         "Hors libre accès depuis 2020."
       ]
