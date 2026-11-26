@@ -1155,3 +1155,5 @@ details.fold-warn .sec-icon { background: #fff4e5; color: #b45309; }
 .site-footer a { color: var(--brand-dark); }
 .review-btn { color: var(--brand-dark); border-color: #cfd8d5; }
 .review-btn:hover { color: var(--ink); border-color: var(--ink); }
+.hero.has-photo .hero-photo[src$=".svg"] { object-fit: cover; object-position: center 40%; background: #eef6f2; }
+.header-inner { max-width: 1240px; }
