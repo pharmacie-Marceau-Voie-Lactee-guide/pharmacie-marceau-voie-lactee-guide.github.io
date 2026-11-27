@@ -17,7 +17,7 @@ GUIDE.medicaments = {
       "classe": "Antalgiques et antipyrétiques",
       "role": "Calmer la douleur et faire baisser la fièvre.",
       "exemples": [
-        "Paracétamol (ex : Doliprane, Dafalgan, Efferalgan)"
+        "Paracétamol : Doliprane 1000 mg, Dafalgan 500/1000 mg, Efferalgan 500 mg"
       ],
       "vigilance": [
         "Adulte de plus de 50 kg : 1 g par prise, 4 h minimum entre deux prises, 3 g par jour maximum sans avis médical. Enfant et insuffisance rénale : 6 h minimum (8 h si insuffisance rénale sévère).",
@@ -30,8 +30,7 @@ GUIDE.medicaments = {
       "classe": "Anti-inflammatoires non stéroïdiens (AINS)",
       "role": "Calmer la douleur, la fièvre et l'inflammation.",
       "exemples": [
-        "Ibuprofène (ex : Advil, Nurofen, Spedifen)",
-        "Aspirine (ex : Aspégic, Aspirine du Rhône)"
+        "Ibuprofène : Ibuprofène Biogaran conseil 200/400 mg, Nurofen, Nurofen Flash, Spedifen 400 mg"
       ],
       "vigilance": [
         "Contre-indiqués à partir du 6e mois de grossesse, à éviter pendant toute la grossesse sans avis.",
@@ -49,11 +48,10 @@ GUIDE.medicaments = {
       "classe": "Produits locaux pour la gorge",
       "role": "Soulager sur place le mal de gorge : adoucir, limiter les microbes (antiseptique), endormir la douleur (anesthésique) ou calmer l'inflammation (AINS local).",
       "exemples": [
-        "Antiseptique : Strepsils, Hexaspray, Eludril",
-        "Antiseptique + anesthésique : Strepsils Lidocaïne, Colludol",
-        "Anesthésique : Lysopaïne Maux de gorge (ambroxol)",
-        "Adoucissant : spray à la propolis",
-        "AINS local : flurbiprofène (Strefen), non stocké"
+        "Antiseptique : Strepsils, Lysopaïne (cétylpyridinium), Hexaspray",
+        "Antiseptique + anesthésique : Drill, Colludol, Vocadys, Strepsils Lidocaïne",
+        "Anesthésique : Lysopaïne ambroxol",
+        "Enzyme : Maxilase, Alfa-Amylase Biogaran"
       ],
       "vigilance": [
         "Âge minimum souvent 6 ans (fausse route).",
@@ -73,8 +71,8 @@ GUIDE.medicaments = {
       "classe": "Antitussifs (toux sèche)",
       "role": "Calmer une toux sèche gênante.",
       "exemples": [
-        "Hélicidine (ex : Hélicidine)",
-        "Oxomémazine, antihistaminique (ex : Toplexil)",
+        "Clarix Oxomémazine (antihistaminique)",
+        "Clarix Pentoxyvérine",
         "Sur ordonnance : codéine, dextrométhorphane, éthylmorphine, noscapine"
       ],
       "vigilance": [
@@ -92,8 +90,9 @@ GUIDE.medicaments = {
       "classe": "Mucolytiques (toux grasse)",
       "role": "Fluidifier les sécrétions bronchiques.",
       "exemples": [
-        "Carbocistéine (ex : Bronchokod)",
-        "Acétylcystéine (ex : Mucomyst, Exomuc)"
+        "Carbocistéine : Clarix",
+        "Acétylcystéine : Fluimucil 600 mg, Acétylcystéine Biogaran 200 mg",
+        "Ambroxol Biogaran conseil 30 mg"
       ],
       "vigilance": [
         "Contre-indiqués avant 2 ans.",
@@ -109,8 +108,8 @@ GUIDE.medicaments = {
       "classe": "Antihistaminiques H1 (allergie)",
       "role": "Soulager les symptômes de l'allergie : éternuements, nez qui coule, yeux qui piquent.",
       "exemples": [
-        "Cétirizine (ex : Zyrtecset)",
-        "Loratadine"
+        "Cétirizine, loratadine",
+        "Collyre : AllergiFlash (lévocabastine)"
       ],
       "vigilance": [
         "Somnolence possible : conduite, alcool.",

@@ -125,26 +125,73 @@ GUIDE.fiches = [
     },
     "produits": {
       "titre": "Les produits pour la gorge",
-      "introduction": "Les pastilles et sprays agissent seulement sur place, dans la gorge : ils soulagent mais ne guérissent pas plus vite. Beaucoup associent deux actions (par exemple antiseptique + anesthésique) : lire la composition sur la boîte. Les exemples ci-dessous sont les produits en stock à l'officine.",
+      "introduction": "Les pastilles et sprays agissent seulement sur place, dans la gorge : ils soulagent mais ne guérissent pas plus vite. Beaucoup associent deux actions (antiseptique + anesthésique) : lire la composition sur la boîte. Les produits ci-dessous sont ceux du rayon de l'officine (photos du rayon). Âges et compositions recopiés depuis les boîtes : toujours vérifier la notice.",
       "types": [
         {
-          "nom": "Adoucissant",
-          "cestQuoi": "Pastille ou spray sans principe actif fort (miel, glycérine, plantes) qui hydrate et calme la gorge irritée.",
+          "nom": "Adoucissants et produits aux plantes",
+          "cestQuoi": "Pastilles, gommes, sprays ou sirops sans médicament fort (plantes, miel, propolis, ectoïne). Ce sont des dispositifs médicaux ou des compléments alimentaires : ils hydratent et calment une gorge irritée.",
           "exemples": [
             {
-              "nom": "Spray gorge à la propolis",
+              "nom": "Phytoxil Mal de gorge",
+              "forme": "pastille",
+              "detail": "Dispositif médical à l'ectoïne, sans sucre",
+              "pictos": [
+                "age:Dès 6 ans"
+              ],
+              "photo": "assets/produits/phytoxil-gorge.jpg"
+            },
+            {
+              "nom": "Efirub Gommes gorge irritée",
+              "forme": "pastille",
+              "detail": "5 plantes + papaïne, sans sucre",
+              "photo": "assets/produits/efirub-gommes.jpg"
+            },
+            {
+              "nom": "HerbalGem Gommes chantres",
+              "forme": "pastille",
+              "detail": "Voix enrouée ; existe aussi en sirop",
+              "photo": "assets/produits/herbalgem-gommes.jpg"
+            },
+            {
+              "nom": "Stodal Plantes",
+              "forme": "pastille",
+              "detail": "Boiron : nez, gorge, bronches",
+              "pictos": [
+                "age:Dès 12 ans"
+              ],
+              "photo": "assets/produits/stodal.jpg"
+            },
+            {
+              "nom": "Azéol Gorge",
+              "forme": "pastille",
+              "detail": "Sauge, sureau, miel, zinc ; existe aussi en spray",
+              "photo": "assets/produits/azeol-gorge.jpg"
+            },
+            {
+              "nom": "Pharmactiv Pastilles pour la gorge",
+              "forme": "pastille",
+              "detail": "Propolis, vitamine C, menthe poivrée",
+              "pictos": [
+                "age:Dès 12 ans",
+                "ruche"
+              ],
+              "photo": "assets/produits/pharmactiv-pastilles.jpg"
+            },
+            {
+              "nom": "3 Chênes Propolis spray",
               "forme": "spray",
-              "detail": "Produit de la ruche",
+              "detail": "Spray buccal propolis, thym, menthe",
               "pictos": [
                 "ruche"
-              ]
+              ],
+              "photo": "assets/produits/propolis-spray.jpg"
             }
           ],
           "quand": "Gorge qui gratte, irritation légère, voix enrouée, air sec ou tabac, sans vraie douleur.",
           "attention": [
-            "Propolis : jamais en cas d'allergie aux produits de la ruche (miel, pollen, piqûres d'abeille) ; prudence chez l'asthmatique.",
-            "Sucre : proposer une forme sans sucre aux diabétiques.",
-            "Vérifier la composition (huiles essentielles, plantes) chez l'enfant et la femme enceinte."
+            "Propolis et miel : jamais en cas d'allergie aux produits de la ruche ; prudence chez l'asthmatique.",
+            "Huiles essentielles (certains sprays et pastilles) : déconseillées chez l'enfant, la femme enceinte et en cas d'épilepsie : lire la notice.",
+            "Sucre : proposer une forme sans sucre aux diabétiques."
           ],
           "cle": "adoucissant"
         },
@@ -153,29 +200,40 @@ GUIDE.fiches = [
           "cestQuoi": "Limite les microbes à la surface de la gorge. Le mal de gorge étant le plus souvent dû à un virus, l'effet reste modeste : il soulage surtout la gêne.",
           "exemples": [
             {
-              "nom": "Strepsils",
+              "nom": "Strepsils Citron sans sucre",
               "forme": "pastille",
-              "detail": "Amylmétacrésol + alcool dichlorobenzylique (miel-citron, fraise sans sucre…)",
+              "detail": "Amylmétacrésol + alcool 2,4-dichlorobenzylique",
+              "pictos": [
+                "age:Dès 6 ans"
+              ],
+              "photo": "assets/produits/strepsils-citron.jpg"
+            },
+            {
+              "nom": "Strepsils Miel Citron",
+              "forme": "pastille",
+              "detail": "Amylmétacrésol + alcool 2,4-dichlorobenzylique",
               "pictos": [
                 "age:Dès 6 ans",
-                "sucre:Sucre (existe sans sucre)"
+                "sucre"
+              ],
+              "photo": "assets/produits/strepsils-miel-citron.jpg"
+            },
+            {
+              "nom": "Lysopaïne Maux de gorge (miel citron, menthe, citron gingembre)",
+              "forme": "pastille",
+              "detail": "Cétylpyridinium + lysozyme, sans sucre",
+              "pictos": [
+                "age:Dès 6 ans"
               ]
             },
             {
               "nom": "Hexaspray",
               "forme": "spray",
-              "detail": "Biclotymol",
+              "detail": "Biclotymol, collutoire",
               "pictos": [
-                "age:Âge minimum : voir la notice"
-              ]
-            },
-            {
-              "nom": "Eludril",
-              "forme": "bain-de-bouche",
-              "detail": "Chlorhexidine (bain de bouche ou collutoire selon la présentation)",
-              "pictos": [
-                "age:Âge minimum : voir la notice"
-              ]
+                "age:Dès 30 mois"
+              ],
+              "photo": "assets/produits/hexaspray.jpg"
             }
           ],
           "quand": "Mal de gorge débutant, gêne modérée, sans grosse douleur pour avaler.",
@@ -187,35 +245,66 @@ GUIDE.fiches = [
           "cle": "antiseptique"
         },
         {
-          "nom": "Anesthésique local",
-          "cestQuoi": "« Endort » la gorge quelques minutes pour diminuer la douleur, surtout en avalant. Il est souvent associé à un antiseptique dans le même produit.",
+          "nom": "Antiseptique + anesthésique local",
+          "cestQuoi": "« Endort » la gorge quelques minutes pour diminuer la douleur, surtout en avalant. Presque toujours associé à un antiseptique dans le même produit.",
           "exemples": [
             {
-              "nom": "Strepsils Lidocaïne",
+              "nom": "Drill (miel citron sans sucre)",
               "forme": "pastille",
-              "detail": "Antiseptique + lidocaïne",
+              "detail": "Chlorhexidine 3 mg + tétracaïne 0,2 mg",
               "pictos": [
-                "fausseroute",
-                "age:Âge minimum : voir la notice"
+                "age:Dès 6 ans",
+                "fausseroute"
               ]
             },
             {
-              "nom": "Lysopaïne Maux de gorge",
+              "nom": "Strepsils Lidocaïne",
               "forme": "pastille",
-              "detail": "Ambroxol",
+              "detail": "Lidocaïne + amylmétacrésol + alcool dichlorobenzylique",
               "pictos": [
-                "fausseroute",
-                "age:Âge minimum : voir la notice"
+                "age:Dès 12 ans",
+                "fausseroute"
+              ],
+              "photo": "assets/produits/strepsils-lidocaine.jpg"
+            },
+            {
+              "nom": "StrepsilSpray Lidocaïne",
+              "forme": "spray",
+              "detail": "Lidocaïne + amylmétacrésol + alcool dichlorobenzylique",
+              "pictos": [
+                "age:Dès 12 ans",
+                "fausseroute"
               ]
             },
             {
               "nom": "Colludol",
               "forme": "spray",
-              "detail": "À COMPLÉTER : recopier la composition depuis la boîte",
+              "detail": "Lidocaïne + hexamidine",
               "pictos": [
-                "fausseroute",
-                "age:Âge minimum : voir la notice"
-              ]
+                "age:Dès 6 ans",
+                "fausseroute"
+              ],
+              "photo": "assets/produits/colludol.jpg"
+            },
+            {
+              "nom": "Vocadys Irritations de la gorge",
+              "forme": "pastille",
+              "detail": "Lidocaïne + énoxolone + érysimum (pâtes à sucer)",
+              "pictos": [
+                "age:Dès 6 ans",
+                "fausseroute"
+              ],
+              "photo": "assets/produits/vocadys.jpg"
+            },
+            {
+              "nom": "Lysopaïne Maux de gorge aigus",
+              "forme": "pastille",
+              "detail": "Ambroxol 20 mg (anesthésique), citron sans sucre",
+              "pictos": [
+                "age:Dès 12 ans",
+                "fausseroute"
+              ],
+              "photo": "assets/produits/lysopaine-ambroxol.jpg"
             }
           ],
           "quand": "Douleur quand le patient avale.",
@@ -227,25 +316,41 @@ GUIDE.fiches = [
           "cle": "anesthesique"
         },
         {
-          "nom": "Anti-inflammatoire local (AINS)",
-          "cestQuoi": "Pastille contenant un anti-inflammatoire de la même famille que l'ibuprofène. Diminue l'inflammation et la douleur de la gorge.",
+          "nom": "Anti-inflammatoires",
+          "cestQuoi": "Diminuent l'inflammation de la gorge. L'alpha-amylase (Maxilase) est une enzyme ; le flurbiprofène (Strefen) est un AINS, de la famille de l'ibuprofène.",
           "exemples": [
+            {
+              "nom": "Maxilase Maux de gorge sirop",
+              "forme": "sirop",
+              "detail": "Alpha-amylase 200 U.CEIP/ml",
+              "pictos": [
+                "age:Dès 6 mois"
+              ],
+              "photo": "assets/produits/maxilase.jpg"
+            },
+            {
+              "nom": "Alfa-Amylase Biogaran conseil",
+              "forme": "sirop",
+              "detail": "Alpha-amylase, sirop (dès 6 mois) ou comprimés 3000 U (adultes)",
+              "pictos": [
+                "age:Sirop dès 6 mois"
+              ]
+            },
             {
               "nom": "Strefen",
               "forme": "pastille",
-              "detail": "Flurbiprofène. Pas en stock à l'officine : si un patient le demande, voir le pharmacien.",
-              "indisponible": true,
+              "detail": "Flurbiprofène (AINS). Pas vu au rayon : si un patient le demande, voir le pharmacien.",
               "pictos": [
                 "grossesse:Contre-indiqué dès le 6e mois de grossesse",
                 "anticoag"
               ]
             }
           ],
-          "quand": "Douleur forte, gorge rouge et gonflée, chez un adulte sans contre-indication aux AINS.",
+          "quand": "Gorge douloureuse et enflammée, sans signe d'alerte.",
           "attention": [
-            "Mêmes contre-indications que l'ibuprofène : grossesse à partir du 6e mois, ulcère, asthme déclenché par les AINS, anticoagulant, autre AINS en cours.",
-            "Âge minimum sur la notice (en général pas chez l'enfant).",
-            "Durée courte : quelques jours au maximum."
+            "L'alpha-amylase n'est plus en libre accès depuis janvier 2020 : elle se délivre derrière le comptoir, avec un conseil.",
+            "Alpha-amylase : rares réactions allergiques (peau) ; arrêter et consulter si éruption.",
+            "Flurbiprofène : mêmes contre-indications que l'ibuprofène (grossesse dès le 6e mois, ulcère, anticoagulant, autre AINS)."
           ],
           "cle": "ains"
         }
@@ -260,19 +365,19 @@ GUIDE.fiches = [
         "lignes": [
           [
             "« Ça gratte », voix enrouée, pas de vraie douleur",
-            "Adoucissant : spray à la propolis (sauf allergie aux produits de la ruche)"
+            "Adoucissant : Phytoxil Mal de gorge, Efirub Gommes, HerbalGem Gommes chantres (voix)"
           ],
           [
             "Mal de gorge qui commence, gêne modérée",
-            "Antiseptique : Strepsils, Hexaspray"
+            "Antiseptique : Strepsils, Lysopaïne (cétylpyridinium), Hexaspray (dès 30 mois)"
           ],
           [
             "« J'ai mal quand j'avale »",
-            "Anesthésique : Strepsils Lidocaïne, Lysopaïne Maux de gorge ou Colludol"
+            "Antiseptique + anesthésique : Drill, Colludol, Vocadys (dès 6 ans) ; Strepsils Lidocaïne, Lysopaïne ambroxol (dès 12 ans)"
           ],
           [
-            "Douleur forte, gorge très enflammée, adulte",
-            "Pharmacien (anti-inflammatoire local non stocké, contre-indications des AINS à vérifier)"
+            "Gorge très enflammée",
+            "Maxilase ou Alfa-Amylase (dès 6 mois), après accord du pharmacien"
           ],
           [
             "Fièvre, ganglions, pas de toux ; femme enceinte ; enfant de moins de 6 ans ; traitement qui baisse les défenses",
@@ -284,7 +389,7 @@ GUIDE.fiches = [
     },
     "resume": {
       "souvent": "Pastilles ou spray adaptés à la gêne (adoucissant, antiseptique, anesthésique) + paracétamol si besoin.",
-      "regle": "Pas de pastilles avant 6 ans ; pas d'ibuprofène ni d'aspirine en cas d'infection ORL.",
+      "regle": "Vérifier l'âge sur la boîte : souvent dès 6 ans, mais dès 12 ans pour Strepsils Lidocaïne et Lysopaïne ambroxol ; pas d'ibuprofène ni d'aspirine en cas d'infection ORL.",
       "alerte": "Gêne pour respirer ou avaler sa salive, fièvre sous traitement qui baisse les défenses, femme enceinte, enfant de moins de 6 ans."
     },
     "icone": "gorge",
@@ -366,7 +471,178 @@ GUIDE.fiches = [
     "aDire": [
       "Ce sirop peut faire dormir : évitez de conduire après l'avoir pris.",
       "Si la toux dure plus de trois semaines ou si vous avez du mal à respirer, consultez un médecin."
-    ]
+    ],
+    "produits": {
+      "titre": "Les produits contre la toux",
+      "introduction": "Première question : la toux est-elle sèche ou grasse ? Les produits ci-dessous sont ceux du rayon de l'officine (photos du rayon). Âges et compositions recopiés depuis les boîtes : toujours vérifier la notice.",
+      "types": [
+        {
+          "nom": "Toux sèche : antitussifs",
+          "cle": "antiseptique",
+          "cestQuoi": "Calment le réflexe de toux. Uniquement pour une toux sèche qui gêne, surtout la nuit.",
+          "exemples": [
+            {
+              "nom": "Clarix Oxomémazine 0,33 mg/ml",
+              "forme": "sirop",
+              "detail": "Antihistaminique qui calme la toux et fait dormir",
+              "pictos": [
+                "conduite",
+                "alcool",
+                "age:Pas avant 2 ans"
+              ]
+            },
+            {
+              "nom": "Clarix Pentoxyvérine 0,15 %",
+              "forme": "sirop",
+              "detail": "Antitussif non opiacé",
+              "pictos": [
+                "age:Âge minimum : voir la notice"
+              ]
+            }
+          ],
+          "quand": "Toux sèche, sans signe d'alerte, chez l'adulte (ou l'enfant selon la notice).",
+          "attention": [
+            "Jamais en cas de toux grasse, ni avec un mucolytique.",
+            "Oxomémazine : somnolence (conduite, alcool), et précautions en cas de glaucome ou de problème de prostate.",
+            "Les sirops à la codéine ou au dextrométhorphane sont sur ordonnance."
+          ]
+        },
+        {
+          "nom": "Toux grasse : mucolytiques",
+          "cle": "anesthesique",
+          "cestQuoi": "Fluidifient les sécrétions pour les faire remonter plus facilement. On ne bloque pas une toux grasse.",
+          "exemples": [
+            {
+              "nom": "Clarix Carbocistéine 5 % ou 750 mg/10 ml",
+              "forme": "sirop",
+              "detail": "Carbocistéine, solution buvable ou unidoses, sans sucre",
+              "pictos": [
+                "age:Dès 15 ans"
+              ],
+              "photo": "assets/produits/clarix-carbocisteine.jpg"
+            },
+            {
+              "nom": "Fluimucil 600 mg",
+              "forme": "comprime",
+              "detail": "Acétylcystéine, granulés en sachet, 1 par jour",
+              "pictos": [
+                "age:Adultes"
+              ]
+            },
+            {
+              "nom": "Acétylcystéine Biogaran 200 mg",
+              "forme": "comprime",
+              "detail": "Acétylcystéine, sachets, sans sucre",
+              "pictos": [
+                "age:Dès 2 ans"
+              ]
+            },
+            {
+              "nom": "Ambroxol Biogaran conseil 30 mg",
+              "forme": "comprime",
+              "detail": "Ambroxol, comprimés sécables",
+              "pictos": [
+                "age:Adultes"
+              ]
+            },
+            {
+              "nom": "Lierre grimpant Biogaran conseil",
+              "forme": "sirop",
+              "detail": "Extrait de lierre, sans sucre",
+              "pictos": [
+                "age:Dès 2 ans"
+              ],
+              "photo": "assets/produits/lierre-grimpant.jpg"
+            }
+          ],
+          "quand": "Toux grasse qui encombre, chez l'adulte ou l'enfant de plus de 2 ans selon le produit.",
+          "attention": [
+            "Contre-indiqués avant 2 ans (risque d'encombrement).",
+            "Jamais avec un antitussif.",
+            "Prudence en cas d'ulcère de l'estomac."
+          ]
+        },
+        {
+          "nom": "Sirops aux plantes (dispositifs médicaux)",
+          "cle": "adoucissant",
+          "cestQuoi": "Sirops qui forment un film protecteur sur la gorge ; ils conviennent à la toux sèche comme grasse.",
+          "exemples": [
+            {
+              "nom": "Phytoxil Toux sans sucre",
+              "forme": "sirop",
+              "detail": "Mauve blanche + plantain",
+              "pictos": [
+                "age:Dès 2 ans"
+              ],
+              "photo": "assets/produits/phytoxil-toux.jpg"
+            },
+            {
+              "nom": "Phytoxil Toux & Gorge",
+              "forme": "sirop",
+              "detail": "Mauve blanche + miel",
+              "pictos": [
+                "age:Dès 2 ans",
+                "ruche"
+              ]
+            },
+            {
+              "nom": "Phytoxil Toux & Gorge Junior",
+              "forme": "sirop",
+              "detail": "Mauve blanche, miel, lierre ; fraise-framboise",
+              "pictos": [
+                "age:Dès 2 ans",
+                "ruche"
+              ],
+              "photo": "assets/produits/phytoxil-junior.jpg"
+            },
+            {
+              "nom": "HerbalGem Sirop Respiration",
+              "forme": "sirop",
+              "detail": "Bourgeons, sureau, marrube, miel (bio)",
+              "pictos": [
+                "ruche"
+              ]
+            }
+          ],
+          "quand": "Toux légère, enfant de plus de 2 ans, patient qui préfère un produit sans médicament.",
+          "attention": [
+            "Contiennent souvent du miel : pas avant 1 an et pas en cas d'allergie aux produits de la ruche.",
+            "Version avec sucre : proposer « sans sucre » aux diabétiques."
+          ]
+        }
+      ],
+      "choix": {
+        "id": "choix-toux",
+        "titre": "Quel produit pour quelle toux ?",
+        "colonnes": [
+          "Le patient décrit…",
+          "Proposer"
+        ],
+        "lignes": [
+          [
+            "Toux sèche qui gratte et l'empêche de dormir (adulte)",
+            "Antitussif : Clarix Pentoxyvérine, ou Clarix Oxomémazine le soir (somnolence)"
+          ],
+          [
+            "Toux grasse, il crache ou ça encombre (adulte)",
+            "Mucolytique : Clarix Carbocistéine, Fluimucil, Ambroxol Biogaran"
+          ],
+          [
+            "Toux grasse chez un enfant de plus de 2 ans",
+            "Acétylcystéine Biogaran 200 mg ou Lierre grimpant Biogaran"
+          ],
+          [
+            "Toux légère, enfant de plus de 2 ans",
+            "Phytoxil Junior ou Phytoxil Toux"
+          ],
+          [
+            "Enfant de moins de 2 ans, gêne respiratoire, toux de plus de 3 semaines, patient sous traitement de la tension",
+            "Pharmacien"
+          ]
+        ],
+        "note": "Un antitussif et un mucolytique ne se donnent jamais ensemble."
+      }
+    }
   },
   {
     "id": "rhume",
@@ -425,7 +701,167 @@ GUIDE.fiches = [
     "aDire": [
       "Lavez-vous le nez plusieurs fois par jour avec du sérum physiologique.",
       "Le rhume guérit tout seul en une semaine environ ; revenez si la fièvre dure ou si vous avez mal aux oreilles."
-    ]
+    ],
+    "produits": {
+      "titre": "Les produits pour le nez",
+      "introduction": "Le lavage du nez est la base de tout conseil. Les produits ci-dessous sont ceux du rayon de l'officine (photos du rayon). Âges et compositions recopiés depuis les boîtes : toujours vérifier la notice.",
+      "types": [
+        {
+          "nom": "Lavage du nez (eau de mer isotonique)",
+          "cle": "adoucissant",
+          "cestQuoi": "Eau de mer à la même salinité que le corps : nettoie le nez en douceur, utilisable tous les jours.",
+          "exemples": [
+            {
+              "nom": "Stérimar Hygiène du nez",
+              "forme": "spray",
+              "detail": "Eau de mer physiologique",
+              "pictos": [
+                "age:Adultes et enfants"
+              ]
+            },
+            {
+              "nom": "Physiomer Jet dynamique",
+              "forme": "spray",
+              "detail": "Eau de mer 100 % naturelle",
+              "pictos": [
+                "age:Dès 6 ans"
+              ]
+            },
+            {
+              "nom": "Pharmactiv Le spray nasal isotonique",
+              "forme": "spray",
+              "detail": "Hygiène nasale quotidienne",
+              "pictos": [
+                "age:Adultes, enfants et nourrissons"
+              ]
+            },
+            {
+              "nom": "ProRhinel Spray nourrissons et jeunes enfants",
+              "forme": "spray",
+              "detail": "Lavage nasal doux",
+              "pictos": [
+                "age:Nourrissons"
+              ],
+              "photo": "assets/produits/prorhinel-nourrisson.jpg"
+            }
+          ],
+          "quand": "Rhume, nez qui coule, chez tout le monde, nourrissons compris (formes adaptées).",
+          "attention": [
+            "Nourrisson : lavage avec des unidoses de sérum physiologique ou un spray adapté, tête sur le côté."
+          ]
+        },
+        {
+          "nom": "Nez bouché (eau de mer hypertonique)",
+          "cle": "antiseptique",
+          "cestQuoi": "Eau de mer plus salée : aide à déboucher le nez sans médicament vasoconstricteur.",
+          "exemples": [
+            {
+              "nom": "Stérimar Nez bouché (cuivre)",
+              "forme": "spray",
+              "detail": "Hypertonique, débouche jusqu'à 6 h",
+              "photo": "assets/produits/sterimar-nez-bouche.jpg"
+            },
+            {
+              "nom": "Pharmactiv Le spray nasal hypertonique",
+              "forme": "spray",
+              "detail": "Spécial nez bouché",
+              "pictos": [
+                "age:Dès 6 mois"
+              ]
+            },
+            {
+              "nom": "ProRhinel Extra eucalyptus",
+              "forme": "spray",
+              "detail": "Nez congestionné, avec eucalyptus",
+              "pictos": [
+                "age:Âge minimum : voir la notice"
+              ]
+            }
+          ],
+          "quand": "Nez bouché gênant, en complément du lavage.",
+          "attention": [
+            "Peut piquer un peu.",
+            "Les sprays vasoconstricteurs (qui « débouchent » avec un médicament) sont sur ordonnance."
+          ]
+        },
+        {
+          "nom": "Sprays et produits aux huiles essentielles ou aux plantes",
+          "cle": "anesthesique",
+          "cestQuoi": "Dispositifs médicaux ou compléments contenant des huiles essentielles ou des plantes.",
+          "exemples": [
+            {
+              "nom": "Efirub Spray nasal Nez bouché",
+              "forme": "spray",
+              "detail": "Action 4 en 1",
+              "pictos": [
+                "age:Dès 2 ans"
+              ],
+              "photo": "assets/produits/efirub-spray-nasal.jpg"
+            },
+            {
+              "nom": "Azéol DM Rhume Rhinite",
+              "forme": "spray",
+              "detail": "Spray nasal",
+              "pictos": [
+                "age:Dès 18 ans"
+              ]
+            },
+            {
+              "nom": "Pharmactiv Spray nasal fort",
+              "forme": "spray",
+              "detail": "Huiles essentielles (ravintsara, eucalyptus, géranium), propolis",
+              "pictos": [
+                "ruche"
+              ]
+            },
+            {
+              "nom": "Efirub Coups de froid, Sinuxin, Pranarôm Aromaforce, Activox Flash'Rub",
+              "forme": "comprime",
+              "detail": "Compléments aux plantes ou huiles essentielles",
+              "pictos": [
+                "age:Adultes"
+              ]
+            }
+          ],
+          "quand": "Adulte qui souhaite un produit naturel, en plus du lavage du nez.",
+          "attention": [
+            "Huiles essentielles : déconseillées chez l'enfant, la femme enceinte ou qui allaite, et en cas d'épilepsie ou d'asthme : lire la notice.",
+            "Ce sont surtout des compléments : ils ne remplacent pas un avis si les symptômes durent."
+          ]
+        }
+      ],
+      "choix": {
+        "id": "choix-rhume",
+        "titre": "Quel produit pour quel nez ?",
+        "colonnes": [
+          "Le patient décrit…",
+          "Proposer"
+        ],
+        "lignes": [
+          [
+            "Nez qui coule",
+            "Lavage isotonique : Stérimar Hygiène, Physiomer, Pharmactiv isotonique"
+          ],
+          [
+            "Nez bouché",
+            "Lavage hypertonique : Stérimar Nez bouché, Pharmactiv hypertonique"
+          ],
+          [
+            "Nourrisson enrhumé",
+            "ProRhinel nourrissons ou sérum physiologique, et en parler au pharmacien"
+          ],
+          [
+            "Adulte qui veut un produit naturel",
+            "Efirub spray nasal, Azéol DM (dès 18 ans), en plus du lavage"
+          ],
+          [
+            "Demande d'Actifed Rhume, Dolirhume ou d'un spray vasoconstricteur",
+            "Pharmacien (sur ordonnance)"
+          ]
+        ],
+        "note": "Fièvre, douleur ou fatigue : paracétamol si besoin (voir fiche Douleur et fièvre)."
+      }
+    }
   },
   {
     "id": "douleur-fievre",
@@ -492,7 +928,111 @@ GUIDE.fiches = [
     "aDire": [
       "Ne prenez pas en même temps un autre médicament qui contient du paracétamol.",
       "Sans avis médical : pas plus de 3 jours pour la fièvre, 5 jours pour la douleur."
-    ]
+    ],
+    "produits": {
+      "titre": "Les produits contre la douleur et la fièvre",
+      "introduction": "Tous ces produits sont derrière le comptoir (pas en libre accès). Les produits ci-dessous sont ceux du rayon de l'officine (photos du rayon). Âges et compositions recopiés depuis les boîtes : toujours vérifier la notice.",
+      "types": [
+        {
+          "nom": "Paracétamol",
+          "cle": "antiseptique",
+          "cestQuoi": "Premier choix contre la douleur et la fièvre. Peu d'effets indésirables, mais dangereux pour le foie en cas de surdosage.",
+          "exemples": [
+            {
+              "nom": "Doliprane 1000 mg",
+              "forme": "comprime",
+              "detail": "Comprimés, gélules ou comprimés effervescents (arôme cassis)",
+              "pictos": [
+                "age:Adulte de plus de 50 kg"
+              ],
+              "photo": "assets/produits/doliprane.jpg"
+            },
+            {
+              "nom": "Dafalgan 500 mg et 1000 mg",
+              "forme": "comprime",
+              "detail": "Gélules ou comprimés"
+            },
+            {
+              "nom": "Efferalgan 500 mg et Efferalgan Vitamine C",
+              "forme": "comprime",
+              "detail": "Comprimés effervescents ; la version vitamine C contient 200 mg de vitamine C"
+            }
+          ],
+          "quand": "Douleur ou fièvre de l'adulte, en première intention.",
+          "attention": [
+            "1 g par prise, 4 h minimum entre deux prises, 3 g par jour au maximum (adulte de plus de 50 kg).",
+            "« Surdosage = danger » est écrit sur chaque boîte : vérifier les autres médicaments qui contiennent du paracétamol.",
+            "Les formes effervescentes contiennent du sel : attention au régime sans sel."
+          ]
+        },
+        {
+          "nom": "Ibuprofène (AINS)",
+          "cle": "ains",
+          "cestQuoi": "Anti-inflammatoire : douleur, fièvre, inflammation (dents, règles, courbatures). Plus de contre-indications que le paracétamol.",
+          "exemples": [
+            {
+              "nom": "Ibuprofène Biogaran conseil 200 mg et 400 mg",
+              "forme": "comprime",
+              "detail": "Comprimés",
+              "pictos": [
+                "grossesse:Contre-indiqué dès le 6e mois de grossesse",
+                "anticoag"
+              ]
+            },
+            {
+              "nom": "Nurofen 200 mg et Nurofen Flash 400 mg",
+              "forme": "comprime",
+              "detail": "Comprimés",
+              "pictos": [
+                "grossesse:Contre-indiqué dès le 6e mois de grossesse",
+                "anticoag"
+              ]
+            },
+            {
+              "nom": "Spedifen 400 mg",
+              "forme": "comprime",
+              "detail": "Ibuprofène, comprimés",
+              "pictos": [
+                "grossesse:Contre-indiqué dès le 6e mois de grossesse",
+                "anticoag"
+              ]
+            }
+          ],
+          "quand": "Douleur avec inflammation chez l'adulte, sans contre-indication et sans infection.",
+          "attention": [
+            "1 200 mg par jour au maximum en automédication.",
+            "Jamais pendant la grossesse sans avis, ni avec un anticoagulant ou un autre AINS.",
+            "À éviter en cas d'infection (gorge, peau, varicelle)."
+          ]
+        }
+      ],
+      "choix": {
+        "id": "choix-douleur",
+        "titre": "Paracétamol ou ibuprofène ?",
+        "colonnes": [
+          "Situation",
+          "Proposer"
+        ],
+        "lignes": [
+          [
+            "Fièvre, mal de tête, douleur simple",
+            "Paracétamol (Doliprane, Dafalgan, Efferalgan)"
+          ],
+          [
+            "Douleur avec inflammation (dents, règles, entorse), adulte sans contre-indication",
+            "Ibuprofène, après les questions sur la grossesse, l'estomac et les traitements"
+          ],
+          [
+            "Femme enceinte, patient sous anticoagulant, infection en cours",
+            "Paracétamol, et en parler au pharmacien"
+          ],
+          [
+            "Enfant, adulte de moins de 50 kg",
+            "Pharmacien (dose adaptée au poids)"
+          ]
+        ]
+      }
+    }
   },
   {
     "id": "diarrhee",
@@ -687,7 +1227,7 @@ GUIDE.fiches = [
     "orientations": [
       "Lavage du nez au sérum physiologique ou à l'eau de mer, pour éliminer les pollens.",
       "Antihistaminique par voie orale disponible sans ordonnance chez l'adulte (ex : cétirizine, loratadine), une prise par jour, selon la notice.",
-      "Si les yeux piquent : collyre antiallergique (ex : cromoglicate de sodium) ou lavage des yeux au sérum physiologique.",
+      "Si les yeux piquent : collyre antiallergique (ex : AllergiFlash, lévocabastine 0,05 %) ou lavage des yeux au sérum physiologique.",
       "Conseils : aérer tôt le matin ou tard le soir, garder les fenêtres fermées en voiture, se rincer les cheveux le soir, ne pas faire sécher le linge dehors pendant la saison des pollens."
     ],
     "vigilance": [

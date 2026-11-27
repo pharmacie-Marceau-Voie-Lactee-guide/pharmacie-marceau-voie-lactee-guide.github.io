@@ -1361,3 +1361,4 @@ details.fold-warn .sec-icon { background: #fff4e5; color: #b45309; }
   .animation-figure { position: static; display: flex; justify-content: center; }
   .animation-figure .body-diagram { max-height: 78vh; width: auto; max-width: 100%; }
 }
+.prod-photo { width: 84px; height: 84px; padding: 3px; }
