@@ -679,7 +679,7 @@
     if (typeof x === "string") return el("li", { class: "prod-item" }, [el("span", { class: "form-icon-empty", "aria-hidden": "true" }), el("span", null, x)]);
     return el("li", { class: "prod-item" + (x.indisponible ? " is-unavailable" : "") + (x.groupe ? " has-group" : "") }, [
       x.groupe ? el("span", { class: "prod-group" }, x.groupe) : null,
-      x.photo ? el("img", { class: "prod-photo", src: x.photo, alt: "Boîte de " + x.nom, loading: "lazy" }) : (formIcon(x.forme) || el("span", { class: "form-icon-empty", "aria-hidden": "true" })),
+      x.photo ? el("img", { class: "prod-photo zoomable", src: x.photo, alt: "Boîte de " + x.nom, loading: "lazy", tabindex: "0", role: "button", "aria-label": "Agrandir la photo : " + x.nom, "data-name": x.nom }) : (formIcon(x.forme) || el("span", { class: "form-icon-empty", "aria-hidden": "true" })),
       el("span", { class: "prod-text" }, [
         el("strong", null, x.nom || TODO),
         x.forme && FORM_LABEL[x.forme] ? el("span", { class: "prod-form" }, " · " + FORM_LABEL[x.forme]) : null,
@@ -689,7 +689,7 @@
       x.equivalents && x.equivalents.length ? el("div", { class: "prod-equiv" }, [
         el("span", { class: "eq-label" }, "Même usage :"),
         el("ul", null, x.equivalents.map(function (e) {
-          return el("li", { class: e.photo ? "has-photo" : null }, [e.photo ? el("img", { class: "eq-photo", src: e.photo, alt: "", loading: "lazy" }) : null, el("span", { class: "eq-txt" }, [el("strong", null, e.nom), e.note ? el("span", null, " · " + e.note) : null])]);
+          return el("li", { class: e.photo ? "has-photo" : null }, [e.photo ? el("img", { class: "eq-photo zoomable", src: e.photo, alt: "Boîte de " + e.nom, loading: "lazy", tabindex: "0", role: "button", "aria-label": "Agrandir la photo : " + e.nom, "data-name": e.nom }) : null, el("span", { class: "eq-txt" }, [el("strong", null, e.nom), e.note ? el("span", null, " · " + e.note) : null])]);
         }))
       ]) : null
     ]);
@@ -1137,7 +1137,7 @@
         var best = essais.reduce(function (b, e) { return !b || e.score / e.total > b.score / b.total ? e : b; }, null);
         var n = q.tirage || (q.questions || []).length;
         grid.appendChild(el("li", null, el("article", { class: "quiz-tile" }, [
-          el("p", { class: "qt-kicker" }, q.tirage ? "Série au hasard" : (i === 0 ? "Premier jour" : "Après un mois")),
+          el("p", { class: "qt-kicker" }, q.id === "rayon" ? "Produits de l'officine" : q.tirage ? "Série au hasard" : (i === 0 ? "Premier jour" : "Après un mois")),
           el("h2", null, q.titre || q.id),
           el("p", { class: "qt-desc" }, q.description || ""),
           el("dl", { class: "qt-stats" }, [
@@ -1156,7 +1156,7 @@
       title: "Quiz",
       node: el("div", null, [
         el("h1", null, "Quiz"),
-        el("p", null, "Le quiz J0 se fait le premier jour, le quiz J30 après un mois. L'entraînement tire 10 questions au hasard dans toute la banque, pour réviser autant de fois que nécessaire. Chaque réponse est corrigée immédiatement."),
+        el("p", null, "Le quiz J0 se fait le premier jour, le quiz J30 après un mois. « Produits du rayon » vérifie la connaissance des produits vendus à l'officine. L'entraînement tire 10 questions au hasard dans toute la banque. Chaque réponse est corrigée immédiatement."),
         grid,
         el("p", { class: "meta" }, "Les résultats sont enregistrés uniquement dans ce navigateur. Ils ne sont jamais envoyés et personne d'autre ne les voit."),
         el("button", { type: "button", class: "btn btn-ghost btn-small", onclick: function () {
@@ -1912,6 +1912,36 @@
       el("div", { class: "foot-legal" }, keep.filter(function (n) { return !n.querySelector('a[href="#/page/installer"]'); }))
     ]));
   }
+
+  // Visionneuse : un clic (ou double-clic, ou Entrée) sur une photo de produit l'affiche en grand.
+  var lightbox = null;
+  function openLightbox(img) {
+    if (!lightbox) {
+      var big = el("img", { class: "lb-img", alt: "" });
+      var cap = el("p", { class: "lb-cap" });
+      var close = el("button", { type: "button", class: "lb-close", "aria-label": "Fermer" }, "×");
+      lightbox = el("dialog", { class: "lightbox", "aria-label": "Photo agrandie" }, [close, el("figure", null, [big, cap])]);
+      lightbox._img = big; lightbox._cap = cap;
+      close.addEventListener("click", function () { lightbox.close(); });
+      lightbox.addEventListener("click", function (e) { if (e.target === lightbox || e.target.tagName === "FIGURE") lightbox.close(); });
+      document.body.appendChild(lightbox);
+    }
+    var src = img.getAttribute("src");
+    var full = src.replace("assets/produits/", "assets/produits/grand/");
+    lightbox._img.onerror = function () { this.onerror = null; this.src = src; };
+    lightbox._img.src = full;
+    lightbox._img.alt = img.alt;
+    lightbox._cap.textContent = img.getAttribute("data-name") || "";
+    if (lightbox.showModal) lightbox.showModal(); else lightbox.setAttribute("open", "");
+  }
+  document.addEventListener("click", function (e) {
+    var t = e.target;
+    if (t && t.classList && t.classList.contains("zoomable")) { e.preventDefault(); openLightbox(t); }
+  });
+  document.addEventListener("keydown", function (e) {
+    var t = e.target;
+    if ((e.key === "Enter" || e.key === " ") && t && t.classList && t.classList.contains("zoomable")) { e.preventDefault(); openLightbox(t); }
+  });
 
   buildNav();
   buildBottomNav();

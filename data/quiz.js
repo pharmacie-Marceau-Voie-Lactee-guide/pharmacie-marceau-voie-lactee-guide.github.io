@@ -246,7 +246,7 @@ GUIDE.quiz = [
   {
     "id": "entrainement",
     "titre": "Entraînement",
-    "description": "10 questions tirées au hasard parmi toute la banque : ordonnance, fiches, glossaire et commandes. Une série différente à chaque essai.",
+    "description": "10 questions tirées au hasard parmi toute la banque : ordonnance, fiches, produits du rayon, glossaire et commandes. Une série différente à chaque essai.",
     "tirage": 10,
     "questions": [
       {
@@ -908,6 +908,344 @@ GUIDE.quiz = [
         ],
         "bonneReponse": 1,
         "explication": "En bloquant les COX, l'AINS diminue aussi les prostaglandines protectrices de l'estomac."
+      },
+      {
+        "question": "Une maman demande un spray pour la gorge de son enfant de 3 ans. Lequel est autorisé à cet âge ?",
+        "choix": [
+          "Colludol",
+          "Hexaspray",
+          "StrepsilSpray Lidocaïne",
+          "Strepsils Lidocaïne"
+        ],
+        "bonneReponse": 1,
+        "explication": "Hexaspray (biclotymol) est autorisé dès 30 mois. Colludol dès 6 ans, StrepsilSpray et Strepsils Lidocaïne dès 12 ans. Enfant de moins de 6 ans : on en parle au pharmacien."
+      },
+      {
+        "question": "À partir de quel âge peut-on donner Strepsils Lidocaïne ?",
+        "choix": [
+          "Dès 30 mois",
+          "Dès 6 ans",
+          "Dès 12 ans",
+          "Dès 18 ans"
+        ],
+        "bonneReponse": 2,
+        "explication": "C'est écrit sur la boîte : à partir de 12 ans. Les Strepsils Citron et Miel Citron, eux, sont dès 6 ans."
+      },
+      {
+        "question": "Un enfant de 9 ans a mal quand il avale. Quelles pastilles avec anesthésique peut-on proposer ?",
+        "choix": [
+          "Strepsils Lidocaïne",
+          "Lysopaïne Maux de gorge aigus (ambroxol)",
+          "Vocadys",
+          "Aucune, jamais d'anesthésique"
+        ],
+        "bonneReponse": 2,
+        "explication": "Vocadys est autorisé dès 6 ans. Strepsils Lidocaïne et Lysopaïne ambroxol sont réservés aux plus de 12 ans."
+      },
+      {
+        "question": "Que contient Colludol ?",
+        "choix": [
+          "Lidocaïne + hexamidine",
+          "Biclotymol",
+          "Alpha-amylase",
+          "Ambroxol"
+        ],
+        "bonneReponse": 0,
+        "explication": "Colludol associe un anesthésique (lidocaïne) et un antiseptique (hexamidine)."
+      },
+      {
+        "question": "Colludol chez l'adulte : quelle est la posologie maximale ?",
+        "choix": [
+          "1 pulvérisation par jour",
+          "2 pulvérisations par prise, 3 prises par jour",
+          "5 pulvérisations à chaque fois",
+          "Autant que nécessaire"
+        ],
+        "bonneReponse": 1,
+        "explication": "Adulte : 1 à 2 pulvérisations, 3 fois par jour au maximum, 4 h entre deux prises, 5 jours maximum sans avis médical."
+      },
+      {
+        "question": "Combien de temps peut-on utiliser Colludol sans avis médical ?",
+        "choix": [
+          "2 jours",
+          "5 jours",
+          "15 jours",
+          "1 mois"
+        ],
+        "bonneReponse": 1,
+        "explication": "Le traitement ne doit pas dépasser 5 jours sans avis médical (écrit au dos de la boîte)."
+      },
+      {
+        "question": "Maxilase sirop peut être donné à partir de :",
+        "choix": [
+          "6 mois",
+          "6 ans",
+          "12 ans",
+          "18 ans"
+        ],
+        "bonneReponse": 0,
+        "explication": "Maxilase (alpha-amylase) est indiqué à partir de 6 mois. Il n'est plus en libre accès : il se délivre derrière le comptoir."
+      },
+      {
+        "question": "Phytoxil Mal de gorge, c'est :",
+        "choix": [
+          "Un antibiotique",
+          "Un dispositif médical à l'ectoïne qui hydrate la gorge",
+          "Un anti-inflammatoire",
+          "Un anesthésique"
+        ],
+        "bonneReponse": 1,
+        "explication": "Dispositif médical à l'ectoïne, sans sucre, dès 6 ans : il hydrate les muqueuses sèches et irritées."
+      },
+      {
+        "question": "Le spray propolis 3 Chênes est à éviter chez une personne :",
+        "choix": [
+          "Diabétique",
+          "Allergique aux produits de la ruche",
+          "Qui a de la tension",
+          "Qui tousse"
+        ],
+        "bonneReponse": 1,
+        "explication": "La propolis est un produit de la ruche : jamais en cas d'allergie au miel, au pollen ou aux piqûres d'abeille."
+      },
+      {
+        "question": "Stodal Plantes (pastilles Boiron) est réservé à partir de :",
+        "choix": [
+          "2 ans",
+          "6 ans",
+          "12 ans",
+          "18 ans"
+        ],
+        "bonneReponse": 2,
+        "explication": "Adultes et adolescents dès 12 ans (écrit sur la boîte)."
+      },
+      {
+        "question": "Un adulte a une toux grasse et crache. Quel produit du rayon ?",
+        "choix": [
+          "Clarix Oxomémazine",
+          "Clarix Carbocistéine",
+          "Hexaspray",
+          "Maxilase"
+        ],
+        "bonneReponse": 1,
+        "explication": "Toux grasse : un mucolytique comme la carbocistéine. L'oxomémazine est pour la toux sèche."
+      },
+      {
+        "question": "Quel effet faut-il signaler avec Clarix Oxomémazine ?",
+        "choix": [
+          "Il donne faim",
+          "Il fait dormir",
+          "Il colore les urines",
+          "Il donne de la fièvre"
+        ],
+        "bonneReponse": 1,
+        "explication": "L'oxomémazine est un antihistaminique : somnolence, prudence au volant, pas d'alcool. Plutôt le soir."
+      },
+      {
+        "question": "Ibuprofène Biogaran conseil 400 mg est indiqué chez :",
+        "choix": [
+          "Tous les enfants",
+          "Les adultes et enfants de plus de 30 kg",
+          "Les nourrissons",
+          "Uniquement les plus de 65 ans"
+        ],
+        "bonneReponse": 1,
+        "explication": "C'est écrit sur la boîte : adultes et enfants de plus de 30 kg."
+      },
+      {
+        "question": "Un patient a le nez bouché et ne veut pas de médicament. Que proposer ?",
+        "choix": [
+          "Actifed Rhume",
+          "Un spray vasoconstricteur",
+          "Stérimar Nez bouché (eau de mer hypertonique)",
+          "Doliprane"
+        ],
+        "bonneReponse": 2,
+        "explication": "L'eau de mer hypertonique aide à déboucher le nez sans médicament. Actifed Rhume et les vasoconstricteurs sont sur ordonnance."
+      },
+      {
+        "question": "Pour l'hygiène du nez d'un nourrisson, quel produit du rayon est adapté ?",
+        "choix": [
+          "Azéol DM (dès 18 ans)",
+          "ProRhinel spray nourrissons et jeunes enfants",
+          "Efirub spray nasal",
+          "Stérimar Nez bouché"
+        ],
+        "bonneReponse": 1,
+        "explication": "ProRhinel nourrissons, ou le spray Pharmactiv isotonique (adultes, enfants et nourrissons). Un nourrisson enrhumé doit être vu par le pharmacien."
+      }
+    ]
+  },
+  {
+    "id": "rayon",
+    "titre": "Produits du rayon",
+    "description": "10 questions au hasard sur les produits vendus à l'officine : âges, compositions, posologies, et quel produit pour quel patient.",
+    "tirage": 10,
+    "questions": [
+      {
+        "question": "Une maman demande un spray pour la gorge de son enfant de 3 ans. Lequel est autorisé à cet âge ?",
+        "choix": [
+          "Colludol",
+          "Hexaspray",
+          "StrepsilSpray Lidocaïne",
+          "Strepsils Lidocaïne"
+        ],
+        "bonneReponse": 1,
+        "explication": "Hexaspray (biclotymol) est autorisé dès 30 mois. Colludol dès 6 ans, StrepsilSpray et Strepsils Lidocaïne dès 12 ans. Enfant de moins de 6 ans : on en parle au pharmacien."
+      },
+      {
+        "question": "À partir de quel âge peut-on donner Strepsils Lidocaïne ?",
+        "choix": [
+          "Dès 30 mois",
+          "Dès 6 ans",
+          "Dès 12 ans",
+          "Dès 18 ans"
+        ],
+        "bonneReponse": 2,
+        "explication": "C'est écrit sur la boîte : à partir de 12 ans. Les Strepsils Citron et Miel Citron, eux, sont dès 6 ans."
+      },
+      {
+        "question": "Un enfant de 9 ans a mal quand il avale. Quelles pastilles avec anesthésique peut-on proposer ?",
+        "choix": [
+          "Strepsils Lidocaïne",
+          "Lysopaïne Maux de gorge aigus (ambroxol)",
+          "Vocadys",
+          "Aucune, jamais d'anesthésique"
+        ],
+        "bonneReponse": 2,
+        "explication": "Vocadys est autorisé dès 6 ans. Strepsils Lidocaïne et Lysopaïne ambroxol sont réservés aux plus de 12 ans."
+      },
+      {
+        "question": "Que contient Colludol ?",
+        "choix": [
+          "Lidocaïne + hexamidine",
+          "Biclotymol",
+          "Alpha-amylase",
+          "Ambroxol"
+        ],
+        "bonneReponse": 0,
+        "explication": "Colludol associe un anesthésique (lidocaïne) et un antiseptique (hexamidine)."
+      },
+      {
+        "question": "Colludol chez l'adulte : quelle est la posologie maximale ?",
+        "choix": [
+          "1 pulvérisation par jour",
+          "2 pulvérisations par prise, 3 prises par jour",
+          "5 pulvérisations à chaque fois",
+          "Autant que nécessaire"
+        ],
+        "bonneReponse": 1,
+        "explication": "Adulte : 1 à 2 pulvérisations, 3 fois par jour au maximum, 4 h entre deux prises, 5 jours maximum sans avis médical."
+      },
+      {
+        "question": "Combien de temps peut-on utiliser Colludol sans avis médical ?",
+        "choix": [
+          "2 jours",
+          "5 jours",
+          "15 jours",
+          "1 mois"
+        ],
+        "bonneReponse": 1,
+        "explication": "Le traitement ne doit pas dépasser 5 jours sans avis médical (écrit au dos de la boîte)."
+      },
+      {
+        "question": "Maxilase sirop peut être donné à partir de :",
+        "choix": [
+          "6 mois",
+          "6 ans",
+          "12 ans",
+          "18 ans"
+        ],
+        "bonneReponse": 0,
+        "explication": "Maxilase (alpha-amylase) est indiqué à partir de 6 mois. Il n'est plus en libre accès : il se délivre derrière le comptoir."
+      },
+      {
+        "question": "Phytoxil Mal de gorge, c'est :",
+        "choix": [
+          "Un antibiotique",
+          "Un dispositif médical à l'ectoïne qui hydrate la gorge",
+          "Un anti-inflammatoire",
+          "Un anesthésique"
+        ],
+        "bonneReponse": 1,
+        "explication": "Dispositif médical à l'ectoïne, sans sucre, dès 6 ans : il hydrate les muqueuses sèches et irritées."
+      },
+      {
+        "question": "Le spray propolis 3 Chênes est à éviter chez une personne :",
+        "choix": [
+          "Diabétique",
+          "Allergique aux produits de la ruche",
+          "Qui a de la tension",
+          "Qui tousse"
+        ],
+        "bonneReponse": 1,
+        "explication": "La propolis est un produit de la ruche : jamais en cas d'allergie au miel, au pollen ou aux piqûres d'abeille."
+      },
+      {
+        "question": "Stodal Plantes (pastilles Boiron) est réservé à partir de :",
+        "choix": [
+          "2 ans",
+          "6 ans",
+          "12 ans",
+          "18 ans"
+        ],
+        "bonneReponse": 2,
+        "explication": "Adultes et adolescents dès 12 ans (écrit sur la boîte)."
+      },
+      {
+        "question": "Un adulte a une toux grasse et crache. Quel produit du rayon ?",
+        "choix": [
+          "Clarix Oxomémazine",
+          "Clarix Carbocistéine",
+          "Hexaspray",
+          "Maxilase"
+        ],
+        "bonneReponse": 1,
+        "explication": "Toux grasse : un mucolytique comme la carbocistéine. L'oxomémazine est pour la toux sèche."
+      },
+      {
+        "question": "Quel effet faut-il signaler avec Clarix Oxomémazine ?",
+        "choix": [
+          "Il donne faim",
+          "Il fait dormir",
+          "Il colore les urines",
+          "Il donne de la fièvre"
+        ],
+        "bonneReponse": 1,
+        "explication": "L'oxomémazine est un antihistaminique : somnolence, prudence au volant, pas d'alcool. Plutôt le soir."
+      },
+      {
+        "question": "Ibuprofène Biogaran conseil 400 mg est indiqué chez :",
+        "choix": [
+          "Tous les enfants",
+          "Les adultes et enfants de plus de 30 kg",
+          "Les nourrissons",
+          "Uniquement les plus de 65 ans"
+        ],
+        "bonneReponse": 1,
+        "explication": "C'est écrit sur la boîte : adultes et enfants de plus de 30 kg."
+      },
+      {
+        "question": "Un patient a le nez bouché et ne veut pas de médicament. Que proposer ?",
+        "choix": [
+          "Actifed Rhume",
+          "Un spray vasoconstricteur",
+          "Stérimar Nez bouché (eau de mer hypertonique)",
+          "Doliprane"
+        ],
+        "bonneReponse": 2,
+        "explication": "L'eau de mer hypertonique aide à déboucher le nez sans médicament. Actifed Rhume et les vasoconstricteurs sont sur ordonnance."
+      },
+      {
+        "question": "Pour l'hygiène du nez d'un nourrisson, quel produit du rayon est adapté ?",
+        "choix": [
+          "Azéol DM (dès 18 ans)",
+          "ProRhinel spray nourrissons et jeunes enfants",
+          "Efirub spray nasal",
+          "Stérimar Nez bouché"
+        ],
+        "bonneReponse": 1,
+        "explication": "ProRhinel nourrissons, ou le spray Pharmactiv isotonique (adultes, enfants et nourrissons). Un nourrisson enrhumé doit être vu par le pharmacien."
       }
     ]
   }

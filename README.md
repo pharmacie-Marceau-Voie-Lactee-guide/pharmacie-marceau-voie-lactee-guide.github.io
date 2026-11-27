@@ -192,3 +192,7 @@ Ne jamais mettre de photo montrant un patient, une ordonnance ou un écran Winph
 - Les illustrations de fiches sont dessinées dans `js/app.js` (objet `ART`, une entrée par `id` de fiche). Une nouvelle fiche sans illustration affiche son icône.
 - L'adresse de l'officine (pied de page) est dans `data/site.js` (`"adresse"`).
 - Le mode sombre s'active automatiquement selon le réglage de l'appareil.
+
+## Photos agrandies
+
+Un clic sur une photo de produit l'affiche en grand. La grande version est cherchée dans `assets/produits/grand/` (même nom de fichier) ; si elle n'existe pas, la petite photo est agrandie.
