@@ -49,7 +49,7 @@ GUIDE.medicaments = {
       "role": "Soulager sur place le mal de gorge : adoucir, limiter les microbes (antiseptique), endormir la douleur (anesthésique) ou calmer l'inflammation (AINS local).",
       "exemples": [
         "Antiseptique : Strepsils, Lysopaïne (cétylpyridinium), Hexaspray",
-        "Antiseptique + anesthésique : Drill, Colludol, Vocadys, Strepsils Lidocaïne",
+        "Antiseptique + anesthésique : Colludol, Vocadys, Strepsils Lidocaïne",
         "Anesthésique : Lysopaïne ambroxol",
         "Enzyme : Maxilase, Alfa-Amylase Biogaran"
       ],
@@ -72,7 +72,6 @@ GUIDE.medicaments = {
       "role": "Calmer une toux sèche gênante.",
       "exemples": [
         "Clarix Oxomémazine (antihistaminique)",
-        "Clarix Pentoxyvérine",
         "Sur ordonnance : codéine, dextrométhorphane, éthylmorphine, noscapine"
       ],
       "vigilance": [
@@ -91,7 +90,7 @@ GUIDE.medicaments = {
       "role": "Fluidifier les sécrétions bronchiques.",
       "exemples": [
         "Carbocistéine : Clarix",
-        "Acétylcystéine : Fluimucil 600 mg, Acétylcystéine Biogaran 200 mg",
+        "Acétylcystéine : Fluimucil 600 mg",
         "Ambroxol Biogaran conseil 30 mg"
       ],
       "vigilance": [

@@ -134,7 +134,7 @@ GUIDE.fiches = [
             {
               "nom": "Phytoxil Mal de gorge",
               "forme": "pastille",
-              "detail": "Dispositif médical à l'ectoïne, sans sucre",
+              "detail": "Dispositif médical à l'ectoïne : hydrate les muqueuses sèches et irritées ; sans sucre, fruits rouges",
               "pictos": [
                 "age:Dès 6 ans"
               ],
@@ -148,14 +148,6 @@ GUIDE.fiches = [
                 {
                   "nom": "Azéol Gorge",
                   "note": "sauge, miel, zinc"
-                },
-                {
-                  "nom": "Stodal Plantes",
-                  "note": "dès 12 ans"
-                },
-                {
-                  "nom": "Pharmactiv Pastilles",
-                  "note": "propolis, dès 12 ans"
                 }
               ]
             },
@@ -173,19 +165,13 @@ GUIDE.fiches = [
               ]
             },
             {
-              "nom": "3 Chênes Propolis spray",
-              "forme": "spray",
-              "detail": "Spray buccal propolis, thym, menthe",
+              "nom": "3 Chênes Propolis sirop",
+              "forme": "sirop",
+              "detail": "Complément : propolis, acérola (vitamine C), romarin",
+              "groupe": "Propolis",
+              "photo": "assets/produits/propolis-sirop.jpg",
               "pictos": [
                 "ruche"
-              ],
-              "photo": "assets/produits/propolis-spray.jpg",
-              "groupe": "Spray",
-              "equivalents": [
-                {
-                  "nom": "3 Chênes Propolis sirop acérola romarin",
-                  "note": "complément, vitamine C"
-                }
               ]
             }
           ],
@@ -247,19 +233,14 @@ GUIDE.fiches = [
           "cestQuoi": "« Endort » la gorge quelques minutes pour diminuer la douleur, surtout en avalant. Presque toujours associé à un antiseptique dans le même produit.",
           "exemples": [
             {
-              "nom": "Drill (miel citron sans sucre)",
+              "nom": "Vocadys Irritations de la gorge",
               "forme": "pastille",
-              "detail": "Chlorhexidine 3 mg + tétracaïne 0,2 mg",
+              "detail": "Lidocaïne + énoxolone + érysimum (pâtes à sucer, mandarine)",
+              "groupe": "Pastilles, dès 6 ans",
+              "photo": "assets/produits/vocadys.jpg",
               "pictos": [
                 "age:Dès 6 ans",
                 "fausseroute"
-              ],
-              "groupe": "Pastilles, dès 6 ans",
-              "equivalents": [
-                {
-                  "nom": "Vocadys",
-                  "note": "pâtes à sucer"
-                }
               ]
             },
             {
@@ -313,7 +294,7 @@ GUIDE.fiches = [
             {
               "nom": "Maxilase Maux de gorge sirop",
               "forme": "sirop",
-              "detail": "Alpha-amylase 200 U.CEIP/ml",
+              "detail": "Alpha-amylase 200 U.CEIP/ml, enzyme à visée anti-inflammatoire ; flacon de 200 ml, goût mandarine",
               "pictos": [
                 "age:Dès 6 mois"
               ],
@@ -357,7 +338,7 @@ GUIDE.fiches = [
         "lignes": [
           [
             "« Ça gratte », voix enrouée, pas de vraie douleur",
-            "Adoucissant : Phytoxil Mal de gorge, Efirub Gommes, HerbalGem Gommes chantres (voix)"
+            "Adoucissant : Phytoxil Mal de gorge (dès 6 ans), Efirub Gommes, HerbalGem Gommes chantres (voix)"
           ],
           [
             "Mal de gorge qui commence, gêne modérée",
@@ -365,7 +346,7 @@ GUIDE.fiches = [
           ],
           [
             "« J'ai mal quand j'avale »",
-            "Antiseptique + anesthésique : Drill, Colludol, Vocadys (dès 6 ans) ; Strepsils Lidocaïne, Lysopaïne ambroxol (dès 12 ans)"
+            "Antiseptique + anesthésique : Colludol, Vocadys (dès 6 ans) ; Strepsils Lidocaïne, Lysopaïne ambroxol (dès 12 ans)"
           ],
           [
             "Gorge très enflammée",
@@ -474,19 +455,15 @@ GUIDE.fiches = [
           "cestQuoi": "Calment le réflexe de toux. Uniquement pour une toux sèche qui gêne, surtout la nuit.",
           "exemples": [
             {
-              "nom": "Clarix Pentoxyvérine 0,15 %",
+              "nom": "Clarix Oxomémazine 0,33 mg/ml",
               "forme": "sirop",
-              "detail": "Antitussif non opiacé",
+              "detail": "Antihistaminique qui calme la toux ; fait dormir : plutôt le soir",
               "pictos": [
-                "age:Âge minimum : voir la notice"
+                "conduite",
+                "alcool",
+                "age:Pas avant 2 ans"
               ],
-              "groupe": "Sirop",
-              "equivalents": [
-                {
-                  "nom": "Clarix Oxomémazine",
-                  "note": "fait dormir : plutôt le soir ; pas avant 2 ans"
-                }
-              ]
+              "groupe": "Sirop"
             }
           ],
           "quand": "Toux sèche, sans signe d'alerte, chez l'adulte (ou l'enfant selon la notice).",
@@ -521,24 +498,9 @@ GUIDE.fiches = [
                   "note": "comprimés"
                 }
               ]
-            },
-            {
-              "nom": "Acétylcystéine Biogaran 200 mg",
-              "forme": "comprime",
-              "detail": "Acétylcystéine, sachets, sans sucre",
-              "pictos": [
-                "age:Dès 2 ans"
-              ],
-              "groupe": "Dès 2 ans",
-              "equivalents": [
-                {
-                  "nom": "Lierre grimpant Biogaran",
-                  "note": "sirop sans sucre"
-                }
-              ]
             }
           ],
-          "quand": "Toux grasse qui encombre, chez l'adulte ou l'enfant de plus de 2 ans selon le produit.",
+          "quand": "Toux grasse qui encombre, chez l'adulte.",
           "attention": [
             "Contre-indiqués avant 2 ans (risque d'encombrement).",
             "Jamais avec un antitussif.",
@@ -601,7 +563,7 @@ GUIDE.fiches = [
         "lignes": [
           [
             "Toux sèche qui gratte et l'empêche de dormir (adulte)",
-            "Antitussif : Clarix Pentoxyvérine, ou Clarix Oxomémazine le soir (somnolence)"
+            "Antitussif : Clarix Oxomémazine, plutôt le soir (fait dormir)"
           ],
           [
             "Toux grasse, il crache ou ça encombre (adulte)",
@@ -609,7 +571,7 @@ GUIDE.fiches = [
           ],
           [
             "Toux grasse chez un enfant de plus de 2 ans",
-            "Acétylcystéine Biogaran 200 mg ou Lierre grimpant Biogaran"
+            "Sirop aux plantes : Phytoxil Junior ou Phytoxil Toux (en parler au pharmacien)"
           ],
           [
             "Toux légère, enfant de plus de 2 ans",
