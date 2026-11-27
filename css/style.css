@@ -1362,3 +1362,25 @@ details.fold-warn .sec-icon { background: #fff4e5; color: #b45309; }
   .animation-figure .body-diagram { max-height: 78vh; width: auto; max-width: 100%; }
 }
 .prod-photo { width: 84px; height: 84px; padding: 3px; }
+
+/* ---------- Produits regroupés par usage ---------- */
+.choix-first { margin: 4px 0 14px; }
+.choix-first .comparison h2 { font-size: 1.05rem; margin-top: 4px; }
+.prod-grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+.prod-card { display: flex; flex-direction: column; }
+.prod-what { font-size: .92rem; color: var(--muted); margin-bottom: 6px; }
+.prod-when { font-size: .92rem; margin: 0 0 10px; }
+.prod-items { gap: 10px; }
+.prod-item { flex-wrap: wrap; align-items: flex-start; padding: 10px; background: var(--soft); border: 1px solid var(--line); }
+.prod-item.has-group { padding-top: 8px; }
+.prod-group { flex-basis: 100%; font-size: .72rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--brand); margin-bottom: 2px; }
+.prod-text { flex: 1; min-width: 0; }
+.prod-equiv { flex-basis: 100%; margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--line); font-size: .86rem; }
+.eq-label { font-weight: 700; color: var(--muted); font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; }
+.prod-equiv ul { list-style: none; padding: 0; margin: 4px 0 0; display: grid; gap: 3px; }
+.prod-equiv li { max-width: none; }
+.prod-equiv li span { color: var(--muted); }
+.prod-attention { margin-top: auto; padding-top: 10px; font-size: .9rem; }
+.prod-attention summary { cursor: pointer; font-weight: 700; color: #b45309; min-height: 32px; display: flex; align-items: center; }
+.prod-attention ul { margin-top: 4px; }
+.comparison caption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

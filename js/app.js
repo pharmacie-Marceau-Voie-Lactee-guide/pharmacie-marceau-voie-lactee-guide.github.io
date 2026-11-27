@@ -677,14 +677,21 @@
 
   function productItem(x) {
     if (typeof x === "string") return el("li", { class: "prod-item" }, [el("span", { class: "form-icon-empty", "aria-hidden": "true" }), el("span", null, x)]);
-    return el("li", { class: "prod-item" + (x.indisponible ? " is-unavailable" : "") }, [
+    return el("li", { class: "prod-item" + (x.indisponible ? " is-unavailable" : "") + (x.groupe ? " has-group" : "") }, [
+      x.groupe ? el("span", { class: "prod-group" }, x.groupe) : null,
       x.photo ? el("img", { class: "prod-photo", src: x.photo, alt: "Boîte de " + x.nom, loading: "lazy" }) : (formIcon(x.forme) || el("span", { class: "form-icon-empty", "aria-hidden": "true" })),
       el("span", { class: "prod-text" }, [
         el("strong", null, x.nom || TODO),
         x.forme && FORM_LABEL[x.forme] ? el("span", { class: "prod-form" }, " · " + FORM_LABEL[x.forme]) : null,
         x.detail ? el("span", { class: "prod-detail" }, x.detail) : null,
         pictoBadges(x.pictos)
-      ])
+      ]),
+      x.equivalents && x.equivalents.length ? el("div", { class: "prod-equiv" }, [
+        el("span", { class: "eq-label" }, "Même usage :"),
+        el("ul", null, x.equivalents.map(function (e) {
+          return el("li", null, [el("strong", null, e.nom), e.note ? el("span", null, " · " + e.note) : null]);
+        }))
+      ]) : null
     ]);
   }
 
@@ -699,21 +706,22 @@
     }
     var parts = [
       inner ? null : el("h2", { id: "h-produits" }, pr.titre || "Les produits"),
-      pr.introduction ? el("p", null, pr.introduction) : null,
+      pr.choix ? el("div", { class: "choix-first" }, comparisonBlock(pr.choix)) : null,
+      pr.introduction ? el("p", { class: "meta" }, pr.introduction) : null,
       el("div", { class: "prod-grid" }, (pr.types || []).map(function (t) {
         return el("article", { class: "prod-card t-" + (t.cle || "autre") }, [
           el("h3", null, [el("span", { class: "type-dot", "aria-hidden": "true" }), t.nom || TODO]),
           el("p", { class: "prod-what" }, t.cestQuoi || TODO),
+          t.quand ? el("p", { class: "prod-when" }, [el("strong", null, "Pour : "), t.quand]) : null,
           t.exemples && t.exemples.length
             ? el("ul", { class: "prod-items", "aria-label": "Produits" }, t.exemples.map(productItem))
             : null,
-          el("dl", null, [
-            row("Quand le proposer", t.quand),
-            row("Attention", t.attention)
-          ])
+          t.attention && t.attention.length ? el("details", { class: "prod-attention" }, [
+            el("summary", null, ["Attention (", String(t.attention.length), ")"]),
+            list(t.attention, false, "compact")
+          ]) : null
         ]);
-      })),
-      pr.choix ? comparisonBlock(pr.choix) : null
+      }))
     ];
     return inner ? parts : el("section", { class: "products", id: "produits", "aria-labelledby": "h-produits" }, parts);
   }

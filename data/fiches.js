@@ -138,44 +138,39 @@ GUIDE.fiches = [
               "pictos": [
                 "age:Dès 6 ans"
               ],
-              "photo": "assets/produits/phytoxil-gorge.jpg"
-            },
-            {
-              "nom": "Efirub Gommes gorge irritée",
-              "forme": "pastille",
-              "detail": "5 plantes + papaïne, sans sucre",
-              "photo": "assets/produits/efirub-gommes.jpg"
+              "photo": "assets/produits/phytoxil-gorge.jpg",
+              "groupe": "Pastilles adoucissantes",
+              "equivalents": [
+                {
+                  "nom": "Efirub Gommes",
+                  "note": "sans sucre"
+                },
+                {
+                  "nom": "Azéol Gorge",
+                  "note": "sauge, miel, zinc"
+                },
+                {
+                  "nom": "Stodal Plantes",
+                  "note": "dès 12 ans"
+                },
+                {
+                  "nom": "Pharmactiv Pastilles",
+                  "note": "propolis, dès 12 ans"
+                }
+              ]
             },
             {
               "nom": "HerbalGem Gommes chantres",
               "forme": "pastille",
               "detail": "Voix enrouée ; existe aussi en sirop",
-              "photo": "assets/produits/herbalgem-gommes.jpg"
-            },
-            {
-              "nom": "Stodal Plantes",
-              "forme": "pastille",
-              "detail": "Boiron : nez, gorge, bronches",
-              "pictos": [
-                "age:Dès 12 ans"
-              ],
-              "photo": "assets/produits/stodal.jpg"
-            },
-            {
-              "nom": "Azéol Gorge",
-              "forme": "pastille",
-              "detail": "Sauge, sureau, miel, zinc ; existe aussi en spray",
-              "photo": "assets/produits/azeol-gorge.jpg"
-            },
-            {
-              "nom": "Pharmactiv Pastilles pour la gorge",
-              "forme": "pastille",
-              "detail": "Propolis, vitamine C, menthe poivrée",
-              "pictos": [
-                "age:Dès 12 ans",
-                "ruche"
-              ],
-              "photo": "assets/produits/pharmactiv-pastilles.jpg"
+              "photo": "assets/produits/herbalgem-gommes.jpg",
+              "groupe": "Voix enrouée",
+              "equivalents": [
+                {
+                  "nom": "HerbalGem Sirop chantres",
+                  "note": "même usage en sirop"
+                }
+              ]
             },
             {
               "nom": "3 Chênes Propolis spray",
@@ -184,7 +179,8 @@ GUIDE.fiches = [
               "pictos": [
                 "ruche"
               ],
-              "photo": "assets/produits/propolis-spray.jpg"
+              "photo": "assets/produits/propolis-spray.jpg",
+              "groupe": "Spray"
             }
           ],
           "quand": "Gorge qui gratte, irritation légère, voix enrouée, air sec ou tabac, sans vraie douleur.",
@@ -206,24 +202,17 @@ GUIDE.fiches = [
               "pictos": [
                 "age:Dès 6 ans"
               ],
-              "photo": "assets/produits/strepsils-citron.jpg"
-            },
-            {
-              "nom": "Strepsils Miel Citron",
-              "forme": "pastille",
-              "detail": "Amylmétacrésol + alcool 2,4-dichlorobenzylique",
-              "pictos": [
-                "age:Dès 6 ans",
-                "sucre"
-              ],
-              "photo": "assets/produits/strepsils-miel-citron.jpg"
-            },
-            {
-              "nom": "Lysopaïne Maux de gorge (miel citron, menthe, citron gingembre)",
-              "forme": "pastille",
-              "detail": "Cétylpyridinium + lysozyme, sans sucre",
-              "pictos": [
-                "age:Dès 6 ans"
+              "photo": "assets/produits/strepsils-citron.jpg",
+              "groupe": "Pastilles, dès 6 ans",
+              "equivalents": [
+                {
+                  "nom": "Strepsils Miel Citron",
+                  "note": "avec sucre"
+                },
+                {
+                  "nom": "Lysopaïne cétylpyridinium",
+                  "note": "miel citron, menthe, citron gingembre ; sans sucre"
+                }
               ]
             },
             {
@@ -233,7 +222,8 @@ GUIDE.fiches = [
               "pictos": [
                 "age:Dès 30 mois"
               ],
-              "photo": "assets/produits/hexaspray.jpg"
+              "photo": "assets/produits/hexaspray.jpg",
+              "groupe": "Spray, dès 30 mois"
             }
           ],
           "quand": "Mal de gorge débutant, gêne modérée, sans grosse douleur pour avaler.",
@@ -255,6 +245,13 @@ GUIDE.fiches = [
               "pictos": [
                 "age:Dès 6 ans",
                 "fausseroute"
+              ],
+              "groupe": "Pastilles, dès 6 ans",
+              "equivalents": [
+                {
+                  "nom": "Vocadys",
+                  "note": "pâtes à sucer"
+                }
               ]
             },
             {
@@ -265,15 +262,13 @@ GUIDE.fiches = [
                 "age:Dès 12 ans",
                 "fausseroute"
               ],
-              "photo": "assets/produits/strepsils-lidocaine.jpg"
-            },
-            {
-              "nom": "StrepsilSpray Lidocaïne",
-              "forme": "spray",
-              "detail": "Lidocaïne + amylmétacrésol + alcool dichlorobenzylique",
-              "pictos": [
-                "age:Dès 12 ans",
-                "fausseroute"
+              "photo": "assets/produits/strepsils-lidocaine.jpg",
+              "groupe": "Pastilles, dès 12 ans",
+              "equivalents": [
+                {
+                  "nom": "Lysopaïne Maux de gorge aigus",
+                  "note": "ambroxol, sans sucre"
+                }
               ]
             },
             {
@@ -284,27 +279,14 @@ GUIDE.fiches = [
                 "age:Dès 6 ans",
                 "fausseroute"
               ],
-              "photo": "assets/produits/colludol.jpg"
-            },
-            {
-              "nom": "Vocadys Irritations de la gorge",
-              "forme": "pastille",
-              "detail": "Lidocaïne + énoxolone + érysimum (pâtes à sucer)",
-              "pictos": [
-                "age:Dès 6 ans",
-                "fausseroute"
-              ],
-              "photo": "assets/produits/vocadys.jpg"
-            },
-            {
-              "nom": "Lysopaïne Maux de gorge aigus",
-              "forme": "pastille",
-              "detail": "Ambroxol 20 mg (anesthésique), citron sans sucre",
-              "pictos": [
-                "age:Dès 12 ans",
-                "fausseroute"
-              ],
-              "photo": "assets/produits/lysopaine-ambroxol.jpg"
+              "photo": "assets/produits/colludol.jpg",
+              "groupe": "Spray",
+              "equivalents": [
+                {
+                  "nom": "StrepsilSpray Lidocaïne",
+                  "note": "dès 12 ans"
+                }
+              ]
             }
           ],
           "quand": "Douleur quand le patient avale.",
@@ -326,14 +308,13 @@ GUIDE.fiches = [
               "pictos": [
                 "age:Dès 6 mois"
               ],
-              "photo": "assets/produits/maxilase.jpg"
-            },
-            {
-              "nom": "Alfa-Amylase Biogaran conseil",
-              "forme": "sirop",
-              "detail": "Alpha-amylase, sirop (dès 6 mois) ou comprimés 3000 U (adultes)",
-              "pictos": [
-                "age:Sirop dès 6 mois"
+              "photo": "assets/produits/maxilase.jpg",
+              "groupe": "Alpha-amylase",
+              "equivalents": [
+                {
+                  "nom": "Alfa-Amylase Biogaran",
+                  "note": "générique : sirop dès 6 mois, comprimés adultes"
+                }
               ]
             },
             {
@@ -343,7 +324,8 @@ GUIDE.fiches = [
               "pictos": [
                 "grossesse:Contre-indiqué dès le 6e mois de grossesse",
                 "anticoag"
-              ]
+              ],
+              "groupe": "Pas au rayon"
             }
           ],
           "quand": "Gorge douloureuse et enflammée, sans signe d'alerte.",
@@ -482,21 +464,18 @@ GUIDE.fiches = [
           "cestQuoi": "Calment le réflexe de toux. Uniquement pour une toux sèche qui gêne, surtout la nuit.",
           "exemples": [
             {
-              "nom": "Clarix Oxomémazine 0,33 mg/ml",
-              "forme": "sirop",
-              "detail": "Antihistaminique qui calme la toux et fait dormir",
-              "pictos": [
-                "conduite",
-                "alcool",
-                "age:Pas avant 2 ans"
-              ]
-            },
-            {
               "nom": "Clarix Pentoxyvérine 0,15 %",
               "forme": "sirop",
               "detail": "Antitussif non opiacé",
               "pictos": [
                 "age:Âge minimum : voir la notice"
+              ],
+              "groupe": "Sirop",
+              "equivalents": [
+                {
+                  "nom": "Clarix Oxomémazine",
+                  "note": "fait dormir : plutôt le soir ; pas avant 2 ans"
+                }
               ]
             }
           ],
@@ -519,14 +498,17 @@ GUIDE.fiches = [
               "pictos": [
                 "age:Dès 15 ans"
               ],
-              "photo": "assets/produits/clarix-carbocisteine.jpg"
-            },
-            {
-              "nom": "Fluimucil 600 mg",
-              "forme": "comprime",
-              "detail": "Acétylcystéine, granulés en sachet, 1 par jour",
-              "pictos": [
-                "age:Adultes"
+              "photo": "assets/produits/clarix-carbocisteine.jpg",
+              "groupe": "Adulte",
+              "equivalents": [
+                {
+                  "nom": "Fluimucil 600 mg",
+                  "note": "1 sachet par jour"
+                },
+                {
+                  "nom": "Ambroxol Biogaran 30 mg",
+                  "note": "comprimés"
+                }
               ]
             },
             {
@@ -535,24 +517,14 @@ GUIDE.fiches = [
               "detail": "Acétylcystéine, sachets, sans sucre",
               "pictos": [
                 "age:Dès 2 ans"
-              ]
-            },
-            {
-              "nom": "Ambroxol Biogaran conseil 30 mg",
-              "forme": "comprime",
-              "detail": "Ambroxol, comprimés sécables",
-              "pictos": [
-                "age:Adultes"
-              ]
-            },
-            {
-              "nom": "Lierre grimpant Biogaran conseil",
-              "forme": "sirop",
-              "detail": "Extrait de lierre, sans sucre",
-              "pictos": [
-                "age:Dès 2 ans"
               ],
-              "photo": "assets/produits/lierre-grimpant.jpg"
+              "groupe": "Dès 2 ans",
+              "equivalents": [
+                {
+                  "nom": "Lierre grimpant Biogaran",
+                  "note": "sirop sans sucre"
+                }
+              ]
             }
           ],
           "quand": "Toux grasse qui encombre, chez l'adulte ou l'enfant de plus de 2 ans selon le produit.",
@@ -574,15 +546,17 @@ GUIDE.fiches = [
               "pictos": [
                 "age:Dès 2 ans"
               ],
-              "photo": "assets/produits/phytoxil-toux.jpg"
-            },
-            {
-              "nom": "Phytoxil Toux & Gorge",
-              "forme": "sirop",
-              "detail": "Mauve blanche + miel",
-              "pictos": [
-                "age:Dès 2 ans",
-                "ruche"
+              "photo": "assets/produits/phytoxil-toux.jpg",
+              "groupe": "Adulte et enfant dès 2 ans",
+              "equivalents": [
+                {
+                  "nom": "Phytoxil Toux & Gorge",
+                  "note": "avec miel"
+                },
+                {
+                  "nom": "HerbalGem Sirop Respiration",
+                  "note": "bio, avec miel"
+                }
               ]
             },
             {
@@ -593,15 +567,8 @@ GUIDE.fiches = [
                 "age:Dès 2 ans",
                 "ruche"
               ],
-              "photo": "assets/produits/phytoxil-junior.jpg"
-            },
-            {
-              "nom": "HerbalGem Sirop Respiration",
-              "forme": "sirop",
-              "detail": "Bourgeons, sureau, marrube, miel (bio)",
-              "pictos": [
-                "ruche"
-              ]
+              "photo": "assets/produits/phytoxil-junior.jpg",
+              "groupe": "Enfant"
             }
           ],
           "quand": "Toux légère, enfant de plus de 2 ans, patient qui préfère un produit sans médicament.",
@@ -717,22 +684,17 @@ GUIDE.fiches = [
               "detail": "Eau de mer physiologique",
               "pictos": [
                 "age:Adultes et enfants"
-              ]
-            },
-            {
-              "nom": "Physiomer Jet dynamique",
-              "forme": "spray",
-              "detail": "Eau de mer 100 % naturelle",
-              "pictos": [
-                "age:Dès 6 ans"
-              ]
-            },
-            {
-              "nom": "Pharmactiv Le spray nasal isotonique",
-              "forme": "spray",
-              "detail": "Hygiène nasale quotidienne",
-              "pictos": [
-                "age:Adultes, enfants et nourrissons"
+              ],
+              "groupe": "Adulte et enfant",
+              "equivalents": [
+                {
+                  "nom": "Physiomer Jet dynamique",
+                  "note": "dès 6 ans"
+                },
+                {
+                  "nom": "Pharmactiv isotonique",
+                  "note": "dès la naissance"
+                }
               ]
             },
             {
@@ -742,7 +704,8 @@ GUIDE.fiches = [
               "pictos": [
                 "age:Nourrissons"
               ],
-              "photo": "assets/produits/prorhinel-nourrisson.jpg"
+              "photo": "assets/produits/prorhinel-nourrisson.jpg",
+              "groupe": "Nourrisson"
             }
           ],
           "quand": "Rhume, nez qui coule, chez tout le monde, nourrissons compris (formes adaptées).",
@@ -759,22 +722,17 @@ GUIDE.fiches = [
               "nom": "Stérimar Nez bouché (cuivre)",
               "forme": "spray",
               "detail": "Hypertonique, débouche jusqu'à 6 h",
-              "photo": "assets/produits/sterimar-nez-bouche.jpg"
-            },
-            {
-              "nom": "Pharmactiv Le spray nasal hypertonique",
-              "forme": "spray",
-              "detail": "Spécial nez bouché",
-              "pictos": [
-                "age:Dès 6 mois"
-              ]
-            },
-            {
-              "nom": "ProRhinel Extra eucalyptus",
-              "forme": "spray",
-              "detail": "Nez congestionné, avec eucalyptus",
-              "pictos": [
-                "age:Âge minimum : voir la notice"
+              "photo": "assets/produits/sterimar-nez-bouche.jpg",
+              "groupe": "Nez bouché",
+              "equivalents": [
+                {
+                  "nom": "Pharmactiv hypertonique",
+                  "note": "dès 6 mois"
+                },
+                {
+                  "nom": "ProRhinel Extra eucalyptus",
+                  "note": "avec eucalyptus"
+                }
               ]
             }
           ],
@@ -796,30 +754,32 @@ GUIDE.fiches = [
               "pictos": [
                 "age:Dès 2 ans"
               ],
-              "photo": "assets/produits/efirub-spray-nasal.jpg"
-            },
-            {
-              "nom": "Azéol DM Rhume Rhinite",
-              "forme": "spray",
-              "detail": "Spray nasal",
-              "pictos": [
-                "age:Dès 18 ans"
+              "photo": "assets/produits/efirub-spray-nasal.jpg",
+              "groupe": "Spray nasal",
+              "equivalents": [
+                {
+                  "nom": "Azéol DM Rhume Rhinite",
+                  "note": "dès 18 ans"
+                },
+                {
+                  "nom": "Pharmactiv Spray nasal fort",
+                  "note": "huiles essentielles + propolis"
+                }
               ]
             },
             {
-              "nom": "Pharmactiv Spray nasal fort",
-              "forme": "spray",
-              "detail": "Huiles essentielles (ravintsara, eucalyptus, géranium), propolis",
-              "pictos": [
-                "ruche"
-              ]
-            },
-            {
-              "nom": "Efirub Coups de froid, Sinuxin, Pranarôm Aromaforce, Activox Flash'Rub",
+              "nom": "Efirub Coups de froid",
               "forme": "comprime",
-              "detail": "Compléments aux plantes ou huiles essentielles",
+              "detail": "Complément aux plantes",
               "pictos": [
                 "age:Adultes"
+              ],
+              "groupe": "Compléments",
+              "equivalents": [
+                {
+                  "nom": "Sinuxin, Pranarôm Aromaforce, Activox Flash'Rub",
+                  "note": "compléments aux plantes"
+                }
               ]
             }
           ],
@@ -945,17 +905,22 @@ GUIDE.fiches = [
               "pictos": [
                 "age:Adulte de plus de 50 kg"
               ],
-              "photo": "assets/produits/doliprane.jpg"
-            },
-            {
-              "nom": "Dafalgan 500 mg et 1000 mg",
-              "forme": "comprime",
-              "detail": "Gélules ou comprimés"
-            },
-            {
-              "nom": "Efferalgan 500 mg et Efferalgan Vitamine C",
-              "forme": "comprime",
-              "detail": "Comprimés effervescents ; la version vitamine C contient 200 mg de vitamine C"
+              "photo": "assets/produits/doliprane.jpg",
+              "groupe": "Paracétamol",
+              "equivalents": [
+                {
+                  "nom": "Dafalgan 500 / 1000 mg",
+                  "note": "gélules ou comprimés"
+                },
+                {
+                  "nom": "Efferalgan 500 mg",
+                  "note": "effervescent : contient du sel"
+                },
+                {
+                  "nom": "Efferalgan Vitamine C",
+                  "note": "+ 200 mg de vitamine C"
+                }
+              ]
             }
           ],
           "quand": "Douleur ou fièvre de l'adulte, en première intention.",
@@ -971,30 +936,23 @@ GUIDE.fiches = [
           "cestQuoi": "Anti-inflammatoire : douleur, fièvre, inflammation (dents, règles, courbatures). Plus de contre-indications que le paracétamol.",
           "exemples": [
             {
-              "nom": "Ibuprofène Biogaran conseil 200 mg et 400 mg",
+              "nom": "Ibuprofène Biogaran conseil 200 / 400 mg",
               "forme": "comprime",
               "detail": "Comprimés",
               "pictos": [
                 "grossesse:Contre-indiqué dès le 6e mois de grossesse",
                 "anticoag"
-              ]
-            },
-            {
-              "nom": "Nurofen 200 mg et Nurofen Flash 400 mg",
-              "forme": "comprime",
-              "detail": "Comprimés",
-              "pictos": [
-                "grossesse:Contre-indiqué dès le 6e mois de grossesse",
-                "anticoag"
-              ]
-            },
-            {
-              "nom": "Spedifen 400 mg",
-              "forme": "comprime",
-              "detail": "Ibuprofène, comprimés",
-              "pictos": [
-                "grossesse:Contre-indiqué dès le 6e mois de grossesse",
-                "anticoag"
+              ],
+              "groupe": "Ibuprofène",
+              "equivalents": [
+                {
+                  "nom": "Nurofen 200 mg / Flash 400 mg",
+                  "note": "même molécule"
+                },
+                {
+                  "nom": "Spedifen 400 mg",
+                  "note": "même molécule"
+                }
               ]
             }
           ],
