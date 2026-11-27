@@ -138,28 +138,28 @@ GUIDE.fiches = [
               "pictos": [
                 "age:Dès 6 ans"
               ],
-              "photo": "assets/produits/phytoxil-gorge.jpg?v=3",
+              "photo": "assets/produits/phytoxil-gorge.jpg?v=4",
               "groupe": "Pastilles adoucissantes",
               "equivalents": [
                 {
                   "nom": "Stodal Plantes",
                   "note": "Boiron, nez, gorge, bronches ; dès 12 ans",
-                  "photo": "assets/produits/stodal.jpg?v=3"
+                  "photo": "assets/produits/stodal.jpg?v=4"
                 },
                 {
                   "nom": "Efirub Gommes",
                   "note": "sans sucre",
-                  "photo": "assets/produits/efirub-gommes.jpg?v=3"
+                  "photo": "assets/produits/efirub-gommes.jpg?v=4"
                 },
                 {
                   "nom": "Azéol Gorge",
                   "note": "sauge, miel, zinc",
-                  "photo": "assets/produits/azeol-gorge.jpg?v=3"
+                  "photo": "assets/produits/azeol-gorge.jpg?v=4"
                 },
                 {
                   "nom": "Pharmactiv Pastilles pour la gorge",
                   "note": "propolis, vitamine C, menthe poivrée ; goût miel-citron",
-                  "photo": "assets/produits/pharmactiv-pastilles.jpg?v=3"
+                  "photo": "assets/produits/pharmactiv-pastilles.jpg?v=4"
                 }
               ]
             },
@@ -167,7 +167,7 @@ GUIDE.fiches = [
               "nom": "HerbalGem Gommes chantres",
               "forme": "pastille",
               "detail": "Voix enrouée ; existe aussi en sirop",
-              "photo": "assets/produits/herbalgem-gommes.jpg?v=3",
+              "photo": "assets/produits/herbalgem-gommes.jpg?v=4",
               "groupe": "Voix enrouée",
               "equivalents": [
                 {
@@ -181,7 +181,7 @@ GUIDE.fiches = [
               "forme": "spray",
               "detail": "Spray buccal 25 ml : propolis, thym, menthe (camomille)",
               "groupe": "Spray à la propolis",
-              "photo": "assets/produits/propolis-spray.jpg?v=3",
+              "photo": "assets/produits/propolis-spray.jpg?v=4",
               "pictos": [
                 "ruche"
               ],
@@ -189,7 +189,7 @@ GUIDE.fiches = [
                 {
                   "nom": "3 Chênes Propolis sirop",
                   "note": "complément : propolis, acérola (vitamine C), romarin",
-                  "photo": "assets/produits/propolis-sirop.jpg?v=3"
+                  "photo": "assets/produits/propolis-sirop.jpg?v=4"
                 }
               ]
             }
@@ -214,13 +214,13 @@ GUIDE.fiches = [
               "pictos": [
                 "age:Dès 6 ans"
               ],
-              "photo": "assets/produits/strepsils-citron.jpg?v=3",
+              "photo": "assets/produits/strepsils-citron.jpg?v=4",
               "groupe": "Pastilles, dès 6 ans",
               "equivalents": [
                 {
                   "nom": "Strepsils Miel Citron",
                   "note": "avec sucre",
-                  "photo": "assets/produits/strepsils-miel-citron.jpg?v=3"
+                  "photo": "assets/produits/strepsils-miel-citron.jpg?v=4"
                 },
                 {
                   "nom": "Lysopaïne cétylpyridinium",
@@ -235,7 +235,7 @@ GUIDE.fiches = [
               "pictos": [
                 "age:Dès 30 mois"
               ],
-              "photo": "assets/produits/hexaspray.jpg?v=3",
+              "photo": "assets/produits/hexaspray.jpg?v=4",
               "groupe": "Spray, dès 30 mois"
             }
           ],
@@ -257,7 +257,7 @@ GUIDE.fiches = [
               "forme": "pastille",
               "detail": "Lidocaïne + énoxolone + érysimum (pâtes à sucer, mandarine)",
               "groupe": "Pastilles, dès 6 ans",
-              "photo": "assets/produits/vocadys.jpg?v=3",
+              "photo": "assets/produits/vocadys.jpg?v=4",
               "pictos": [
                 "age:Dès 6 ans",
                 "fausseroute"
@@ -271,13 +271,13 @@ GUIDE.fiches = [
                 "age:Dès 12 ans",
                 "fausseroute"
               ],
-              "photo": "assets/produits/strepsils-lidocaine.jpg?v=3",
+              "photo": "assets/produits/strepsils-lidocaine.jpg?v=4",
               "groupe": "Pastilles, dès 12 ans",
               "equivalents": [
                 {
                   "nom": "Lysopaïne Maux de gorge aigus",
                   "note": "ambroxol, sans sucre",
-                  "photo": "assets/produits/lysopaine-ambroxol.jpg?v=3"
+                  "photo": "assets/produits/lysopaine-ambroxol.jpg?v=4"
                 }
               ]
             },
@@ -289,7 +289,7 @@ GUIDE.fiches = [
                 "age:Dès 6 ans",
                 "fausseroute"
               ],
-              "photo": "assets/produits/colludol.jpg?v=3",
+              "photo": "assets/produits/colludol.jpg?v=4",
               "groupe": "Spray",
               "equivalents": [
                 {
@@ -319,7 +319,7 @@ GUIDE.fiches = [
               "pictos": [
                 "age:Dès 6 mois"
               ],
-              "photo": "assets/produits/maxilase.jpg?v=3",
+              "photo": "assets/produits/maxilase.jpg?v=4",
               "groupe": "Alpha-amylase",
               "equivalents": [
                 {
@@ -507,7 +507,7 @@ GUIDE.fiches = [
               "pictos": [
                 "age:Dès 15 ans"
               ],
-              "photo": "assets/produits/clarix-carbocisteine.jpg?v=3",
+              "photo": "assets/produits/clarix-carbocisteine.jpg?v=4",
               "groupe": "Adulte",
               "equivalents": [
                 {
@@ -541,7 +541,7 @@ GUIDE.fiches = [
               "pictos": [
                 "age:Dès 2 ans"
               ],
-              "photo": "assets/produits/phytoxil-toux.jpg?v=3",
+              "photo": "assets/produits/phytoxil-toux.jpg?v=4",
               "groupe": "Adulte et enfant dès 2 ans",
               "equivalents": [
                 {
@@ -562,7 +562,7 @@ GUIDE.fiches = [
                 "age:Dès 2 ans",
                 "ruche"
               ],
-              "photo": "assets/produits/phytoxil-junior.jpg?v=3",
+              "photo": "assets/produits/phytoxil-junior.jpg?v=4",
               "groupe": "Enfant"
             }
           ],
@@ -692,7 +692,7 @@ GUIDE.fiches = [
                   "note": "dès 6 ans"
                 }
               ],
-              "photo": "assets/produits/pharmactiv-isotonique.jpg?v=3"
+              "photo": "assets/produits/pharmactiv-isotonique.jpg?v=4"
             },
             {
               "nom": "ProRhinel Spray nourrissons et jeunes enfants",
@@ -701,7 +701,7 @@ GUIDE.fiches = [
               "pictos": [
                 "age:Nourrissons"
               ],
-              "photo": "assets/produits/prorhinel-nourrisson.jpg?v=3",
+              "photo": "assets/produits/prorhinel-nourrisson.jpg?v=4",
               "groupe": "Nourrisson"
             }
           ],
@@ -720,7 +720,7 @@ GUIDE.fiches = [
               "nom": "Stérimar Nez bouché (cuivre)",
               "forme": "spray",
               "detail": "Hypertonique, débouche jusqu'à 6 h",
-              "photo": "assets/produits/sterimar-nez-bouche.jpg?v=3",
+              "photo": "assets/produits/sterimar-nez-bouche.jpg?v=4",
               "groupe": "Nez bouché",
               "equivalents": [
                 {
@@ -753,7 +753,7 @@ GUIDE.fiches = [
               "pictos": [
                 "age:Dès 2 ans"
               ],
-              "photo": "assets/produits/efirub-spray-nasal.jpg?v=3",
+              "photo": "assets/produits/efirub-spray-nasal.jpg?v=4",
               "groupe": "Spray nasal",
               "equivalents": [
                 {
@@ -780,7 +780,7 @@ GUIDE.fiches = [
                   "note": "compléments aux plantes"
                 }
               ],
-              "photo": "assets/produits/efirub-coups-de-froid.jpg?v=3"
+              "photo": "assets/produits/efirub-coups-de-froid.jpg?v=4"
             }
           ],
           "quand": "Adulte qui souhaite un produit naturel, en plus du lavage du nez.",
@@ -906,7 +906,7 @@ GUIDE.fiches = [
               "pictos": [
                 "age:Adulte de plus de 50 kg"
               ],
-              "photo": "assets/produits/doliprane.jpg?v=3",
+              "photo": "assets/produits/doliprane.jpg?v=4",
               "groupe": "Paracétamol",
               "equivalents": [
                 {
@@ -957,7 +957,7 @@ GUIDE.fiches = [
                   "note": "même molécule"
                 }
               ],
-              "photo": "assets/produits/ibuprofene-biogaran.jpg?v=3"
+              "photo": "assets/produits/ibuprofene-biogaran.jpg?v=4"
             }
           ],
           "quand": "Douleur avec inflammation chez l'adulte, sans contre-indication et sans infection.",
