@@ -1404,3 +1404,4 @@ details.fold-warn .sec-icon { background: #fff4e5; color: #b45309; }
 .lb-close { position: fixed; top: 14px; right: 14px; width: 48px; height: 48px; border-radius: 50%; border: 0; background: #fff; color: #16201d; font-size: 1.8rem; line-height: 1; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,.3); }
 @media (prefers-reduced-motion: reduce) { .zoomable { transition: none; } .zoomable:hover { transform: none; } }
 .zoomable, .lightbox, .lightbox * { -webkit-user-select: none; user-select: none; }
+.prod-photo { object-fit: contain; background: #fff; padding: 0; } .eq-photo { padding: 0; }
