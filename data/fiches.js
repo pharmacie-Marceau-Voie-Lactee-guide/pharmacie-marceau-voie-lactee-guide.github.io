@@ -142,6 +142,10 @@ GUIDE.fiches = [
               "groupe": "Pastilles adoucissantes",
               "equivalents": [
                 {
+                  "nom": "Stodal Plantes",
+                  "note": "Boiron, nez, gorge, bronches ; dès 12 ans"
+                },
+                {
                   "nom": "Efirub Gommes",
                   "note": "sans sucre"
                 },
@@ -165,13 +169,19 @@ GUIDE.fiches = [
               ]
             },
             {
-              "nom": "3 Chênes Propolis sirop",
-              "forme": "sirop",
-              "detail": "Complément : propolis, acérola (vitamine C), romarin",
-              "groupe": "Propolis",
-              "photo": "assets/produits/propolis-sirop.jpg",
+              "nom": "3 Chênes Propolis spray",
+              "forme": "spray",
+              "detail": "Spray buccal : propolis, thym, menthe",
+              "groupe": "Spray à la propolis",
+              "photo": "assets/produits/propolis-spray.jpg",
               "pictos": [
                 "ruche"
+              ],
+              "equivalents": [
+                {
+                  "nom": "3 Chênes Propolis sirop",
+                  "note": "complément : propolis, acérola (vitamine C), romarin"
+                }
               ]
             }
           ],
