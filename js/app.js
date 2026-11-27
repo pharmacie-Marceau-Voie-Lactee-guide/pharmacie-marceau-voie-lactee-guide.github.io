@@ -689,7 +689,7 @@
       x.equivalents && x.equivalents.length ? el("div", { class: "prod-equiv" }, [
         el("span", { class: "eq-label" }, "Même usage :"),
         el("ul", null, x.equivalents.map(function (e) {
-          return el("li", null, [el("strong", null, e.nom), e.note ? el("span", null, " · " + e.note) : null]);
+          return el("li", { class: e.photo ? "has-photo" : null }, [e.photo ? el("img", { class: "eq-photo", src: e.photo, alt: "", loading: "lazy" }) : null, el("span", { class: "eq-txt" }, [el("strong", null, e.nom), e.note ? el("span", null, " · " + e.note) : null])]);
         }))
       ]) : null
     ]);

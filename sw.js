@@ -3,7 +3,7 @@
  * Stratégie : réseau d'abord (toujours la dernière version en ligne), copie enregistrée si pas de connexion.
  * Changer VERSION à chaque modification importante pour forcer le renouvellement du cache.
  */
-var VERSION = "guide-2026-11-27-6";
+var VERSION = "guide-2026-11-27-7";
 var FILES = [
   "./", "index.html", "manifest.webmanifest",
   "css/style.css", "js/app.js",

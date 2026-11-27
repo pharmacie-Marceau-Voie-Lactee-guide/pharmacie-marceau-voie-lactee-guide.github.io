@@ -143,15 +143,23 @@ GUIDE.fiches = [
               "equivalents": [
                 {
                   "nom": "Stodal Plantes",
-                  "note": "Boiron, nez, gorge, bronches ; dès 12 ans"
+                  "note": "Boiron, nez, gorge, bronches ; dès 12 ans",
+                  "photo": "assets/produits/stodal.jpg"
                 },
                 {
                   "nom": "Efirub Gommes",
-                  "note": "sans sucre"
+                  "note": "sans sucre",
+                  "photo": "assets/produits/efirub-gommes.jpg"
                 },
                 {
                   "nom": "Azéol Gorge",
-                  "note": "sauge, miel, zinc"
+                  "note": "sauge, miel, zinc",
+                  "photo": "assets/produits/azeol-gorge.jpg"
+                },
+                {
+                  "nom": "Pharmactiv Pastilles pour la gorge",
+                  "note": "propolis, vitamine C, menthe poivrée ; goût miel-citron",
+                  "photo": "assets/produits/pharmactiv-pastilles.jpg"
                 }
               ]
             },
@@ -171,7 +179,7 @@ GUIDE.fiches = [
             {
               "nom": "3 Chênes Propolis spray",
               "forme": "spray",
-              "detail": "Spray buccal : propolis, thym, menthe",
+              "detail": "Spray buccal 25 ml : propolis, thym, menthe (camomille)",
               "groupe": "Spray à la propolis",
               "photo": "assets/produits/propolis-spray.jpg",
               "pictos": [
@@ -180,7 +188,8 @@ GUIDE.fiches = [
               "equivalents": [
                 {
                   "nom": "3 Chênes Propolis sirop",
-                  "note": "complément : propolis, acérola (vitamine C), romarin"
+                  "note": "complément : propolis, acérola (vitamine C), romarin",
+                  "photo": "assets/produits/propolis-sirop.jpg"
                 }
               ]
             }
@@ -210,7 +219,8 @@ GUIDE.fiches = [
               "equivalents": [
                 {
                   "nom": "Strepsils Miel Citron",
-                  "note": "avec sucre"
+                  "note": "avec sucre",
+                  "photo": "assets/produits/strepsils-miel-citron.jpg"
                 },
                 {
                   "nom": "Lysopaïne cétylpyridinium",
@@ -266,7 +276,8 @@ GUIDE.fiches = [
               "equivalents": [
                 {
                   "nom": "Lysopaïne Maux de gorge aigus",
-                  "note": "ambroxol, sans sucre"
+                  "note": "ambroxol, sans sucre",
+                  "photo": "assets/produits/lysopaine-ambroxol.jpg"
                 }
               ]
             },

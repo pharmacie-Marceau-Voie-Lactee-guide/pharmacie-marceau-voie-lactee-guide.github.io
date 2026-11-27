@@ -1389,3 +1389,5 @@ details.fold-warn .sec-icon { background: #fff4e5; color: #b45309; }
 .prod-type { display: flex; align-items: center; gap: 8px; margin: 0 0 6px; padding: 6px 10px; border-radius: 8px; background: var(--brand-soft); color: var(--brand-dark); font-size: .92rem; }
 .prod-type strong { color: var(--brand-dark); }
 .prod-type { display: block; } .prod-type .type-dot { display: inline-block; vertical-align: middle; margin-right: 6px; }
+.prod-equiv li.has-photo { display: flex; align-items: center; gap: 8px; }
+.eq-photo { width: 40px; height: 40px; object-fit: contain; background: #fff; border: 1px solid var(--line); border-radius: 6px; flex: none; }
