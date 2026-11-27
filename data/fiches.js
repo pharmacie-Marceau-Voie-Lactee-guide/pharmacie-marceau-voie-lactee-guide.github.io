@@ -180,7 +180,13 @@ GUIDE.fiches = [
                 "ruche"
               ],
               "photo": "assets/produits/propolis-spray.jpg",
-              "groupe": "Spray"
+              "groupe": "Spray",
+              "equivalents": [
+                {
+                  "nom": "3 Chênes Propolis sirop acérola romarin",
+                  "note": "complément, vitamine C"
+                }
+              ]
             }
           ],
           "quand": "Gorge qui gratte, irritation légère, voix enrouée, air sec ou tabac, sans vraie douleur.",
@@ -276,7 +282,7 @@ GUIDE.fiches = [
             {
               "nom": "Colludol",
               "forme": "spray",
-              "detail": "Lidocaïne + hexamidine",
+              "detail": "Lidocaïne + hexamidine. Adulte : 1 à 2 pulvérisations, 3 fois par jour. Enfant de 6 à 15 ans : 1 pulvérisation, 1 à 3 fois par jour. 4 h entre deux prises, 5 jours maximum sans avis médical.",
               "pictos": [
                 "age:Dès 6 ans",
                 "fausseroute"
@@ -686,23 +692,24 @@ GUIDE.fiches = [
           "cestQuoi": "Eau de mer à la même salinité que le corps : nettoie le nez en douceur, utilisable tous les jours.",
           "exemples": [
             {
-              "nom": "Stérimar Hygiène du nez",
+              "nom": "Pharmactiv Le spray nasal isotonique",
               "forme": "spray",
-              "detail": "Eau de mer physiologique",
+              "detail": "Eau de mer isotonique, hygiène nasale quotidienne",
               "pictos": [
-                "age:Adultes et enfants"
+                "age:Adultes, enfants et nourrissons"
               ],
               "groupe": "Adulte et enfant",
               "equivalents": [
                 {
-                  "nom": "Physiomer Jet dynamique",
-                  "note": "dès 6 ans"
+                  "nom": "Stérimar Hygiène du nez",
+                  "note": "eau de mer physiologique"
                 },
                 {
-                  "nom": "Pharmactiv isotonique",
-                  "note": "dès la naissance"
+                  "nom": "Physiomer Jet dynamique",
+                  "note": "dès 6 ans"
                 }
-              ]
+              ],
+              "photo": "assets/produits/pharmactiv-isotonique.jpg"
             },
             {
               "nom": "ProRhinel Spray nourrissons et jeunes enfants",
@@ -779,7 +786,7 @@ GUIDE.fiches = [
             {
               "nom": "Efirub Coups de froid",
               "forme": "comprime",
-              "detail": "Complément aux plantes",
+              "detail": "Complément : bouillon blanc, échinacée, vitamine C",
               "pictos": [
                 "age:Adultes"
               ],
@@ -789,7 +796,8 @@ GUIDE.fiches = [
                   "nom": "Sinuxin, Pranarôm Aromaforce, Activox Flash'Rub",
                   "note": "compléments aux plantes"
                 }
-              ]
+              ],
+              "photo": "assets/produits/efirub-coups-de-froid.jpg"
             }
           ],
           "quand": "Adulte qui souhaite un produit naturel, en plus du lavage du nez.",
@@ -951,6 +959,7 @@ GUIDE.fiches = [
               "forme": "comprime",
               "detail": "Comprimés",
               "pictos": [
+                "age:Adultes et enfants de plus de 30 kg",
                 "grossesse:Contre-indiqué dès le 6e mois de grossesse",
                 "anticoag"
               ],
@@ -964,7 +973,8 @@ GUIDE.fiches = [
                   "nom": "Spedifen 400 mg",
                   "note": "même molécule"
                 }
-              ]
+              ],
+              "photo": "assets/produits/ibuprofene-biogaran.jpg"
             }
           ],
           "quand": "Douleur avec inflammation chez l'adulte, sans contre-indication et sans infection.",
