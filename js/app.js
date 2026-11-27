@@ -710,9 +710,11 @@
       pr.introduction ? el("p", { class: "meta" }, pr.introduction) : null,
       el("div", { class: "prod-grid" }, (pr.types || []).map(function (t) {
         return el("article", { class: "prod-card t-" + (t.cle || "autre") }, [
-          el("h3", null, [el("span", { class: "type-dot", "aria-hidden": "true" }), t.nom || TODO]),
+          t.symptome ? el("p", { class: "prod-sym-label" }, "Symptôme") : null,
+          el("h3", { class: t.symptome ? "prod-sym" : null }, t.symptome || [el("span", { class: "type-dot", "aria-hidden": "true" }), t.nom || TODO]),
+          t.symptome ? el("p", { class: "prod-type" }, [el("span", { class: "type-dot", "aria-hidden": "true" }), "Proposer : ", el("strong", null, t.nom || TODO)]) : null,
           el("p", { class: "prod-what" }, t.cestQuoi || TODO),
-          t.quand ? el("p", { class: "prod-when" }, [el("strong", null, "Pour : "), t.quand]) : null,
+          t.quand && !t.symptome ? el("p", { class: "prod-when" }, [el("strong", null, "Pour : "), t.quand]) : null,
           t.exemples && t.exemples.length
             ? el("ul", { class: "prod-items", "aria-label": "Produits" }, t.exemples.map(productItem))
             : null,

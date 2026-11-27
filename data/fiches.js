@@ -189,7 +189,8 @@ GUIDE.fiches = [
             "Huiles essentielles (certains sprays et pastilles) : déconseillées chez l'enfant, la femme enceinte et en cas d'épilepsie : lire la notice.",
             "Sucre : proposer une forme sans sucre aux diabétiques."
           ],
-          "cle": "adoucissant"
+          "cle": "adoucissant",
+          "symptome": "Gorge qui gratte, voix enrouée, sans vraie douleur"
         },
         {
           "nom": "Antiseptique",
@@ -232,7 +233,8 @@ GUIDE.fiches = [
             "Pas plus de quelques jours sans avis.",
             "Certains sprays contiennent de l'alcool."
           ],
-          "cle": "antiseptique"
+          "cle": "antiseptique",
+          "symptome": "Mal de gorge qui commence, gêne modérée"
         },
         {
           "nom": "Antiseptique + anesthésique local",
@@ -295,7 +297,8 @@ GUIDE.fiches = [
             "Déconseillé chez le jeune enfant (âge minimum sur la notice).",
             "Ne pas dépasser le nombre de pastilles par jour indiqué."
           ],
-          "cle": "anesthesique"
+          "cle": "anesthesique",
+          "symptome": "Douleur quand on avale"
         },
         {
           "nom": "Anti-inflammatoires",
@@ -334,7 +337,8 @@ GUIDE.fiches = [
             "Alpha-amylase : rares réactions allergiques (peau) ; arrêter et consulter si éruption.",
             "Flurbiprofène : mêmes contre-indications que l'ibuprofène (grossesse dès le 6e mois, ulcère, anticoagulant, autre AINS)."
           ],
-          "cle": "ains"
+          "cle": "ains",
+          "symptome": "Gorge très enflammée, douloureuse"
         }
       ],
       "choix": {
@@ -484,7 +488,8 @@ GUIDE.fiches = [
             "Jamais en cas de toux grasse, ni avec un mucolytique.",
             "Oxomémazine : somnolence (conduite, alcool), et précautions en cas de glaucome ou de problème de prostate.",
             "Les sirops à la codéine ou au dextrométhorphane sont sur ordonnance."
-          ]
+          ],
+          "symptome": "Toux sèche qui gratte et empêche de dormir"
         },
         {
           "nom": "Toux grasse : mucolytiques",
@@ -532,7 +537,8 @@ GUIDE.fiches = [
             "Contre-indiqués avant 2 ans (risque d'encombrement).",
             "Jamais avec un antitussif.",
             "Prudence en cas d'ulcère de l'estomac."
-          ]
+          ],
+          "symptome": "Toux grasse : ça encombre, on crache"
         },
         {
           "nom": "Sirops aux plantes (dispositifs médicaux)",
@@ -575,7 +581,8 @@ GUIDE.fiches = [
           "attention": [
             "Contiennent souvent du miel : pas avant 1 an et pas en cas d'allergie aux produits de la ruche.",
             "Version avec sucre : proposer « sans sucre » aux diabétiques."
-          ]
+          ],
+          "symptome": "Toux légère, sèche ou grasse, ou enfant de plus de 2 ans"
         }
       ],
       "choix": {
@@ -711,7 +718,8 @@ GUIDE.fiches = [
           "quand": "Rhume, nez qui coule, chez tout le monde, nourrissons compris (formes adaptées).",
           "attention": [
             "Nourrisson : lavage avec des unidoses de sérum physiologique ou un spray adapté, tête sur le côté."
-          ]
+          ],
+          "symptome": "Nez qui coule (et hygiène du nez tous les jours)"
         },
         {
           "nom": "Nez bouché (eau de mer hypertonique)",
@@ -740,7 +748,8 @@ GUIDE.fiches = [
           "attention": [
             "Peut piquer un peu.",
             "Les sprays vasoconstricteurs (qui « débouchent » avec un médicament) sont sur ordonnance."
-          ]
+          ],
+          "symptome": "Nez bouché"
         },
         {
           "nom": "Sprays et produits aux huiles essentielles ou aux plantes",
@@ -787,7 +796,8 @@ GUIDE.fiches = [
           "attention": [
             "Huiles essentielles : déconseillées chez l'enfant, la femme enceinte ou qui allaite, et en cas d'épilepsie ou d'asthme : lire la notice.",
             "Ce sont surtout des compléments : ils ne remplacent pas un avis si les symptômes durent."
-          ]
+          ],
+          "symptome": "Rhume, nez bouché : envie d'un produit naturel (adulte)"
         }
       ],
       "choix": {
@@ -928,7 +938,8 @@ GUIDE.fiches = [
             "1 g par prise, 4 h minimum entre deux prises, 3 g par jour au maximum (adulte de plus de 50 kg).",
             "« Surdosage = danger » est écrit sur chaque boîte : vérifier les autres médicaments qui contiennent du paracétamol.",
             "Les formes effervescentes contiennent du sel : attention au régime sans sel."
-          ]
+          ],
+          "symptome": "Fièvre, mal de tête, douleur simple"
         },
         {
           "nom": "Ibuprofène (AINS)",
@@ -961,7 +972,8 @@ GUIDE.fiches = [
             "1 200 mg par jour au maximum en automédication.",
             "Jamais pendant la grossesse sans avis, ni avec un anticoagulant ou un autre AINS.",
             "À éviter en cas d'infection (gorge, peau, varicelle)."
-          ]
+          ],
+          "symptome": "Douleur avec inflammation : dents, règles, courbatures, entorse"
         }
       ],
       "choix": {
